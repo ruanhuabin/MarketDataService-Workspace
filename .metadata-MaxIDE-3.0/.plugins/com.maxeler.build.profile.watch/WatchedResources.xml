@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ProfileData>
+<Profile javaProject="MarketDataServer-NoBlockingIO_EngineCode" profileFolder="DFE" profileProject="MarketDataServer-NoBlockingIO_RunRules"/>
+<Profile javaProject="MarketDataServer-NoBlockingIO_EngineCode" profileFolder="Simulation" profileProject="MarketDataServer-NoBlockingIO_RunRules">
+<builder name="cn.edu.tsinghua.kernel.MarketDataServerManager"/>
+</Profile>
+</ProfileData>

@@ -1,0 +1,25 @@
+import os
+Import('*')
+
+bin_list = [
+    #("xtpv", "main_xtpv.cpp"),
+            ("xml", "main_xml.cpp"),
+            ("orderBook","outputTest.cpp")
+           ]
+
+extra_include_dir = [
+  "#" + dirs['xtp'],
+  "#" + dirs['util']
+]
+
+# em should appear first because em relies on util
+additional_libs = ["xtp", "util"]
+
+myenv = env.Clone(CPPPATH = extra_include_dir)
+myenv.Append(LIBS = additional_libs)
+
+############################### for binary ############################
+for bin in bin_list:
+  bin_obj = myenv.StaticObject(bin[1])
+  bin_target = myenv.Program(target = bin[0], source = bin_obj)
+  myenv.Install("#" + dirs['bin'], bin_target)

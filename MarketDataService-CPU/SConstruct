@@ -1,0 +1,83 @@
+# usage:
+# scons [-j n]: compile in release mode
+# scons debug=1 [-j n]: compile in debug mode
+#
+# author: heconghui@gmail.com
+
+import os
+from sys import platform as _platform
+
+# host compiler options
+c_compiler      = ["gcc"]
+cxx_compiler    = ["g++"]
+linker          = cxx_compiler
+warn_flags      = ["-Wall", "-Wextra", "-Wno-write-strings"]
+optimize_flags  = ["-O2"]
+debug_flags     = ["-O0", "-g"]
+other_flags     = ["-DBOOST_LOG_DYN_LINK"]
+link_flags      = ["-O1"]
+
+# set up boost direcotry
+boost_root = '/usr/local/'
+boost_inc_dir = boost_root + 'include'
+boost_lib_dir = boost_root + 'lib'
+
+# set the sub directories (key, value), where value is the name of directory
+# please make sure the source code are in src subdirectory
+dirlist = [
+   ('lib', 'lib'),
+   ('bin', 'bin'),
+   ('xtp', 'src/xtp'),
+   ('util', 'src/util'),
+   ('main', 'src/main'),
+]
+dirs = dict(dirlist)
+
+# normally, you don't need to modify from the line below
+# ---------------------------------------------------------------------- #
+is_debug_mode = ARGUMENTS.get('debug', 1)
+if int(is_debug_mode):
+  print "Debug mode"
+  cur_cflags = debug_flags + warn_flags + other_flags
+else:
+  print "Release mode"
+  cur_cflags = optimize_flags + warn_flags + other_flags
+
+libs        = []
+
+# add boost include_dir and lib dir
+cur_cflags += ["-isystem", boost_inc_dir]
+libpath     = ["#" + dirs['lib'], boost_lib_dir]
+boost_libs  = ["boost_system",    "boost_filesystem",     "boost_thread",
+               "boost_date_time", "boost_chrono",         "boost_log_setup",
+               "boost_log",       "boost_program_options","boost_timer"]
+
+if _platform == "darwin":
+  boost_libs = [lib + '-mt' for lib in boost_libs]
+
+libs += boost_libs
+
+# setup environment
+env = Environment(CC      = c_compiler,
+                  CXX     = cxx_compiler,
+                  LINK    = linker + link_flags,
+                  CCFLAGS = cur_cflags,
+                  LIBPATH = libpath,
+                  LIBS    = libs,
+                  ENV     = os.environ)
+
+# compile
+for d in dirlist:
+  if not "src/" in d[1]:
+    continue
+
+  SConscript(d[1] + "/SConscript",
+             variant_dir = d[1].replace('src', 'build'),
+             duplicate = 0,
+             exports = "env dirs")
+
+# remove compiled python files
+python_file_list = ['.ycm_extra_conf.pyc']
+for f in python_file_list:
+  if os.path.isfile(f):
+    os.remove(f)

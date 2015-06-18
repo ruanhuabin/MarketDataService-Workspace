@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<createdProfiles>
+<launchedProfile profileFolder="DFE" project="MarketDataServer-NoBlockingIO_RunRules"/>
+<launchedProfile profileFolder="Simulation" project="MarketDataServer-NoBlockingIO_RunRules"/>
+<launchedProfile profileFolder="Simulation" project="MarketDataServer-NonBlockingIO_RunRules"/>
+</createdProfiles>

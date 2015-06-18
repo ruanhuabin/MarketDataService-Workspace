@@ -1,0 +1,25 @@
+package cn.edu.tsinghua.bram;
+
+
+import cn.edu.tsinghua.tidhandler.ItemType;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLib;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+
+public class CCommPhaseField {
+  private static Memory<DFEVector<DFEVar>> TradingDay = null;
+  private static Memory<DFEVar> CommPhaseNo = null;
+
+  public static Memory<DFEVector<DFEVar>> getTradingDay(KernelLib kernel) {
+    TradingDay = kernel.mem.alloc(ItemType.CDayType, 2);
+    return TradingDay;
+  }
+
+  public static Memory<DFEVar> getCommPhaseNo(KernelLib kernel) {
+    CommPhaseNo = kernel.mem.alloc(ItemType.CCommPhaseNoType, 2);
+    return CommPhaseNo;
+  }
+
+}

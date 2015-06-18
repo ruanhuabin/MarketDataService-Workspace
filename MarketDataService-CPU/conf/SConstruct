@@ -1,0 +1,41 @@
+import os
+import math
+import shutil
+import subprocess
+import locale
+
+def write_config(configs, filename):
+  config_file = filename
+  f = open(config_file, 'w')
+  f.write('# PLEASE DO NOT MODIFY THIS FILE. IT IS GENERATED AUTOMATICALLY\n')
+
+  for name, value in configs.items():
+    f.write('%s=%s\n' % (name, value))
+
+  f.close()
+
+# set your config here
+#in_data_path = os.environ['HOME'] + '/data/CompLog.con'
+in_data_path = '../data/CompLog.con'
+
+configs = {
+  'in_data_path':     in_data_path,
+  'xtp_xml_path':     'packages.xml'
+}
+
+config_file = '.param.cfg'
+write_config(configs, config_file)
+
+################### Run command #######################
+env  = Environment(ENV = os.environ)
+
+env.Command('out.log', in_data_path, './send -f %s' % config_file)
+
+################## Post Process #######################
+# remove unnecessary files
+dump_files = [config_file]
+if GetOption('clean'):
+  for f in dump_files:
+    if os.path.isfile(f):
+      os.remove(f)
+

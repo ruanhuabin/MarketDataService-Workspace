@@ -1,0 +1,73 @@
+package cn.edu.tsinghua.bram;
+
+import cn.edu.tsinghua.tidhandler.ItemType;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLib;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+
+public class CMarketDataField {
+  private static final int totalBitSize = 8;
+  private static final int MAX_NUM_INSTRUMENT = (int)Math.pow(2, totalBitSize);
+
+  private static Memory<DFEVector<DFEVar>> TradingDay = null;
+  public static Memory<DFEVector<DFEVar>> getTradingDay(KernelLib kernel) {
+    TradingDay = kernel.mem.alloc(ItemType.CDayType, MAX_NUM_INSTRUMENT);
+    return TradingDay;
+  }
+
+  private static Memory<DFEVector<DFEVar>> SettlementGroupID = null;
+  public static Memory<DFEVector<DFEVar>> getSettlementGroupID(KernelLib kernel) {
+    SettlementGroupID = kernel.mem.alloc(ItemType.CSettlementGroupIDType, MAX_NUM_INSTRUMENT);
+    return SettlementGroupID;
+  }
+
+  private static Memory<DFEVar> SettlementID = null;
+  public static Memory<DFEVar> getSettlementID(KernelLib kernel) {
+    SettlementID = kernel.mem.alloc(ItemType.CSettlementIDType, MAX_NUM_INSTRUMENT);
+    return SettlementID;
+  }
+
+  private static Memory<DFEVar> LastPrice = null;
+  public static Memory<DFEVar> getLastPrice(KernelLib kernel) {
+    LastPrice = kernel.mem.alloc(ItemType.CPriceType, MAX_NUM_INSTRUMENT);
+    return LastPrice;
+  }
+
+  private static Memory<DFEVar> PreSettlementPrice = null;
+  public static Memory<DFEVar> getPreSettlementPrice(KernelLib kernel) {
+    PreSettlementPrice = kernel.mem.alloc(ItemType.CPriceType, MAX_NUM_INSTRUMENT);
+    return PreSettlementPrice;
+  }
+
+  private static Memory<DFEVar> PreClosePrice = null;
+  public static Memory<DFEVar> getPreClosePrice(KernelLib kernel) {
+    PreClosePrice = kernel.mem.alloc(ItemType.CPriceType, MAX_NUM_INSTRUMENT);
+    return PreClosePrice;
+  }
+
+  private static Memory<DFEVar> PreOpenInterest = null;
+  public static Memory<DFEVar> getPreOpenInterest(KernelLib kernel) {
+    PreOpenInterest = kernel.mem.alloc(ItemType.CLargeVolumeType, MAX_NUM_INSTRUMENT);
+    return PreOpenInterest;
+  }
+
+  private static Memory<DFEVar> OpenPrice = null;
+  public static Memory<DFEVar> getOpenPrice(KernelLib kernel) {
+    OpenPrice = kernel.mem.alloc(ItemType.CPriceType, MAX_NUM_INSTRUMENT);
+    return OpenPrice;
+  }
+
+  private static Memory<DFEVar> HighestPrice = null;
+  public static Memory<DFEVar> getHighestPrice(KernelLib kernel) {
+    HighestPrice = kernel.mem.alloc(ItemType.CPriceType, MAX_NUM_INSTRUMENT);
+    return HighestPrice;
+  }
+
+  private static Memory<DFEVar> LowestPrice = null;
+  public static Memory<DFEVar> getLowestPrice(KernelLib kernel) {
+    LowestPrice = kernel.mem.alloc(ItemType.CPriceType, MAX_NUM_INSTRUMENT);
+    return LowestPrice;
+  }
+}

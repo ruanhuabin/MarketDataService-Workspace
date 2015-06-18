@@ -1,0 +1,6 @@
+*.class
+maxfiles/
+*.o
+binaries/
+bin/
+*.a

@@ -1,0 +1,55 @@
+星期四 19:25: ########################################## 
+星期四 19:25: Compiling.
+星期四 19:25: ########################################## 
+
+星期四 19:25: MaxCompiler version: 2014.1a.
+星期四 19:25: Build Simulation run rule for MarketDataServer-NonBlockingIO start time: 星期四 六月 18 19:25:33 CST 2015.
+星期四 19:25: Project location: /root/MarketDataService-workspace/MarketDataServer-NonBlockingIO.
+星期四 19:25: Detailed build log: /root/MarketDataService-workspace/MarketDataServer-NonBlockingIO/RunRules/Simulation/build.log.
+
+星期四 19:25: Compiling Engine Code.
+星期四 19:25: Engine building skipped (no changes on .max files).
+星期四 19:25: Compiling CPU Code.
+星期四 19:25: Run CPU project make files updating
+星期四 19:25: Executing command:
+星期四 19:25: java -jar /opt/maxcompiler/lib/MaxIDE/projectAdmin.jar -u /root/MarketDataService-workspace/MarketDataServer-NonBlockingIO Simulation 
+星期四 19:25: Command output:
+
+星期四 19:25: MaxCompiler Project Admin Tool Version 2014.1.00013
+星期四 19:25:  Copyright Maxeler Technologies 2010 - 2014. All rights reserved.
+
+星期四 19:25: Handler version 2
+星期四 19:25: Updating RunRule dependent Makefiles for RunRule 'Simulation'
+星期四 19:25: 	Updating: Simulation
+星期四 19:25: Found makefiles: 1
+星期四 19:25: 	Updated: Simulation
+星期四 19:25: Run CPU make.
+星期四 19:25: make RUNRULE=Simulation 
+星期四 19:25: Command output:
+星期四 19:25: make -f Makefile.rules build
+星期四 19:25: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataServer-NonBlockingIO/CPUCode'
+星期四 19:25: set -e; rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d ;                                                             \
+星期四 19:25: 	  cc -M -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -Wno-error MarketDataServerCpuCode.c > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ ;                                 \
+星期四 19:25:       sed 's,\(MarketDataServerCpuCode\)\.o[ :]*,../RunRules/Simulation/objects/c/\1.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d : ,g' < ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d; \
+星期四 19:25:       rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$
+星期四 19:25: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataServer-NonBlockingIO/CPUCode'
+星期四 19:25: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataServer-NonBlockingIO/CPUCode'
+星期四 19:25: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -c MarketDataServerCpuCode.c -o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o
+星期四 19:25: MarketDataServerCpuCode.c: 在函数‘main’中:
+星期四 19:25: MarketDataServerCpuCode.c:140: 警告：格式‘%d’需要类型‘int’，但实参 2 的类型为‘long unsigned int’
+星期四 19:25: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -o ../RunRules/Simulation/binaries/MarketDataServer ../RunRules/Simulation/objects/maxfiles/slic_MarketDataServer.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o -g -O3  -L '/opt/maxcompiler/lib' -lslic -L '/opt/maxeler/maxeleros/lib' -lmaxeleros -lpthread -lm -lrt 
+星期四 19:25: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataServer-NonBlockingIO/CPUCode'
+星期四 19:25: Build completed: 星期四 六月 18 19:25:35 CST 2015
+
+
+星期四 19:25: ########################################## 
+星期四 19:25: Running
+星期四 19:25: ########################################## 
+星期四 19:25: Executing command:
+星期四 19:25: '/root/MarketDataService-workspace/MarketDataServer-NonBlockingIO/RunRules/Simulation/binaries/MarketDataServer' '169.254.10.2' '169.254.10.1' '255.255.255.0' 
+星期四 19:25: Command output:
+星期四 19:25: Listening on 169.254.10.2 port 45678
+星期四 19:25: Waiting for kernel response...
+星期四 19:25: CPU, sizeof(XTPPacket_t):196
+星期四 19:25: Process terminated with exit code -1.
+星期四 19:25: 已终止

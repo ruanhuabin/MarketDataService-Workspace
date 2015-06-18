@@ -1,0 +1,20 @@
+package cn.edu.tsinghua.tidhandler;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLib;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+
+public class MarketDataGenHandler extends KernelLib {
+
+	private DFEVar content = null;
+	public MarketDataGenHandler(KernelLib owner, DFEVar content) {
+		super(owner);
+		// TODO Auto-generated constructor stub
+		this.content = content;
+	}
+
+	public DFEVar genMarketData()
+	{
+		return constant.var(dfeUInt(32), 2);
+	}
+
+}

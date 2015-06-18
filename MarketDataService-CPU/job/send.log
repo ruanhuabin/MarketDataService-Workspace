@@ -1,0 +1,193 @@
+[info ] 2015-06-18 15:41:57: Print the configuration:
+[info ] 2015-06-18 15:41:57: in_data_path = ../data/CompLog.con
+[info ] 2015-06-18 15:41:57: xtp_xml_path = packages.xml
+[debug] 2015-06-18 15:41:57: open file ../data/CompLog.con
+[debug] 2015-06-18 15:41:57: reading package ID[0]
+[debug] 2015-06-18 15:41:57: current package size: 83
+[debug] 2015-06-18 15:41:57: contentLen: 15
+[debug] 2015-06-18 15:41:57: 
+[debug] 2015-06-18 15:41:57: Package Header
+[debug] 2015-06-18 15:41:57: ------------------------------
+[debug] 2015-06-18 15:41:57: Type: 0x50
+[debug] 2015-06-18 15:41:57: Chain: 0x4c
+[debug] 2015-06-18 15:41:57: FTType: 0x57
+[debug] 2015-06-18 15:41:57: ContentLength: 15
+[debug] 2015-06-18 15:41:57: SubjectID: 0x00011001
+[debug] 2015-06-18 15:41:57: Tid: 0x00005002
+[debug] 2015-06-18 15:41:57: CommPhaseNo: 11804
+[debug] 2015-06-18 15:41:57: SequenceNo: 1
+[debug] 2015-06-18 15:41:57: FrontSeqNo: 0
+[debug] 2015-06-18 15:41:57: RequestID: 0
+[debug] 2015-06-18 15:41:57: SessionID: 0
+[debug] 2015-06-18 15:41:57: FrontID: 0
+[debug] 2015-06-18 15:41:57: GroupID: 62842
+[debug] 2015-06-18 15:41:57: OldSubjectID: 0x00002000
+[debug] 2015-06-18 15:41:57: ConvergenceID: 0x551ca81a
+[debug] 2015-06-18 15:41:57: OldSequenceNo: 1
+[debug] 2015-06-18 15:41:57: PubNodeID: 4354
+[debug] 2015-06-18 15:41:57: RiskID: 0
+[debug] 2015-06-18 15:41:57: MatchID: 0
+[debug] 2015-06-18 15:41:57: ErrorID: 0
+[debug] 2015-06-18 15:41:57: ------------------------------
+[debug] 2015-06-18 15:41:57: [20120425]
+[debug] 2015-06-18 15:41:57: [11804]
+[debug] 2015-06-18 15:41:57: 
+[debug] 2015-06-18 15:41:57: open file ../data/CompLog.con
+[debug] 2015-06-18 15:41:57: reading package ID[1]
+[debug] 2015-06-18 15:41:57: current package size: 90
+[debug] 2015-06-18 15:41:57: contentLen: 22
+[debug] 2015-06-18 15:41:57: 
+[debug] 2015-06-18 15:41:57: Package Header
+[debug] 2015-06-18 15:41:57: ------------------------------
+[debug] 2015-06-18 15:41:57: Type: 0x50
+[debug] 2015-06-18 15:41:57: Chain: 0x4c
+[debug] 2015-06-18 15:41:57: FTType: 0x57
+[debug] 2015-06-18 15:41:57: ContentLength: 22
+[debug] 2015-06-18 15:41:57: SubjectID: 0x00011001
+[debug] 2015-06-18 15:41:57: Tid: 0x00006001
+[debug] 2015-06-18 15:41:57: CommPhaseNo: 11804
+[debug] 2015-06-18 15:41:57: SequenceNo: 2
+[debug] 2015-06-18 15:41:57: FrontSeqNo: 0
+[debug] 2015-06-18 15:41:57: RequestID: 0
+[debug] 2015-06-18 15:41:57: SessionID: 0
+[debug] 2015-06-18 15:41:57: FrontID: 0
+[debug] 2015-06-18 15:41:57: GroupID: 62842
+[debug] 2015-06-18 15:41:57: OldSubjectID: 0x00002000
+[debug] 2015-06-18 15:41:57: ConvergenceID: 0x551ca81a
+[debug] 2015-06-18 15:41:57: OldSequenceNo: 2
+[debug] 2015-06-18 15:41:57: PubNodeID: 4354
+[debug] 2015-06-18 15:41:57: RiskID: 0
+[debug] 2015-06-18 15:41:57: MatchID: 0
+[debug] 2015-06-18 15:41:57: ErrorID: 0
+[debug] 2015-06-18 15:41:57: ------------------------------
+[debug] 2015-06-18 15:41:57: [20120425]
+[debug] 2015-06-18 15:41:57: [CFFEX]
+[debug] 2015-06-18 15:41:57: 
+[debug] 2015-06-18 15:41:57: open file ../data/CompLog.con
+[debug] 2015-06-18 15:41:57: reading package ID[2871]
+[debug] 2015-06-18 15:41:57: current package size: 90
+[debug] 2015-06-18 15:41:57: contentLen: 22
+[debug] 2015-06-18 15:41:57: 
+[debug] 2015-06-18 15:41:57: Package Header
+[debug] 2015-06-18 15:41:57: ------------------------------
+[debug] 2015-06-18 15:41:57: Type: 0x50
+[debug] 2015-06-18 15:41:57: Chain: 0x4c
+[debug] 2015-06-18 15:41:57: FTType: 0x57
+[debug] 2015-06-18 15:41:57: ContentLength: 22
+[debug] 2015-06-18 15:41:57: SubjectID: 0x00011001
+[debug] 2015-06-18 15:41:57: Tid: 0x00006002
+[debug] 2015-06-18 15:41:57: CommPhaseNo: 11804
+[debug] 2015-06-18 15:41:57: SequenceNo: 2872
+[debug] 2015-06-18 15:41:57: FrontSeqNo: 0
+[debug] 2015-06-18 15:41:57: RequestID: 0
+[debug] 2015-06-18 15:41:57: SessionID: 0
+[debug] 2015-06-18 15:41:57: FrontID: 0
+[debug] 2015-06-18 15:41:57: GroupID: 62842
+[debug] 2015-06-18 15:41:57: OldSubjectID: 0x00002000
+[debug] 2015-06-18 15:41:57: ConvergenceID: 0x551ca81a
+[debug] 2015-06-18 15:41:57: OldSequenceNo: 2868
+[debug] 2015-06-18 15:41:57: PubNodeID: 4354
+[debug] 2015-06-18 15:41:57: RiskID: 0
+[debug] 2015-06-18 15:41:57: MatchID: 0
+[debug] 2015-06-18 15:41:57: ErrorID: 0
+[debug] 2015-06-18 15:41:57: ------------------------------
+[debug] 2015-06-18 15:41:57: [20120425]
+[debug] 2015-06-18 15:41:57: [CFFEX]
+[debug] 2015-06-18 15:41:57: 
+[debug] 2015-06-18 15:41:57: open file ../data/CompLog.con
+[debug] 2015-06-18 15:41:57: reading package ID[2872]
+[debug] 2015-06-18 15:41:57: current package size: 94
+[debug] 2015-06-18 15:41:57: contentLen: 26
+[debug] 2015-06-18 15:41:57: 
+[debug] 2015-06-18 15:41:57: Package Header
+[debug] 2015-06-18 15:41:57: ------------------------------
+[debug] 2015-06-18 15:41:57: Type: 0x50
+[debug] 2015-06-18 15:41:57: Chain: 0x4c
+[debug] 2015-06-18 15:41:57: FTType: 0x57
+[debug] 2015-06-18 15:41:57: ContentLength: 26
+[debug] 2015-06-18 15:41:57: SubjectID: 0x00011001
+[debug] 2015-06-18 15:41:57: Tid: 0x00007001
+[debug] 2015-06-18 15:41:57: CommPhaseNo: 11804
+[debug] 2015-06-18 15:41:57: SequenceNo: 2873
+[debug] 2015-06-18 15:41:57: FrontSeqNo: 0
+[debug] 2015-06-18 15:41:57: RequestID: 0
+[debug] 2015-06-18 15:41:57: SessionID: 0
+[debug] 2015-06-18 15:41:57: FrontID: 0
+[debug] 2015-06-18 15:41:57: GroupID: 62842
+[debug] 2015-06-18 15:41:57: OldSubjectID: 0x00002000
+[debug] 2015-06-18 15:41:57: ConvergenceID: 0x551ca81a
+[debug] 2015-06-18 15:41:57: OldSequenceNo: 2869
+[debug] 2015-06-18 15:41:57: PubNodeID: 4354
+[debug] 2015-06-18 15:41:57: RiskID: 0
+[debug] 2015-06-18 15:41:57: MatchID: 0
+[debug] 2015-06-18 15:41:57: ErrorID: 0
+[debug] 2015-06-18 15:41:57: ------------------------------
+[debug] 2015-06-18 15:41:57: [20120425]
+[debug] 2015-06-18 15:41:57: [SG01]
+[debug] 2015-06-18 15:41:57: [1]
+[debug] 2015-06-18 15:41:57: 
+[debug] 2015-06-18 15:41:57: open file ../data/CompLog.con
+[debug] 2015-06-18 15:41:57: reading package ID[4086]
+[debug] 2015-06-18 15:41:57: current package size: 94
+[debug] 2015-06-18 15:41:57: contentLen: 26
+[debug] 2015-06-18 15:41:57: 
+[debug] 2015-06-18 15:41:57: Package Header
+[debug] 2015-06-18 15:41:57: ------------------------------
+[debug] 2015-06-18 15:41:57: Type: 0x50
+[debug] 2015-06-18 15:41:57: Chain: 0x4c
+[debug] 2015-06-18 15:41:57: FTType: 0x57
+[debug] 2015-06-18 15:41:57: ContentLength: 26
+[debug] 2015-06-18 15:41:57: SubjectID: 0x00011001
+[debug] 2015-06-18 15:41:57: Tid: 0x00005001
+[debug] 2015-06-18 15:41:57: CommPhaseNo: 11804
+[debug] 2015-06-18 15:41:57: SequenceNo: 4087
+[debug] 2015-06-18 15:41:57: FrontSeqNo: 0
+[debug] 2015-06-18 15:41:57: RequestID: 0
+[debug] 2015-06-18 15:41:57: SessionID: 0
+[debug] 2015-06-18 15:41:57: FrontID: 0
+[debug] 2015-06-18 15:41:57: GroupID: 62842
+[debug] 2015-06-18 15:41:57: OldSubjectID: 0000000000
+[debug] 2015-06-18 15:41:57: ConvergenceID: 0x551ca81a
+[debug] 2015-06-18 15:41:57: OldSequenceNo: 0
+[debug] 2015-06-18 15:41:57: PubNodeID: 4354
+[debug] 2015-06-18 15:41:57: RiskID: 0
+[debug] 2015-06-18 15:41:57: MatchID: 0
+[debug] 2015-06-18 15:41:57: ErrorID: 0
+[debug] 2015-06-18 15:41:57: ------------------------------
+[debug] 2015-06-18 15:41:57: []
+[debug] 2015-06-18 15:41:57: [09:20:03]
+[debug] 2015-06-18 15:41:57: [620]
+[debug] 2015-06-18 15:41:57: 
+[debug] 2015-06-18 15:41:57: open file ../data/CompLog.con
+[debug] 2015-06-18 15:41:57: reading package ID[4085]
+[debug] 2015-06-18 15:41:57: current package size: 94
+[debug] 2015-06-18 15:41:57: contentLen: 26
+[debug] 2015-06-18 15:41:57: 
+[debug] 2015-06-18 15:41:57: Package Header
+[debug] 2015-06-18 15:41:57: ------------------------------
+[debug] 2015-06-18 15:41:57: Type: 0x50
+[debug] 2015-06-18 15:41:57: Chain: 0x4c
+[debug] 2015-06-18 15:41:57: FTType: 0x57
+[debug] 2015-06-18 15:41:57: ContentLength: 26
+[debug] 2015-06-18 15:41:57: SubjectID: 0x00011001
+[debug] 2015-06-18 15:41:57: Tid: 0x00007002
+[debug] 2015-06-18 15:41:57: CommPhaseNo: 11804
+[debug] 2015-06-18 15:41:57: SequenceNo: 4086
+[debug] 2015-06-18 15:41:57: FrontSeqNo: 0
+[debug] 2015-06-18 15:41:57: RequestID: 0
+[debug] 2015-06-18 15:41:57: SessionID: 0
+[debug] 2015-06-18 15:41:57: FrontID: 0
+[debug] 2015-06-18 15:41:57: GroupID: 62842
+[debug] 2015-06-18 15:41:57: OldSubjectID: 0x00002000
+[debug] 2015-06-18 15:41:57: ConvergenceID: 0x551ca81a
+[debug] 2015-06-18 15:41:57: OldSequenceNo: 3860
+[debug] 2015-06-18 15:41:57: PubNodeID: 4354
+[debug] 2015-06-18 15:41:57: RiskID: 0
+[debug] 2015-06-18 15:41:57: MatchID: 0
+[debug] 2015-06-18 15:41:57: ErrorID: 0
+[debug] 2015-06-18 15:41:57: ------------------------------
+[debug] 2015-06-18 15:41:57: [20120425]
+[debug] 2015-06-18 15:41:57: [SG01]
+[debug] 2015-06-18 15:41:57: [1]
+[debug] 2015-06-18 15:41:57: 
+[info ] 2015-06-18 15:41:57: program exit normally

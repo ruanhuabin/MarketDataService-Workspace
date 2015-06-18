@@ -1,0 +1,178 @@
+package cn.edu.tsinghua.kernel;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
+import com.maxeler.networking.v1.framed_kernels.ByteOrder;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FrameFormat;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+import com.maxeler.networking.v1.kernel_types.UDPOneToManyRXType;
+import com.maxeler.networking.v1.kernel_types.UDPOneToManyTXType;
+
+public class MarketDataServerKernel extends FramedKernel {
+
+	private static class XTPPacketFrameIn extends FrameFormat {
+		public XTPPacketFrameIn() {
+			super(ByteOrder.LITTLE_ENDIAN);
+
+			addField("Type", dfeUInt(8));
+			addField("Chain", dfeUInt(8));
+			addField("FTType", dfeUInt(8));
+			addField("Padding1",dfeUInt(8));
+
+			addField("ContentLength", dfeUInt(16));
+			addField("Padding2", dfeUInt(16));
+
+			addField("SubjectID", dfeUInt(32));
+			addField("Tid", dfeUInt(32));
+			addField("CommPhaseNo", dfeUInt(32));
+			addField("SequenceNo", dfeUInt(32));
+			addField("FrontSeqNo", dfeUInt(32));
+			addField("RequestID", dfeUInt(32));
+			addField("sessionID", dfeUInt(32));
+
+			addField("FrontID", dfeUInt(16));
+         addField("Padding3", dfeUInt(16));
+
+			addField("GroupID", dfeUInt(32));
+			addField("OldSubjectID", dfeUInt(32));
+			addField("ConvergenceID", dfeUInt(32));
+			addField("OldSequenceNo", dfeUInt(32));
+
+			addField("PubNodeID", dfeUInt(16));
+			addField("RiskID", dfeUInt(16));
+			addField("MatchID", dfeUInt(16));
+			addField("Padding4", dfeUInt(16));
+
+			addField("ErrorID", dfeUInt(32));
+
+		//	addField("Content", dfeUInt(256));
+
+			addField("Content", dfeRawBits(17600));
+
+		}
+
+	}
+
+	private static class XTPFrameFormatOut extends FrameFormat {
+		public XTPFrameFormatOut() {
+			super(ByteOrder.LITTLE_ENDIAN);
+
+			addField("Type", dfeUInt(8));
+			addField("Chain", dfeUInt(8));
+			addField("FTType", dfeUInt(8));
+			addField("ContentLength", dfeUInt(16));
+
+			addField("SubjectID", dfeUInt(32));
+			addField("Tid", dfeUInt(32));
+//			addField("CommPhaseNo", dfeUInt(32));
+//			addField("SequenceNo", dfeUInt(32));
+//			addField("FrontSeqNo", dfeUInt(32));
+//			addField("RequestID", dfeUInt(32));
+//			addField("sessionID", dfeUInt(32));
+//
+//			addField("FrontID", dfeUInt(16));
+//
+//			addField("GroupID", dfeUInt(32));
+//			addField("OldSubjectID", dfeUInt(32));
+//			addField("ConvergenceID", dfeUInt(32));
+//			addField("OldSequenceNo", dfeUInt(32));
+//
+//			addField("PubNodeID", dfeUInt(16));
+//			addField("RiskID", dfeUInt(16));
+//			addField("MatchID", dfeUInt(16));
+//
+//			addField("ErrorID", dfeUInt(32));
+
+			//addField("Content", dfeRawBits(8192));
+
+		}
+
+	}
+
+	MarketDataServerKernel(KernelParameters parameters) {
+		super(parameters);
+
+		XTPPacketFrameIn xtpFrameIn = new XTPPacketFrameIn();
+		XTPFrameFormatOut testFrameFormatOutInt = new XTPFrameFormatOut();
+
+		FrameData<XTPPacketFrameIn> frameIn = io.frameInput("frameIn", xtpFrameIn, new UDPOneToManyRXType());
+
+		FrameData<XTPFrameFormatOut> frameOut =
+			new FrameData<XTPFrameFormatOut>(this, testFrameFormatOutInt, new UDPOneToManyTXType());
+
+
+		frameOut["Type"] <== frameIn["Type"];
+		frameOut["Chain"] <== frameIn["Chain"];
+		frameOut["FTType"] <== frameIn["FTType"];
+		frameOut["ContentLength"] <== frameIn["ContentLength"];
+		frameOut["SubjectID"] <== frameIn["SubjectID"];
+		frameOut["Tid"] <== frameIn["Tid"];
+//		frameOut["CommPhaseNo"] <== frameIn["CommPhaseNo"];
+//		frameOut["SequenceNo"] <== frameIn["SequenceNo"];
+//		frameOut["FrontSeqNo"] <== frameIn["FrontSeqNo"];
+//		frameOut["RequestID"] <== frameIn["RequestID"];
+//		frameOut["sessionID"] <== frameIn["sessionID"];
+//		frameOut["FrontID"] <== frameIn["FrontID"];
+//		frameOut["GroupID"] <== frameIn["GroupID"];
+//		frameOut["OldSubjectID"] <== frameIn["OldSubjectID"];
+//		frameOut["ConvergenceID"] <== frameIn["ConvergenceID"];
+//		frameOut["OldSequenceNo"] <== frameIn["OldSequenceNo"];
+//		frameOut["PubNodeID"] <== frameIn["PubNodeID"];
+//		frameOut["RiskID"] <== frameIn["RiskID"];
+//		frameOut["MatchID"] <== frameIn["MatchID"];
+//		frameOut["ErrorID"] <== frameIn["ErrorID"];
+
+		//debug.simPrintf("Type = %d, Chain = %d, FTType = %d\n", frameIn["Type"].cast(dfeUInt(32)), frameIn["Chain"].cast(dfeUInt(32)), frameIn["FTType"].cast(dfeUInt(32)));
+		debug.simPrintf("Type = %#04x, Chain = %#04x, FTType = %#04x\n", frameIn["Type"], frameIn["Chain"], frameIn["FTType"]);
+		debug.simPrintf("ContentLength = %d\n", frameIn["ContentLength"].cast(dfeUInt(32)));
+		debug.simPrintf("SubjectID = %#010x\n", frameIn["SubjectID"].cast(dfeUInt(32)));
+		debug.simPrintf("Tid = %#010x\n", frameIn["Tid"].cast(dfeUInt(32)));
+		debug.simPrintf("CommPhaseNo = %#010x\n", frameIn["CommPhaseNo"].cast(dfeUInt(32)));
+		debug.simPrintf("SequenceNo = %#010x\n", frameIn["SequenceNo"].cast(dfeUInt(32)));
+		debug.simPrintf("FrontSeqNo = %010x\n", frameIn["FrontSeqNo"].cast(dfeUInt(32)));
+		debug.simPrintf("RequestID = %010x\n", frameIn["RequestID"].cast(dfeUInt(32)));
+		debug.simPrintf("sessionID = %010x\n", frameIn["sessionID"].cast(dfeUInt(32)));
+		debug.simPrintf("FrontID = %d\n", frameIn["FrontID"].cast(dfeUInt(16)));
+		debug.simPrintf("GroupID = %#010x\n", frameIn["GroupID"].cast(dfeUInt(32)));
+		debug.simPrintf("OldSubjectID = %#010x\n", frameIn["OldSubjectID"].cast(dfeUInt(32)));
+		debug.simPrintf("ConvergenceID = %#010x\n", frameIn["ConvergenceID"].cast(dfeUInt(32)));
+		debug.simPrintf("OldSequenceNo = %#010x\n", frameIn["OldSequenceNo"].cast(dfeUInt(32)));
+		debug.simPrintf("PubNodeID = %#x\n", frameIn["PubNodeID"].cast(dfeUInt(16)));
+		debug.simPrintf("RiskID = %d\n", frameIn["RiskID"].cast(dfeUInt(16)));
+		debug.simPrintf("MatchID = %d\n", frameIn["MatchID"].cast(dfeUInt(16)));
+		debug.simPrintf("ErrorID = %#010x\n", frameIn["ErrorID"].cast(dfeUInt(32)));
+
+
+
+
+
+		frameOut.linkfield[UDPOneToManyTXType.SOCKET] <== frameIn.linkfield[UDPOneToManyRXType.SOCKET];
+		frameOut.linkfield[UDPOneToManyTXType.DST_IP] <== frameIn.linkfield[UDPOneToManyRXType.SRC_IP];
+		frameOut.linkfield[UDPOneToManyTXType.DST_MAC] <== frameIn.linkfield[UDPOneToManyRXType.SRC_MAC];
+		frameOut.linkfield[UDPOneToManyTXType.DST_PORT] <== frameIn.linkfield[UDPOneToManyRXType.SRC_PORT];
+
+
+//		io.frameOutput(
+//		"frameOut",
+//		frameOut,
+//		constant.var(true),
+//		constant.var(true));
+
+		debug.simPrintf("Start to send output frame\n");
+
+		io.frameOutput("frameOut", frameOut);
+		debug.simPrintf("Finish to send output frame\n");
+
+
+
+
+
+
+
+
+
+
+
+}
+
+}

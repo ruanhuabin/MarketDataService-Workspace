@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE XTP SYSTEM "../commonEnv/XTP.dtd">
+<XTP author="赵鸿昊" version="1.0" head="XTP" comment="XTP协议中用到的各种包和域">
+	<packages>
+		<package name="Nop" tid="0x00000009" comment="空操作" usage="request">
+			<field name="RspInfo" minOccur="1" maxOccur="1"/>
+		</package>
+		<package name="RspError" tid="0x00000001" comment="错误应答" usage="response">
+			<field name="RspInfo" minOccur="1" maxOccur="1"/>
+			<field name="RspInfo222" minOccur="2" maxOccur="2"/>
+		</package>
+		<package name="ReqUserLogin" tid="0x00001001" comment="用户登录请求" usage="request">
+			<field name="UserLogin" minOccur="1" maxOccur="1"/>
+		</package>
+  </packages>
+</XTP>

@@ -1,0 +1,25 @@
+package cn.edu.tsinghua.bram;
+
+
+import cn.edu.tsinghua.tidhandler.ItemType;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLib;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+
+public class CExchangeTradingDayField {
+  private static Memory<DFEVector<DFEVar>> TradingDay = null;
+  private static Memory<DFEVector<DFEVar>> ExchangeID = null;
+
+  public static Memory<DFEVector<DFEVar>> getTradingDay(KernelLib kernel) {
+    TradingDay = kernel.mem.alloc(ItemType.CDayType, 2);
+    return TradingDay;
+  }
+
+  public static Memory<DFEVector<DFEVar>> getExchangeID(KernelLib kernel) {
+    ExchangeID = kernel.mem.alloc(ItemType.CExchangeIDType, 2);
+    return ExchangeID;
+  }
+
+}
