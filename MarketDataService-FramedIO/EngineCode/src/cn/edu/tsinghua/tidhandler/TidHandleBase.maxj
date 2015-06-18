@@ -3,7 +3,6 @@ package cn.edu.tsinghua.tidhandler;
 
 import cn.edu.tsinghua.format.XTPFrameFormat;
 import cn.edu.tsinghua.kernel.Name;
-
 import com.maxeler.maxcompiler.v2.kernelcompiler.Debug;
 import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;

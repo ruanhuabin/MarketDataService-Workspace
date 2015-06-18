@@ -1,11 +1,17 @@
 package cn.edu.tsinghua.tidhandler;
 
-
+<<<<<<< HEAD
 import cn.edu.tsinghua.constant.MDGlobalStateConstants;
 import cn.edu.tsinghua.constant.TID;
 import cn.edu.tsinghua.format.XTPFrameFormat;
 import cn.edu.tsinghua.kernel.Name;
 import cn.edu.tsinghua.state.GlobalStateItems;
+=======
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.globalstate.GlobalStateItems;
+import cn.edu.tsinghua.globalstate.MarketDataConstants;
+import cn.edu.tsinghua.kernels.Name;
+>>>>>>> a6e7625732aa9e36f01466d20463b12d12ba6f78
 
 import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;

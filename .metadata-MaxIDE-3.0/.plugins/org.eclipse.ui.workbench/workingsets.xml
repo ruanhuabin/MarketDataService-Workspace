@@ -4,6 +4,7 @@
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MarketDataService-FramedIO_CPUCode" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MarketDataService-FramedIO_RunRules" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MarketDataService-FramedIO_EngineCode" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MarketDataService-FramedIO_.git" type="4"/>
 </workingSet>
 <workingSet cpuPart="true" enginePart="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1434626719365_8" label="MarketDataService-NonBlockingIO" location="/root/MarketDataService-workspace/MarketDataService-NonBlockingIO" maxcompiler="true" name="MarketDataService-NonBlockingIO" shared="false" state="true">
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MarketDataService-NonBlockingIO_CPUCode" type="4"/>

@@ -1,0 +1,10 @@
+*.class
+*.o
+binaries/
+bin/
+*.a
+include/
+debug/
+maxfiles/
+objects/
+*.log
