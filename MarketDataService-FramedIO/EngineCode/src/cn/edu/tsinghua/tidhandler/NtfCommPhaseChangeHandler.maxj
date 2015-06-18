@@ -1,9 +1,9 @@
 package cn.edu.tsinghua.tidhandler;
 
 
+import cn.edu.tsinghua.constant.MDGlobalStateConstants;
 import cn.edu.tsinghua.format.XTPFrameFormat;
-import cn.edu.tsinghua.globalstate.GlobalStateItems;
-import cn.edu.tsinghua.globalstate.MarketDataConstants;
+import cn.edu.tsinghua.state.GlobalStateItems;
 import cn.edu.tsinghua.utils.DFEUtils;
 
 import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
@@ -86,7 +86,7 @@ public class NtfCommPhaseChangeHandler extends TidHandleBase {
 
 		DFEVar isCommPhaseChangePktProcess = Reductions.streamHold(isValidPkg, isValidPkg);
 //		debug.simPrintf(">>>>>>>>>>>>>>Kernel Got in Cycle[%d]: isCommPhasePktProcess = %d\n", cycleCount, isCommPhaseChangePktProcess);
-		commPhaseNo = isCommPhaseChangePktProcess ? Reductions.streamHold(commPhaseNo, isCycle1st ): constant.var(DFETypeFactory.dfeUInt(16), MarketDataConstants.COMM_PHASE_INIT_VALUE);
+		commPhaseNo = isCommPhaseChangePktProcess ? Reductions.streamHold(commPhaseNo, isCycle1st ): constant.var(DFETypeFactory.dfeUInt(16), MDGlobalStateConstants.COMM_PHASE_INIT_VALUE);
 //		debug.simPrintf("Kernel Got In process() in Cycle [%d]:\n", cycleCount);
 //		for(int i = 0; i < 2; i ++)
 //		{

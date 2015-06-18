@@ -1,0 +1,58 @@
+package cn.edu.tsinghua.tidhandler;
+
+import cn.edu.tsinghua.constant.MarketDataConstants;
+import cn.edu.tsinghua.constant.TidDesc;
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.kernels.Name;
+import cn.edu.tsinghua.state.GlobalStateItems;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public class ExchangeDataSyncHandler extends TidHandleBase {
+
+	public ExchangeDataSyncHandler(FramedKernel k,	FrameData<XTPFrameFormat> fin, DFEVar[] bytes, DFEVar count,int expectedTID) {
+		super(k, fin, bytes, count, expectedTID);
+		// TODO Auto-generated constructor stub
+	}
+
+	public ExchangeDataSyncHandler(FramedKernel k,	FrameData<XTPFrameFormat> fin) {
+		super(k, fin);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public DFEVar process() {
+		// TODO Auto-generated method stub
+
+		 DFEVar currentCycle = kernel.control.count.simpleCounter(16);
+		 kernel.pushResetBetweenFrames(false);
+	    DFEVar currentPktTid = frameIn[Name.XTPHeader.tid];
+	    DFEVar isDataSynStartPktProcess = Reductions.streamHold(currentPktTid.eq(TidDesc.TID_ExchangeDataSyncStart), currentPktTid.eq(TidDesc.TID_ExchangeDataSyncStart));
+	    DFEVar isDataSynEndPktProcess = Reductions.streamHold(currentPktTid.eq(TidDesc.TID_ExchangeDataSyncEnd), currentPktTid.eq(TidDesc.TID_ExchangeDataSyncEnd));
+
+	    kernel.debug.simPrintf("===============================>Kernel Got in Cycle [%d]: currentPktTid = %#010x, isDataSynStartPktProcess = %d, isDataSynEndPktProcess = %d\n",
+	    		currentCycle, currentPktTid, isDataSynStartPktProcess, isDataSynEndPktProcess);
+
+	     DFEVar globalDataSynStateFlag = isDataSynStartPktProcess # isDataSynEndPktProcess;
+
+
+	    kernel.debug.simPrintf("<=================================================================================\n");
+	    kernel.popResetBetweenFrames();
+	    DFEVar exchangeDataSyncStates[] = new DFEVar[4];
+	    exchangeDataSyncStates[0] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MarketDataConstants.EXCHANGE_DATA_SYNC_STATUS_ASYNCHRONOUS);
+	    exchangeDataSyncStates[1] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MarketDataConstants.EXCHANGE_DATA_SYNC_STATUS_SYNCHRONIZED);
+	    exchangeDataSyncStates[2] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MarketDataConstants.EXCHANGE_DATA_SYNC_STATUS_SYNCHRONIZING);
+	    exchangeDataSyncStates[3] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MarketDataConstants.EXCHANGE_DATA_SYNC_STATUS_SYNCHRONIZED);
+	    GlobalStateItems.exchangeSyncStatus = kernel.control.mux(globalDataSynStateFlag, exchangeDataSyncStates);
+
+
+		return GlobalStateItems.exchangeSyncStatus;
+	}
+
+
+
+}

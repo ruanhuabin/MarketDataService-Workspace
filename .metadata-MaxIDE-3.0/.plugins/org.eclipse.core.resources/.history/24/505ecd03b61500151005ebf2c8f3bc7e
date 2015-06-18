@@ -1,0 +1,13 @@
+package cn.edu.tsinghua.state;
+
+
+
+public class MarketDataConstants{
+	public static final int EXCHANGE_DATA_SYNC_STATUS_ASYNCHRONOUS = 1;
+	public static final int EXCHANGE_DATA_SYNC_STATUS_SYNCHRONIZING = 2;
+	public static final int EXCHANGE_DATA_SYNC_STATUS_SYNCHRONIZED = 3;
+	public static final int COMM_PHASE_INIT_VALUE = 0x1234;
+	public static final int SETTLEMENT_GROUP_DATA_SYNC_STATUS_ASYNCHRONOUS = 1;
+	public static final int SETTLEMENT_GROUP_DATA_SYNC_STATUS_SYNCHRONIZING = 2;
+	public static final int SETTLEMENT_GROUP_DATA_SYNC_STATUS_SYNCHRONIZED = 3;
+}

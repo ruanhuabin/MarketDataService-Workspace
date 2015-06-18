@@ -1,0 +1,42 @@
+package cn.edu.tsinghua.format;
+
+
+import cn.edu.tsinghua.kernels.Name;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
+import com.maxeler.networking.v1.framed_kernels.ByteOrder;
+import com.maxeler.networking.v1.framed_kernels.FrameFormat;
+
+public class OutputFrameFormat extends FrameFormat {
+
+  public OutputFrameFormat() {
+    super(ByteOrder.LITTLE_ENDIAN);
+    addField(Name.XTPHeader.type, DFETypeFactory.dfeUInt(8));
+    addField(Name.XTPHeader.chain, DFETypeFactory.dfeUInt(8));
+    addField(Name.XTPHeader.fttype, DFETypeFactory.dfeUInt(8));
+    addField(Name.XTPHeader.pading1, DFETypeFactory.dfeUInt(8));
+    addField(Name.XTPHeader.contentLength, DFETypeFactory.dfeUInt(16));
+    addField(Name.XTPHeader.pading2, DFETypeFactory.dfeUInt(16));
+    addField(Name.XTPHeader.subjectID, DFETypeFactory.dfeUInt(32));
+    addField(Name.XTPHeader.tid, DFETypeFactory.dfeUInt(32));
+    addField(Name.XTPHeader.commPhaseNo, DFETypeFactory.dfeUInt(32));
+    addField(Name.XTPHeader.sequenceNo, DFETypeFactory.dfeUInt(32));
+    addField(Name.XTPHeader.frontSeqNo, DFETypeFactory.dfeUInt(32));
+    addField(Name.XTPHeader.requestID, DFETypeFactory.dfeUInt(32));
+    addField(Name.XTPHeader.sessionID, DFETypeFactory.dfeUInt(32));
+    addField(Name.XTPHeader.frontID, DFETypeFactory.dfeUInt(16));
+    addField(Name.XTPHeader.pading3, DFETypeFactory.dfeUInt(16));
+    addField(Name.XTPHeader.groupID, DFETypeFactory.dfeUInt(32));
+    addField(Name.XTPHeader.oldSubjectID, DFETypeFactory.dfeUInt(32));
+    addField(Name.XTPHeader.convergenceID, DFETypeFactory.dfeUInt(32));
+    addField(Name.XTPHeader.oldSequenceNo, DFETypeFactory.dfeUInt(32));
+    addField(Name.XTPHeader.pubNodeID, DFETypeFactory.dfeUInt(16));
+    addField(Name.XTPHeader.riskID, DFETypeFactory.dfeUInt(16));
+    addField(Name.XTPHeader.matchID, DFETypeFactory.dfeUInt(16));
+    addField(Name.XTPHeader.pading4, DFETypeFactory.dfeUInt(16));
+    addField(Name.XTPHeader.errorID, DFETypeFactory.dfeUInt(32));
+
+//    addField("content", DFETypeFactory.dfeRawBits(9*8));
+  }
+
+}
