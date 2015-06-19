@@ -5,9 +5,9 @@ import cn.edu.tsinghua.constant.TID;
 import cn.edu.tsinghua.format.OutputFrameFormat;
 import cn.edu.tsinghua.format.XTPFrameFormat;
 import cn.edu.tsinghua.state.GlobalStateItems;
-import cn.edu.tsinghua.tidhandler.ExchangeDataSyncHandler;
+import cn.edu.tsinghua.tidhandler.NtfExchangeDataSyncHandler;
 import cn.edu.tsinghua.tidhandler.NtfCommPhaseChangeHandler;
-import cn.edu.tsinghua.tidhandler.SettlementGroupDataSyncHandler;
+import cn.edu.tsinghua.tidhandler.NtfSettlementGroupDataSyncHandler;
 
 import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
@@ -71,12 +71,12 @@ public class MarketDataServiceKernel extends FramedKernel {
 		debug.simPrintf("\n");
 
 		//Init exchange data
-		ExchangeDataSyncHandler exchangeDataSyncHandler = new ExchangeDataSyncHandler(this, frameIn);
+		NtfExchangeDataSyncHandler exchangeDataSyncHandler = new NtfExchangeDataSyncHandler(this, frameIn);
 		exchangeDataSyncHandler.process();
 		debug.simPrintf("=========================>>GlobalStateItems.exchangeDataStatus = %d\n", GlobalStateItems.exchangeSyncStatus);
 
 		//Init settle group data
-		SettlementGroupDataSyncHandler settlementGroupDataSyncHandler = new SettlementGroupDataSyncHandler(this, frameIn);
+		NtfSettlementGroupDataSyncHandler settlementGroupDataSyncHandler = new NtfSettlementGroupDataSyncHandler(this, frameIn);
 		settlementGroupDataSyncHandler.process();
 		debug.simPrintf("=========================>>settlementGroupDataStatus = %d\n", GlobalStateItems.settlementGroupDataStatus);
 

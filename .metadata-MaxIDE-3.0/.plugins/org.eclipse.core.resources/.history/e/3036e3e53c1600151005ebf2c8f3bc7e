@@ -1,0 +1,63 @@
+package cn.edu.tsinghua.tidhandler;
+
+
+import cn.edu.tsinghua.constant.TID;
+import cn.edu.tsinghua.utils.MarketDataUtils;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLib;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.utils.Bits;
+
+public class InitCommPhaseFieldHandler extends TidHandlerBase
+{
+
+	private final DFEVar content = null;
+	private final DFEVar tid = null;
+	private final int tradingDaySize = 9;
+	private final int commPhaseNoSize = 2;
+	private final int fieldHeaderSize = 4;
+	private final MarketDataUtils mdu;
+
+	public InitCommPhaseFieldHandler(Kernel kernel, DFEVar bytes[]) {
+		super(kernel, bytes);
+		// TODO Auto-generated constructor stub
+		mdu = new MarketDataUtils(kernel);
+	}
+
+	//Do initial service according to tid value
+	public DFEVar doInit()
+	{
+
+		return constant.var(dfeUInt(32), 7);
+	}
+
+	public DFEVar getTradingDay()
+	{
+		DFEVar tradingDayLen = constant.var(dfeUInt(16), tradingDaySize);
+		//Copy is must, otherwise content will be changed by calling following extractExactlyContent(...)
+		DFEVar tmpContent = mdu.copyBytes(content, 15).cast(dfeRawBits(8 * 32));
+		tmpContent = mdu.removeBytes(tmpContent, fieldHeaderSize);
+		tmpContent = constant.var(dfeRawBits(32), Bits.allOnes(4*8)) # tmpContent;
+		DFEVar tradingDayContent = mdu.extractExactlyContent(tradingDayLen.cast(dfeUInt(5)), tmpContent);
+
+		return tradingDayContent.slice(0, this.tradingDaySize * 8);
+	}
+	public DFEVar getCommPhaseNo()
+	{
+		DFEVar commPhaseNoLen = constant.var(dfeUInt(16), this.commPhaseNoSize);
+		DFEVar tmpContent = this.mdu.copyBytes(this.content, 15).cast(dfeRawBits(8 * 32));
+		tmpContent = this.mdu.removeBytes(tmpContent, this.fieldHeaderSize + this.tradingDaySize);
+		tmpContent = constant.var(dfeRawBits(4*8 + this.tradingDaySize * 8), Bits.allOnes(4*8 + this.tradingDaySize * 8)) # tmpContent;
+		DFEVar commPhaseNo = this.mdu.extractExactlyContent(commPhaseNoLen.cast(dfeUInt(5)), tmpContent);
+
+		commPhaseNo = this.mdu.BeToLe(commPhaseNo.slice(0, this.commPhaseNoSize * 8));
+		DFEVar finalCommPhaseNo = Reductions.streamHold(commPhaseNo, this.tid.eq(TID.TID_NtfCommPhaseChange));
+
+		return finalCommPhaseNo;
+		//return this.mdu.BeToLe(commPhaseNo.slice(0, this.commPhaseNoSize * 8));
+	}
+
+
+}

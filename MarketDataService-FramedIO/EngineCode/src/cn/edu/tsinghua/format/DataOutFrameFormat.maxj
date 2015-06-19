@@ -1,7 +1,7 @@
 package cn.edu.tsinghua.format;
 
 
-import cn.edu.tsinghua.kernels.Name;
+import cn.edu.tsinghua.kernel.Name;
 
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
 import com.maxeler.networking.v1.framed_kernels.ByteOrder;

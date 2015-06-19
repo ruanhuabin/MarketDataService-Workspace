@@ -1,0 +1,123 @@
+package cn.edu.tsinghua.utils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Debug;
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Control;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVectorType;
+import com.maxeler.maxcompiler.v2.utils.Bits;
+
+public class MarketDataUtils{
+
+	private Kernel kernel = null;
+	private Debug debug = null;
+	private Control control = null;
+	private Constant constant = null;
+	public MarketDataUtils(Kernel kernel) {
+		// TODO Auto-generated constructor stub
+		this.kernel = kernel;
+		this.debug = kernel.debug;
+		this.control = kernel.control;
+		this.constant = kernel.constant;
+	}
+
+	public  DFEVar extractExactlyContent(DFEVar sz, DFEVar v)
+	{
+		int numSignBits = v.getType().getTotalBits() / 8;
+		int maskSizeBytes = 1 << sz.getType().getTotalBits();
+
+		if (numSignBits != maskSizeBytes) {
+
+			throw new RuntimeException("Number of sign bits must be equal to the byte size of the mask!");
+		}
+
+		List<DFEVar> signBits = new ArrayList<DFEVar>(numSignBits);
+
+		for (int i=0; i < numSignBits; i++) {
+			signBits.add(i == 0 ? v.slice(numSignBits * 8 - 1) : v.slice(i* 8 - 1));
+		}
+
+		DFEVar theSignBit = control.mux(sz, signBits);
+
+
+		List<DFEVar> masks = new ArrayList<DFEVar>(maskSizeBytes);
+
+		for (int i=0; i < maskSizeBytes; i++)
+		{
+
+			DFEVar ones = constant.var(dfeRawBits((maskSizeBytes - i) * 8), Bits.allOnes((maskSizeBytes - i)*8));
+
+			if (i > 0) {
+				DFEVar zeros = constant.var(dfeRawBits(i * 8), Bits.allZeros(i*8));
+				masks.add(ones # zeros);
+			} else {
+				DFEVar zeros = constant.var(dfeRawBits(maskSizeBytes * 8), Bits.allZeros(maskSizeBytes*8));
+				masks.add(zeros);
+			}
+		}
+
+		DFEVar signmask = control.mux(sz, masks);
+		DFEVar mask = ~signmask;
+
+		v = v & mask;
+
+		v = v | (theSignBit ? signmask : 0);
+
+		return v;
+	}
+
+	public DFEVar copyBytes(DFEVar srcContent, int sizeInBytes)
+	{
+
+		int vecSize = srcContent.getType().getTotalBits() / 8;
+		DFEVectorType<DFEVar> srcVecType = new DFEVectorType<DFEVar>(dfeRawBits(8), vecSize);
+		DFEVector<DFEVar> dstContentVec = srcVecType.newInstance(this);
+		for (int i=0; i < vecSize; i++) {
+			dstContentVec.get(i) <== srcContent.slice(i*8, 8);
+		}
+
+
+
+		return dstContentVec.pack();
+	}
+
+	public DFEVar removeBytes(DFEVar v, int startCopyIndex) {
+		int vecSize = v.getType().getTotalBits() / 8;
+		DFEVectorType<DFEVar> vecType = new DFEVectorType<DFEVar>(dfeRawBits(8), vecSize - startCopyIndex);
+		DFEVector<DFEVar> array = vecType.newInstance(this);
+		for (int i=0; i < (vecSize - startCopyIndex); i++) { //Copy from
+			array.get(i) <== v.slice((i+startCopyIndex)*8, 8);
+		}
+
+		//shiftAmount = shiftAmount.cast(dfeUInt(MathUtils.bitsToAddress(vecSize)));
+
+		return array.pack();
+
+	}
+
+	public DFEVar BeToLe(DFEVar v)
+	{
+		int size = v.getType().getTotalBits()/8;
+		DFEVar output = null;
+		for(int i = 0; i < size; i ++)
+		{
+			DFEVar b = v.slice(i * 8, 8);
+			if (i == 0)
+			{
+				output = b;
+			}
+			else
+			{	output = output # b;
+			}
+
+		}
+		return output;
+	}
+
+
+}

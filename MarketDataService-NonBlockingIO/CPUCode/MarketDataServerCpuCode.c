@@ -151,7 +151,7 @@ int main(int argc, char *argv[]) {
 //				//printf("Frame [%zd] Word[%zd]: %d\n", numMessageRx, i, w[i]);
 //			}
 			memcpy(&xtpPacket, w, sizeof(XTPPacket_t));
-			printXTPPacket(&xtpPacket);
+			//printXTPPacket(&xtpPacket);
 			max_framed_stream_discard(toCpu, 1);
 		} else
 		{

@@ -1,0 +1,37 @@
+package cn.edu.tsinghua.tidhandler;
+
+
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public abstract class TidHandlerBase {
+  protected Kernel kernel = null;
+  protected Constant constant = null;
+  protected DFEVar isValidPkg;
+  protected DFEVar [] currByte;
+  protected DFEVar cycleCount;
+
+  public TidHandlerBase(Kernel k, DFEVar [] bytes)
+  {
+    kernel = k;
+    frameIn = fin;
+    debug = kernel.debug;
+    constant = kernel.constant;
+    currByte = bytes;
+    cycleCount = count;
+    isValidPkg = frameIn[Name.XTPHeader.tid] === expectedTID;
+
+    debug.simPrintf("header.tid = %x, expectedTid = %x\n", frameIn[Name.XTPHeader.tid], expectedTID);
+  }
+
+  public TidHandlerBase(FramedKernel k, FrameData<XTPFrameFormat> fin)
+  {
+	    kernel = k;
+	    frameIn = fin;
+	  }
+
+  public abstract DFEVar process();
+}

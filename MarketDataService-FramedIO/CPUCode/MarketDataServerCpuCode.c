@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
 	inet_aton("255.255.255.0", &netmask);
 	const int port = 45678;
 
-	max_file_t *maxfile = PXTP_init();
+	max_file_t *maxfile = MarketDataService_init();
 	max_engine_t * engine = max_load(maxfile, "*");
 
 	max_config_set_bool(MAX_CONFIG_PRINTF_TO_STDOUT, true);

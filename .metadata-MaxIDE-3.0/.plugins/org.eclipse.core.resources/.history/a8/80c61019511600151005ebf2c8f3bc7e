@@ -1,0 +1,57 @@
+package cn.edu.tsinghua.tidhandler;
+
+import cn.edu.tsinghua.constant.MDGlobalStateConstants;
+import cn.edu.tsinghua.constant.TID;
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.kernel.Name;
+import cn.edu.tsinghua.state.GlobalStateItems;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public class SettlementGroupDataSyncHandler extends TidHandlerBase {
+
+	public SettlementGroupDataSyncHandler(FramedKernel k,	FrameData<XTPFrameFormat> fin, DFEVar[] bytes, DFEVar count,int expectedTID) {
+		super(k, fin, bytes, count, expectedTID);
+		// TODO Auto-generated constructor stub
+	}
+
+	public SettlementGroupDataSyncHandler(FramedKernel k,	FrameData<XTPFrameFormat> fin) {
+		super(k, fin);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public DFEVar process() {
+		// TODO Auto-generated method stub
+
+		 DFEVar currentCycle = kernel.control.count.simpleCounter(16);
+		 kernel.pushResetBetweenFrames(false);
+	    DFEVar currentPktTid = frameIn[Name.XTPHeader.tid];
+	    DFEVar isSGDataSynStartPktProcess = Reductions.streamHold(currentPktTid.eq(TID.TID_SettlementGroupDataSyncStart), currentPktTid.eq(TID.TID_SettlementGroupDataSyncStart));
+	    DFEVar isSGDataSynEndPktProcess = Reductions.streamHold(currentPktTid.eq(TID.TID_SettlementGropuDataSyncEnd), currentPktTid.eq(TID.TID_SettlementGropuDataSyncEnd));
+
+	    kernel.debug.simPrintf("===============================>Kernel Got in Cycle [%d]: currentPktTid = %#010x, isDataSynStartPktProcess = %d, isDataSynEndPktProcess = %d\n",
+	    		currentCycle, currentPktTid, isSGDataSynStartPktProcess, isSGDataSynEndPktProcess);
+
+	     DFEVar globalSGDataSynStateFlag = isSGDataSynStartPktProcess # isSGDataSynEndPktProcess;
+
+
+	    kernel.debug.simPrintf("<=================================================================================\n");
+	    kernel.popResetBetweenFrames();
+	    DFEVar settlementGroupDataSyncStates[] = new DFEVar[4];
+	    settlementGroupDataSyncStates[0] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MDGlobalStateConstants.SETTLEMENT_GROUP_DATA_SYNC_STATUS_ASYNCHRONOUS);
+	    settlementGroupDataSyncStates[1] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MDGlobalStateConstants.SETTLEMENT_GROUP_DATA_SYNC_STATUS_SYNCHRONIZED);
+	    settlementGroupDataSyncStates[2] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MDGlobalStateConstants.SETTLEMENT_GROUP_DATA_SYNC_STATUS_SYNCHRONIZING);
+	    settlementGroupDataSyncStates[3] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MDGlobalStateConstants.SETTLEMENT_GROUP_DATA_SYNC_STATUS_SYNCHRONIZED);
+	    GlobalStateItems.settlementGroupDataStatus = kernel.control.mux(globalSGDataSynStateFlag, settlementGroupDataSyncStates);
+
+		return GlobalStateItems.settlementGroupDataStatus;
+	}
+
+
+
+}

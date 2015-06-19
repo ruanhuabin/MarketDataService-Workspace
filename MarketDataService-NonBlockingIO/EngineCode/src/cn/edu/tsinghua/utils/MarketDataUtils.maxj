@@ -3,17 +3,28 @@ package cn.edu.tsinghua.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLib;
+import com.maxeler.maxcompiler.v2.kernelcompiler.Debug;
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Control;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVectorType;
 import com.maxeler.maxcompiler.v2.utils.Bits;
 
-public class MarketDataUtils extends KernelLib {
+public class MarketDataUtils{
 
-	public MarketDataUtils(KernelLib owner) {
-		super(owner);
+	private Kernel kernel = null;
+	private Debug debug = null;
+	private Control control = null;
+	private Constant constant = null;
+	public MarketDataUtils(Kernel kernel) {
 		// TODO Auto-generated constructor stub
+		this.kernel = kernel;
+		this.debug = kernel.debug;
+		this.control = kernel.control;
+		this.constant = kernel.constant;
 	}
 
 	public  DFEVar extractExactlyContent(DFEVar sz, DFEVar v)
@@ -40,13 +51,13 @@ public class MarketDataUtils extends KernelLib {
 		for (int i=0; i < maskSizeBytes; i++)
 		{
 
-			DFEVar ones = constant.var(dfeRawBits((maskSizeBytes - i) * 8), Bits.allOnes((maskSizeBytes - i)*8));
+			DFEVar ones = constant.var(DFETypeFactory.dfeRawBits((maskSizeBytes - i) * 8), Bits.allOnes((maskSizeBytes - i)*8));
 
 			if (i > 0) {
-				DFEVar zeros = constant.var(dfeRawBits(i * 8), Bits.allZeros(i*8));
+				DFEVar zeros = constant.var(DFETypeFactory.dfeRawBits(i * 8), Bits.allZeros(i*8));
 				masks.add(ones # zeros);
 			} else {
-				DFEVar zeros = constant.var(dfeRawBits(maskSizeBytes * 8), Bits.allZeros(maskSizeBytes*8));
+				DFEVar zeros = constant.var(DFETypeFactory.dfeRawBits(maskSizeBytes * 8), Bits.allZeros(maskSizeBytes*8));
 				masks.add(zeros);
 			}
 		}
@@ -63,23 +74,10 @@ public class MarketDataUtils extends KernelLib {
 
 	public DFEVar copyBytes(DFEVar srcContent, int sizeInBytes)
 	{
-//		DFEVar dstContent = dfeUInt(bitSize).newInstance(this);
-//		for(int i = 0; i < bitSize; i ++)
-//		{
-//			dstContent.slice(i).connect(srcContent.slice(i));
-//		}
-
-//		List<DFEVar> dstContent = new ArrayList<DFEVar>( sizeInBytes * 8);
-//		for(int i = 0; i < sizeInBytes * 8; i ++)
-//		{
-//			dstContent.add(srcContent.slice(i));
-//		}
-//
-//
 
 		int vecSize = srcContent.getType().getTotalBits() / 8;
-		DFEVectorType<DFEVar> srcVecType = new DFEVectorType<DFEVar>(dfeRawBits(8), vecSize);
-		DFEVector<DFEVar> dstContentVec = srcVecType.newInstance(this);
+		DFEVectorType<DFEVar> srcVecType = new DFEVectorType<DFEVar>(DFETypeFactory.dfeRawBits(8), vecSize);
+		DFEVector<DFEVar> dstContentVec = srcVecType.newInstance(kernel);
 		for (int i=0; i < vecSize; i++) {
 			dstContentVec.get(i) <== srcContent.slice(i*8, 8);
 		}
@@ -91,8 +89,8 @@ public class MarketDataUtils extends KernelLib {
 
 	public DFEVar removeBytes(DFEVar v, int startCopyIndex) {
 		int vecSize = v.getType().getTotalBits() / 8;
-		DFEVectorType<DFEVar> vecType = new DFEVectorType<DFEVar>(dfeRawBits(8), vecSize - startCopyIndex);
-		DFEVector<DFEVar> array = vecType.newInstance(this);
+		DFEVectorType<DFEVar> vecType = new DFEVectorType<DFEVar>(DFETypeFactory.dfeRawBits(8), vecSize - startCopyIndex);
+		DFEVector<DFEVar> array = vecType.newInstance(kernel);
 		for (int i=0; i < (vecSize - startCopyIndex); i++) { //Copy from
 			array.get(i) <== v.slice((i+startCopyIndex)*8, 8);
 		}
@@ -103,7 +101,7 @@ public class MarketDataUtils extends KernelLib {
 
 	}
 
-	public DFEVar BeToLe(DFEVar v)
+	public static DFEVar BeToLe(DFEVar v)
 	{
 		int size = v.getType().getTotalBits()/8;
 		DFEVar output = null;
@@ -119,7 +117,7 @@ public class MarketDataUtils extends KernelLib {
 			}
 
 		}
-		return output;
+		return output.cast(v.getType());
 	}
 
 

@@ -406,3 +406,420 @@ org.eclipse.core.internal.resources.ResourceException: Resource '/MarketDataServ
 
 !ENTRY org.eclipse.cdt.core 1 0 2015-06-18 19:25:49.352
 !MESSAGE Indexed 'MarketDataServer-NonBlockingIO_CPUCode' (1 sources, 100 headers) in 0.50 sec: 2,921 declarations; 2,832 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 11:59:18.654
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-19 11:59:19.202
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.54 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 12:00:39.404
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildCancelled: Engine build terminated by user
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.stopIfCanceled(EngineBuilder.java:106)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.access$600(EngineBuilder.java:59)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:673)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-19 12:00:39.903
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 99 headers) in 0.48 sec: 2,864 declarations; 2,801 references; 5 unresolved inclusions; 0 syntax errors; 7 unresolved names (0.12%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 12:01:44.996
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildCancelled: Engine build terminated by user
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.stopIfCanceled(EngineBuilder.java:106)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.access$600(EngineBuilder.java:59)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:673)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-19 12:01:45.573
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 99 headers) in 0.53 sec: 2,864 declarations; 2,801 references; 5 unresolved inclusions; 0 syntax errors; 7 unresolved names (0.12%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 12:02:07.386
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildCancelled: Engine build terminated by user
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.stopIfCanceled(EngineBuilder.java:106)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.access$600(EngineBuilder.java:59)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:673)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-19 12:02:07.910
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 99 headers) in 0.48 sec: 2,864 declarations; 2,801 references; 5 unresolved inclusions; 0 syntax errors; 7 unresolved names (0.12%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 12:04:41.475
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError: Make command failed with status = 2
+	at com.maxeler.internal.build.profile.builder.CPUBuilder.runMake(CPUBuilder.java:210)
+	at com.maxeler.internal.build.profile.builder.CPUBuilder.build(CPUBuilder.java:145)
+	at com.maxeler.internal.build.profile.builder.ProfileBuilder$1.run(ProfileBuilder.java:313)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-19 12:04:42.098
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.46 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-19 12:07:55.221
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.51 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 12:42:00.564
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 12:42:22.297
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 12:45:21.960
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 13:21:00.345
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 13:27:24.139
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 13:27:58.578
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 13:47:33.468
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 13:49:45.379
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 13:50:09.141
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 13:50:29.678
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildCancelled: Engine build terminated by user
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.stopIfCanceled(EngineBuilder.java:106)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.access$600(EngineBuilder.java:59)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:673)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 13:51:04.564
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 13:52:33.575
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildCancelled: Engine build terminated by user
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.stopIfCanceled(EngineBuilder.java:106)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.access$600(EngineBuilder.java:59)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:673)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 14:12:09.000
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildCancelled: Engine build terminated by user
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.stopIfCanceled(EngineBuilder.java:106)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.access$600(EngineBuilder.java:59)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:673)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 14:35:53.193
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildCancelled: Engine build terminated by user
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.stopIfCanceled(EngineBuilder.java:106)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.access$600(EngineBuilder.java:59)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:673)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 15:10:29.819
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 15:12:17.214
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildCancelled: Engine build terminated by user
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.stopIfCanceled(EngineBuilder.java:106)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.access$600(EngineBuilder.java:59)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:673)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 15:15:59.249
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-19 15:16:42.808
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)

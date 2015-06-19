@@ -8,3 +8,7 @@ debug/
 maxfiles/
 objects/
 *.log
+MarketDataService.xml
+MarketDataService_Build.xml
+RunRules/Simulation/build.log
+*.log

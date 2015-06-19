@@ -1,0 +1,28 @@
+package cn.edu.tsinghua.tidhandler;
+
+
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Debug;
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+
+public abstract class TidHandlerBase {
+  protected Kernel kernel = null;
+  protected Constant constant = null;
+  protected Debug   debug = null;
+  protected DFEVar isValidPkg;
+  protected DFEVar [] content;
+  protected DFEVar cycleCount;
+
+  public TidHandlerBase(Kernel k, DFEVar [] bytes)
+  {
+    kernel = k;
+    constant = kernel.constant;
+    debug = kernel.debug;
+    content = bytes;
+  }
+
+
+  public abstract DFEVar process();
+}

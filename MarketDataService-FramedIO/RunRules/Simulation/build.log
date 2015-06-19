@@ -1,89 +1,90 @@
-星期四 19:22: ########################################## 
-星期四 19:22: Compiling.
-星期四 19:22: ########################################## 
+星期五 12:05: ########################################## 
+星期五 12:05: Compiling.
+星期五 12:05: ########################################## 
 
-星期四 19:22: MaxCompiler version: 2014.1a.
-星期四 19:22: Build Simulation run rule for MarketDataService-FramedIO start time: 星期四 六月 18 19:22:36 CST 2015.
-星期四 19:22: Project location: /root/MarketDataService-workspace/MarketDataService-FramedIO.
-星期四 19:22: Detailed build log: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/build.log.
+星期五 12:05: MaxCompiler version: 2014.1a.
+星期五 12:05: Build Simulation run rule for MarketDataService-FramedIO start time: 星期五 六月 19 12:05:24 CST 2015.
+星期五 12:05: Project location: /root/MarketDataService-workspace/MarketDataService-FramedIO.
+星期五 12:05: Detailed build log: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/build.log.
 
-星期四 19:22: Compiling Engine Code.
-星期四 19:22: Building PXTP.max file. 
-星期四 19:22: Setting environment variable:
-星期四 19:22: MAXCOMPILER_BUILD_DIR : /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles
-星期四 19:22: MAX_BUILDPARAMS : DFEModel='VECTIS' target='DFE_SIM' maxFileName='PXTP'  
-星期四 19:22: Building output:
-星期四 19:22: MaxCompiler version: 2014.1a
-星期四 19:22: Build "PXTP" start time: Thu Jun 18 19:22:40 CST 2015
-星期四 19:22: Main build process running as user root on host horst
-星期四 19:22: Build location: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/PXTP_VECTIS_DFE_SIM
-星期四 19:22: Detailed build log available in "_build.log"
-星期四 19:22: 
-星期四 19:22: ENGINE BUILD PARAMETERS
-星期四 19:22: 	 Build name: PXTP_VECTIS_DFE_SIM
-星期四 19:22: 	   DFEModel: VECTIS             
-星期四 19:22: 	maxFileName: PXTP               
-星期四 19:22: 	     target: DFE_SIM            
-星期四 19:22: 	 enableMPCX: false              
-星期四 19:22: Instantiating kernel "exampleKernel"
-星期四 19:22: 
-星期四 19:22: Compiling kernel "exampleKernel"
-星期四 19:22: WARNING: Warning (UNCONNECTED_DESIGN_ELEMENT):
-星期四 19:22: WARNING: Unconnected elements in design 'exampleKernel'
-星期四 19:22: WARNING: details in : /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/PXTP_VECTIS_DFE_SIM/scratch/exampleKernel_graph_warnings.txt
-星期四 19:22: Running back-end simulation build (3 phases)
-星期四 19:22: (1/3) - Prepare MaxFile Data (GenerateMaxFileDataFile)
-星期四 19:22: (2/3) - Compile Simulation Modules (SimCompilePass)
-星期四 19:25: (3/3) - Generate MaxFile (AddSimObjectToMaxFilePass)
-星期四 19:25: MaxFile: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/PXTP_VECTIS_DFE_SIM/results/PXTP.max (MD5Sum: 2d433b5e47f63bb530a88c9e38369be0)
-星期四 19:25: Build completed: Thu Jun 18 19:25:09 CST 2015 (took 2 mins, 29 secs)
-星期四 19:25: Executing command:
-星期四 19:25: cp /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/PXTP.h /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/include/PXTP.h 
-星期四 19:25: Command output:
-星期四 19:25: Building: PXTP.max file finished.
-星期四 19:25: Engine build finished.
-星期四 19:25: Compiling CPU Code.
-星期四 19:25: Run CPU project make files updating
-星期四 19:25: Executing command:
-星期四 19:25: java -jar /opt/maxcompiler/lib/MaxIDE/projectAdmin.jar -u /root/MarketDataService-workspace/MarketDataService-FramedIO Simulation 
-星期四 19:25: Command output:
+星期五 12:05: Compiling Engine Code.
+星期五 12:05: Building MarketDataService.max file. 
+星期五 12:05: Setting environment variable:
+星期五 12:05: MAXCOMPILER_BUILD_DIR : /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles
+星期五 12:05: MAX_BUILDPARAMS : DFEModel='VECTIS' target='DFE_SIM' maxFileName='MarketDataService'  
+星期五 12:05: Building output:
+星期五 12:05: MaxCompiler version: 2014.1a
+星期五 12:05: Build "MarketDataService" start time: Fri Jun 19 12:05:27 CST 2015
+星期五 12:05: Main build process running as user root on host horst
+星期五 12:05: Build location: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/MarketDataService_VECTIS_DFE_SIM
+星期五 12:05: Detailed build log available in "_build.log"
+星期五 12:05: 
+星期五 12:05: ENGINE BUILD PARAMETERS
+星期五 12:05: 	 Build name: MarketDataService_VECTIS_DFE_SIM
+星期五 12:05: 	   DFEModel: VECTIS                          
+星期五 12:05: 	maxFileName: MarketDataService               
+星期五 12:05: 	     target: DFE_SIM                         
+星期五 12:05: 	 enableMPCX: false                           
+星期五 12:05: Instantiating kernel "marketDataServiceKernel"
+星期五 12:05: 
+星期五 12:05: Compiling kernel "marketDataServiceKernel"
+星期五 12:05: WARNING: Warning (UNCONNECTED_DESIGN_ELEMENT):
+星期五 12:05: WARNING: Unconnected elements in design 'marketDataServiceKernel'
+星期五 12:05: WARNING: details in : /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/MarketDataService_VECTIS_DFE_SIM/scratch/marketDataServiceKernel_graph_warnings.txt
+星期五 12:05: Running back-end simulation build (3 phases)
+星期五 12:05: (1/3) - Prepare MaxFile Data (GenerateMaxFileDataFile)
+星期五 12:05: (2/3) - Compile Simulation Modules (SimCompilePass)
+星期五 12:07: (3/3) - Generate MaxFile (AddSimObjectToMaxFilePass)
+星期五 12:07: MaxFile: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/MarketDataService_VECTIS_DFE_SIM/results/MarketDataService.max (MD5Sum: 5e029a87a22afc68a90e522a401cb267)
+星期五 12:07: Build completed: Fri Jun 19 12:07:37 CST 2015 (took 2 mins, 9 secs)
+星期五 12:07: Executing command:
+星期五 12:07: cp /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/MarketDataService.h /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/include/MarketDataService.h 
+星期五 12:07: Command output:
+星期五 12:07: Building: MarketDataService.max file finished.
+星期五 12:07: Engine build finished.
+星期五 12:07: Compiling CPU Code.
+星期五 12:07: Run CPU project make files updating
+星期五 12:07: Executing command:
+星期五 12:07: java -jar /opt/maxcompiler/lib/MaxIDE/projectAdmin.jar -u /root/MarketDataService-workspace/MarketDataService-FramedIO Simulation 
+星期五 12:07: Command output:
 
-星期四 19:25: MaxCompiler Project Admin Tool Version 2014.1.00013
-星期四 19:25:  Copyright Maxeler Technologies 2010 - 2014. All rights reserved.
-星期四 19:25: Handler version 2
-星期四 19:25: Updating RunRule dependent Makefiles for RunRule 'Simulation'
-星期四 19:25: 	Updating: Simulation
-星期四 19:25: Found makefiles: 1
-星期四 19:25: 	Updated: Simulation
-星期四 19:25: Run CPU make.
-星期四 19:25: make RUNRULE=Simulation 
-星期四 19:25: Command output:
-星期四 19:25: make -f Makefile.rules build
-星期四 19:25: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
-星期四 19:25: set -e; rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d ;                                                             \
-星期四 19:25: 	  cc -M -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -Wno-error MarketDataServerCpuCode.c > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ ;                                 \
-星期四 19:25:       sed 's,\(MarketDataServerCpuCode\)\.o[ :]*,../RunRules/Simulation/objects/c/\1.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d : ,g' < ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d; \
-星期四 19:25:       rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$
-星期四 19:25: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
-星期四 19:25: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
-星期四 19:25: "/opt/maxcompiler/bin/sliccompile" ../RunRules/Simulation/maxfiles/PXTP.max ../RunRules/Simulation/objects/maxfiles/slic_PXTP.o
-星期四 19:25: Processing maxfile for VECTIS_SIM from '../RunRules/Simulation/maxfiles/PXTP.max'.
-星期四 19:25: gcc -std=gnu99 -Wall -Werror -fno-guess-branch-probability -frandom-seed=foo -Wno-unused-variable -Wno-unused-function -fPIC -I /opt/maxcompiler/include/slic -DMAXFILE_INC="/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode/../RunRules/Simulation/maxfiles/PXTP.max" -DSLIC_NO_DESTRUCTORS -c /opt/maxcompiler/src/slicinterface/MaxFileInit.c -o slic_PXTP.o 
-星期四 19:25: Copying .max file C object into '/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode/../RunRules/Simulation/objects/maxfiles'
-星期四 19:25: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -c MarketDataServerCpuCode.c -o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o
-星期四 19:25: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -o ../RunRules/Simulation/binaries/pxtp ../RunRules/Simulation/objects/maxfiles/slic_PXTP.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o -g -O3  -L '/opt/maxcompiler/lib' -lslic -L '/opt/maxeler/maxeleros/lib' -lmaxeleros -lpthread -lm -lrt 
-星期四 19:25: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
-星期四 19:25: Build completed: 星期四 六月 18 19:25:14 CST 2015
+星期五 12:07: MaxCompiler Project Admin Tool Version 2014.1.00013
+星期五 12:07:  Copyright Maxeler Technologies 2010 - 2014. All rights reserved.
+星期五 12:07: Handler version 2
+星期五 12:07: Updating RunRule dependent Makefiles for RunRule 'Simulation'
+星期五 12:07: 	Updating: Simulation
+
+星期五 12:07: Found makefiles: 1
+星期五 12:07: 	Updated: Simulation
+星期五 12:07: Run CPU make.
+星期五 12:07: make RUNRULE=Simulation 
+星期五 12:07: Command output:
+星期五 12:07: make -f Makefile.rules build
+星期五 12:07: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
+星期五 12:07: set -e; rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d ;                                                             \
+星期五 12:07: 	  cc -M -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -Wno-error MarketDataServerCpuCode.c > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ ;                                 \
+星期五 12:07:       sed 's,\(MarketDataServerCpuCode\)\.o[ :]*,../RunRules/Simulation/objects/c/\1.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d : ,g' < ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d; \
+星期五 12:07:       rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$
+星期五 12:07: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
+星期五 12:07: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
+星期五 12:07: "/opt/maxcompiler/bin/sliccompile" ../RunRules/Simulation/maxfiles/MarketDataService.max ../RunRules/Simulation/objects/maxfiles/slic_MarketDataService.o
+星期五 12:07: Processing maxfile for VECTIS_SIM from '../RunRules/Simulation/maxfiles/MarketDataService.max'.
+星期五 12:07: gcc -std=gnu99 -Wall -Werror -fno-guess-branch-probability -frandom-seed=foo -Wno-unused-variable -Wno-unused-function -fPIC -I /opt/maxcompiler/include/slic -DMAXFILE_INC="/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode/../RunRules/Simulation/maxfiles/MarketDataService.max" -DSLIC_NO_DESTRUCTORS -c /opt/maxcompiler/src/slicinterface/MaxFileInit.c -o slic_MarketDataService.o 
+星期五 12:07: Copying .max file C object into '/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode/../RunRules/Simulation/objects/maxfiles'
+星期五 12:07: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -c MarketDataServerCpuCode.c -o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o
+星期五 12:07: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -o ../RunRules/Simulation/binaries/pxtp ../RunRules/Simulation/objects/maxfiles/slic_MarketDataService.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o -g -O3  -L '/opt/maxcompiler/lib' -lslic -L '/opt/maxeler/maxeleros/lib' -lmaxeleros -lpthread -lm -lrt 
+星期五 12:07: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
+星期五 12:07: Build completed: 星期五 六月 19 12:07:41 CST 2015
 
 
-星期四 19:25: ########################################## 
-星期四 19:25: Running
-星期四 19:25: ########################################## 
-星期四 19:25: Executing command:
-星期四 19:25: '/root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/binaries/pxtp' '169.254.10.2' '169.254.10.1' '255.255.255.0' 
-星期四 19:25: Command output:
-星期四 19:25: Listening on 169.254.10.2 port 45678
-星期四 19:25: Waiting for kernel response...
-星期四 19:25: CPU, sizeof(XTPPacket_t):77
-星期四 19:25: Process terminated with exit code -1.
-星期四 19:25: 已终止
+星期五 12:07: ########################################## 
+星期五 12:07: Running
+星期五 12:07: ########################################## 
+星期五 12:07: Executing command:
+星期五 12:07: '/root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/binaries/pxtp' '169.254.10.2' '169.254.10.1' '255.255.255.0' 
+星期五 12:07: Command output:
+星期五 12:07: Listening on 169.254.10.2 port 45678
+星期五 12:07: Waiting for kernel response...
+星期五 12:07: CPU, sizeof(XTPPacket_t):77
+星期五 12:07: Process terminated with exit code -1.
+星期五 12:07: 已终止

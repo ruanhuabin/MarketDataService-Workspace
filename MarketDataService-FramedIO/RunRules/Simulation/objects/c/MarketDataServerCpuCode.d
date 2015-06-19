@@ -45,7 +45,7 @@
  /usr/include/unistd.h /usr/include/bits/posix_opt.h \
  /usr/include/bits/environments.h /usr/include/bits/confname.h \
  /usr/include/getopt.h ../RunRules/Simulation/include/Maxfiles.h \
- ../RunRules/Simulation/include/PXTP.h \
+ ../RunRules/Simulation/include/MarketDataService.h \
  /opt/maxcompiler/include/slic/MaxSLiCInterface.h \
  /opt/maxcompiler/include/slic/slic_engine.h \
  /opt/maxcompiler/include/slic/slic_typedefs.h \

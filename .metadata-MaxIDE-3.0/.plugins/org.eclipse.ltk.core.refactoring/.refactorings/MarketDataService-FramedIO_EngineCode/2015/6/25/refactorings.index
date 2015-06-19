@@ -10,3 +10,9 @@
 1434630939230	Rename package 'cn.edu.tsinghua.kernels'
 1434632352035	Delete element
 1434680818548	Delete element
+1434686326652	Delete element
+1434686641100	Delete element
+1434687415952	Rename type 'TidHandleBase'
+1434687475712	Copy compilation unit
+1434697327343	Rename type 'SettlementGroupDataSyncHandler'
+1434697342503	Rename type 'ExchangeDataSyncHandler'

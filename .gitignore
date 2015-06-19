@@ -4,3 +4,5 @@ maxfiles/
 binaries/
 bin/
 *.a
+batchdelete.sh
+debug/

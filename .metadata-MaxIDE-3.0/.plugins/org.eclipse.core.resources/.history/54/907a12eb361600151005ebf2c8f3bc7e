@@ -1,0 +1,116 @@
+package cn.edu.tsinghua.kernel;
+
+import com.maxeler.maxcompiler.v2.build.ApplicationParameters;
+import com.maxeler.maxcompiler.v2.build.EngineParameters;
+import com.maxeler.maxcompiler.v2.build.EngineParameters.Target;
+import com.maxeler.maxcompiler.v2.managers.DFEModel;
+
+public class MarketDataServerEngineParameters extends ApplicationParameters {
+
+	public MarketDataServerEngineParameters(String[] args) {
+		super(args);
+	}
+
+	@Override
+	protected void declarations() {
+		 declareParam("board", DataType.DFEMODEL, DFEModel.ISCA);
+		 declareParam("target", Target.class, Target.DFE_SIM);
+		 declareParam("hasStreamStatus", DataType.BOOL, true);
+	}
+
+	public boolean isSimulation() {
+		return getTarget() == Target.DFE_SIM;
+	}
+
+	public Target getTarget() {
+		return getParam("target");
+	}
+
+	public boolean hasStreamStatus() {
+		return getParam("hasStreamStatus");
+	}
+
+
+	@Override
+	protected void deriveParameters() {
+
+	}
+
+	@Override
+	public String getBuildName() {
+		return "SignExt";
+	}
+
+	@Override
+	public DFEModel getDFEModel() {
+		return getParam("board");
+	}
+
+	@Override
+	protected void validate() {
+	}
+
+	public EngineParameters getEngineParams() {
+		return new EngineParameters(getBuildName(), getDFEModel(), getTarget());
+	}
+}
+
+
+
+//import com.maxeler.maxcompiler.v2.build.EngineParameters;
+//
+//public class MarketDataServerEngineParameters extends EngineParameters {
+//
+//	public MarketDataServerEngineParameters(String[] args) {
+//		super(args);
+//	}
+
+//
+//	Example code to create two engine parameters: 'hasStreamStatus' and
+//	'streamFrequency', plus a derived parameter 'twostreamFrequency'.
+//
+//	A build directory name is constructed based on these parameters and
+//	the default max-file name and target parameters.
+//
+
+//
+//	private static final String s_hasStreamStatus = "hasStreamStatus";
+//	private static final String s_streamFrequency = "streamFrequency";
+//	private static final String s_twofreq = "twostreamFrequency";
+//
+//
+//	@Override
+//	protected void declarations() {
+//		declareParam(s_hasStreamStatus, DataType.BOOL, false);
+//		declareParam(s_streamFrequency, DataType.INT, 150);
+//		declareDerivedParam(s_twofreq, DataType.INT);
+//	}
+//
+//	@Override
+//	protected void deriveParameters() {
+//		deriveParam(s_twofreq, 2 * getStreamFrequency());
+//	}
+//
+//	@Override
+//	protected void validate() {
+//		if (getStreamFrequency() <= 0)
+//			throw new IllegalArgumentException("Stream frequency should be > 0.");
+//	}
+//
+//	public boolean getHasStreamStatus() {
+//		return getParam(s_hasStreamStatus);
+//	}
+//
+//	public int getStreamFrequency() {
+//		return getParam(s_streamFrequency);
+//	}
+//
+//	public int getTwofreq(){
+//		return getParam(s_twofreq);
+//	}
+//
+//	@Override
+//	public String getBuildName() {
+//		return getMaxFileName() + "_" + getTarget() + "_ss" + getHasStreamStatus() + "_sf" + getStreamFrequency();
+//	}
+//}

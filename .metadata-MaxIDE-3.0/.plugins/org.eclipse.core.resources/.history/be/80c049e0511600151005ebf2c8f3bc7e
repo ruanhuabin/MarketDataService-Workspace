@@ -1,0 +1,80 @@
+package cn.edu.tsinghua.tidhandler;
+
+
+import cn.edu.tsinghua.constant.MDGlobalStateConstants;
+import cn.edu.tsinghua.constant.TID;
+import cn.edu.tsinghua.state.GlobalStateItems;
+import cn.edu.tsinghua.utils.MarketDataUtils;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.utils.Bits;
+
+public class NtfSettlementGroupDataSyncHandler extends TidHandlerBase
+{
+	private final int tradingDaySize = 9;
+	private final int exchangeIDSize = 9;
+	private final int fieldHeaderSize = 4;
+	private final MarketDataUtils mdu;
+
+	public NtfSettlementGroupDataSyncHandler(Kernel owner, DFEVar tid, DFEVar content) {
+		// TODO Auto-generated constructor stub
+		super(owner, tid, content);
+		mdu = new MarketDataUtils(owner);
+	}
+
+
+	public DFEVar getTradingDay()
+	{
+		DFEVar tradingDayLen = constant.var(DFETypeFactory.dfeUInt(16), tradingDaySize);
+
+		//Copy is must, otherwise content will be changed by calling following extractExactlyContent(...)
+		DFEVar tmpContent = mdu.copyBytes(content, 15).cast(DFETypeFactory.dfeRawBits(8 * 32));
+		tmpContent = mdu.removeBytes(tmpContent, fieldHeaderSize);
+		tmpContent = constant.var(DFETypeFactory.dfeRawBits(32), Bits.allOnes(4*8)) # tmpContent;
+		DFEVar tradingDayContent = mdu.extractExactlyContent(tradingDayLen.cast(DFETypeFactory.dfeUInt(5)), tmpContent);
+
+		return tradingDayContent.slice(0, this.tradingDaySize * 8);
+	}
+	public DFEVar getExchangeID()
+	{
+		DFEVar exchangeIDLen = constant.var(DFETypeFactory.dfeUInt(16), this.exchangeIDSize);
+		DFEVar tmpContent = this.mdu.copyBytes(this.content, 15).cast(DFETypeFactory.dfeRawBits(8 * 32));
+		tmpContent = this.mdu.removeBytes(tmpContent, this.fieldHeaderSize + this.tradingDaySize);
+		tmpContent = constant.var(DFETypeFactory.dfeRawBits(4*8 + this.tradingDaySize * 8), Bits.allOnes(4*8 + this.tradingDaySize * 8)) # tmpContent;
+		DFEVar exchangeID = this.mdu.extractExactlyContent(exchangeIDLen.cast(DFETypeFactory.dfeUInt(5)), tmpContent);
+
+		return exchangeID.slice(0, this.exchangeIDSize * 8);
+	}
+
+	@Override
+	public DFEVar process() {
+		// TODO Auto-generated method stub
+
+		 DFEVar currentCycle = kernel.control.count.simpleCounter(16);
+	   // DFEVar currentPktTid = frameIn[Name.XTPHeader.tid];
+	    DFEVar isSGDataSynStartPktProcess = Reductions.streamHold(this.tid.eq(TID.TID_SettlementGroupDataSyncStart), this.tid.eq(TID.TID_SettlementGroupDataSyncStart));
+	    DFEVar isSGDataSynEndPktProcess = Reductions.streamHold(this.tid.eq(TID.TID_SettlementGropuDataSyncEnd), this.tid.eq(TID.TID_SettlementGropuDataSyncEnd));
+
+//	    kernel.debug.simPrintf("===============================>Kernel Got in Cycle [%d]: currentPktTid = %#010x, isDataSynStartPktProcess = %d, isDataSynEndPktProcess = %d\n",
+//	    		currentCycle, this.tid, isSGDataSynStartPktProcess, isSGDataSynEndPktProcess);
+
+	     DFEVar globalSGDataSynStateFlag = isSGDataSynStartPktProcess # isSGDataSynEndPktProcess;
+
+
+//	    kernel.debug.simPrintf("<=================================================================================\n");
+
+	    DFEVar settlementGroupDataSyncStates[] = new DFEVar[4];
+	    settlementGroupDataSyncStates[0] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MDGlobalStateConstants.SETTLEMENT_GROUP_DATA_SYNC_STATUS_ASYNCHRONOUS);
+	    settlementGroupDataSyncStates[1] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MDGlobalStateConstants.SETTLEMENT_GROUP_DATA_SYNC_STATUS_SYNCHRONIZED);
+	    settlementGroupDataSyncStates[2] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MDGlobalStateConstants.SETTLEMENT_GROUP_DATA_SYNC_STATUS_SYNCHRONIZING);
+	    settlementGroupDataSyncStates[3] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MDGlobalStateConstants.SETTLEMENT_GROUP_DATA_SYNC_STATUS_SYNCHRONIZED);
+	    GlobalStateItems.settlementGroupDataStatus = kernel.control.mux(globalSGDataSynStateFlag, settlementGroupDataSyncStates);
+
+		return GlobalStateItems.settlementGroupDataStatus;
+	}
+
+
+}

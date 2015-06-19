@@ -1,2 +1,22 @@
 1434630584105	Move compilation unit
 1434630924068	Rename package 'cn.edu.tsinghua.states'
+1434686083264	Rename type 'MarketDataServerEngineParameters'
+1434686104668	Rename type 'ProtocolParseKernel'
+1434686118612	Delete element
+1434686135228	Rename type 'MarketDataServerManager'
+1434687711085	Rename field 'currByte'
+1434687815198	Copy compilation unit
+1434687957073	Copy compilation unit
+1434691446855	Rename local variable 'k'
+1434691518535	Rename local variable 'bytes'
+1434691563003	Rename local variable 'bytes'
+1434691582995	Rename local variable 'bytes'
+1434691620354	Rename local variable 'bytes'
+1434696203630	Rename type 'InitCommPhaseFieldHandler'
+1434696288571	Rename type 'ExchangeDataSyncStatusHandler'
+1434696338385	Rename type 'NtfExchangeDataSyncStartEndHandler'
+1434696546350	Rename type 'MarketDataConstants'
+1434696673808	Rename type 'NtfCommPhaseChange'
+1434696712858	Rename local variable 'is'
+1434696870209	Rename field 'exchangeSyncStatus'
+1434697433331	Copy compilation unit

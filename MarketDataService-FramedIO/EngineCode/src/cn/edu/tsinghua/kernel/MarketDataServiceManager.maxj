@@ -26,7 +26,7 @@ public class MarketDataServiceManager extends NetworkManager {
 		pushDefaultClock(netClk);
 
 		KernelConfiguration myKernelConfig = new KernelConfiguration(getCurrentKernelConfig());
-	  KernelBlock kernel = addKernel(new MarketDataServiceKernel(makeKernelParameters("exampleKernel", myKernelConfig)));
+	  KernelBlock kernel = addKernel(new MarketDataServiceKernel(makeKernelParameters("marketDataServiceKernel", myKernelConfig)));
 		kernel.getInput("frameIn") <== frameIn.getReceiveStream();
 		addFramedStreamToCPU("toCPU", new UDPOneToOneTXType()) <== kernel.getOutput("frameOut");
 	}

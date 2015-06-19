@@ -49,20 +49,20 @@ build: maxfiles
 maxfiles: $(MAXFILES_MAX)
 
 #
-# MaxFile: PXTP
+# MaxFile: MarketDataService
 #
 
 
-BUILDNAME_MAXFILE_1:=PXTP
-MAXFILE_1:=PXTP.max
+BUILDNAME_MAXFILE_1:=MarketDataService
+MAXFILE_1:=MarketDataService.max
 
-include/PXTP.h: maxfiles/PXTP.h
+include/MarketDataService.h: maxfiles/MarketDataService.h
 	cp $< $@
 
-maxfiles/PXTP.max maxfiles/PXTP.h:
+maxfiles/MarketDataService.max maxfiles/MarketDataService.h:
 # Ensure that maxfiles do not get build by this Makefile when running in MaxIDE
 ifndef MAXIDE_RUN
-	env  MAX_BUILDPARAMS=" DFEModel=VECTIS  target=DFE_SIM  maxFileName=PXTP "  ant -v -f PXTP.xml
+	env  MAX_BUILDPARAMS=" DFEModel=VECTIS  target=DFE_SIM  maxFileName=MarketDataService "  ant -v -f MarketDataService.xml
 else
 	test -f $@ || ( echo 'Maxfile unavailable: $@' >/dev/stderr ; exit 1 )
 endif

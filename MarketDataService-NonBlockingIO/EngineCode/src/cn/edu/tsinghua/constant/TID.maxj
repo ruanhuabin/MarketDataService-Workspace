@@ -4,11 +4,12 @@ public class TID {
 	public static final int TID_NtfCommPhaseChange = 0x00005002;
 	public static final int TID_ExchangeDataSyncStart = 0x00006001;
 	public static final int TID_ExchangeDataSyncEnd = 0x00006002;
-	public static final int TID_SettlementGroupDatasyncStart = 0x00007001;
-	public static final int TID_SettlementGroupDataSyncEnd = 0x00007002;
+	public final static int TID_SettlementGroupDataSyncStart = 0x00007001;
+	public final static int TID_SettlementGropuDataSyncEnd = 0x00007002;
 	public static final int TID_NtfTimeSync = 0x00005001;
 	public static final int TID_NtfMarketData = 0x00005802;
 	public static final int TID_NtfOrder = 0x00005201;
 	public static final int TID_NtfTrade = 0x00005202;
 	public static final int TID_InitInstrument = 0x00007103;
+
 }
