@@ -23,8 +23,9 @@ private:
   void skipXTPPackages(int n);
 
 private:
+  const static uint32_t maxPackageSize = 10000;
   std::ifstream mXtpStream;
   boost::uint32_t mCurrPackageSize;
-
+  char mBuffer[maxPackageSize];
 };
 #endif /* end of include guard: XTPREADER_H_7TBGMCVS */

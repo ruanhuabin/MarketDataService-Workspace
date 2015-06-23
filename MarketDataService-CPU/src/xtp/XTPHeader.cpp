@@ -15,7 +15,7 @@ void XTPHeader::print() const {
   DEBUG() << format("Type: %#x")              % static_cast<uint32_t>(Type);
   DEBUG() << format("Chain: %#x")             % static_cast<uint32_t>(Chain);
   DEBUG() << format("FTType: %#x")            % static_cast<uint32_t>(FTType);
-  DEBUG() << format("ContentLength: 0x%04x[ dec = %u ]")  % static_cast<uint32_t>(ContentLength) % static_cast<uint32_t>(ContentLength);
+  DEBUG() << format("ContentLength: %u")      % static_cast<uint32_t>(ContentLength);
   DEBUG() << format("SubjectID: %#010x")      % static_cast<uint32_t>(SubjectID);
   DEBUG() << format("Tid: %#010x")            % static_cast<uint32_t>(Tid);
   DEBUG() << format("CommPhaseNo: %u")        % static_cast<uint32_t>(CommPhaseNo);

@@ -4,10 +4,7 @@ package cn.edu.tsinghua.kernel;
 import cn.edu.tsinghua.constant.TID;
 import cn.edu.tsinghua.format.OutputFrameFormat;
 import cn.edu.tsinghua.format.XTPFrameFormat;
-import cn.edu.tsinghua.state.GlobalStateItems;
-import cn.edu.tsinghua.tidhandler.NtfExchangeDataSyncHandler;
-import cn.edu.tsinghua.tidhandler.NtfCommPhaseChangeHandler;
-import cn.edu.tsinghua.tidhandler.NtfSettlementGroupDataSyncHandler;
+import cn.edu.tsinghua.tidhandler.ExchangeDataSyncStart;
 
 import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
@@ -61,25 +58,27 @@ public class MarketDataServiceKernel extends FramedKernel {
 
 
 		//Init comm phase
-		NtfCommPhaseChangeHandler commPhaseChangeHandler = new NtfCommPhaseChangeHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfCommPhaseChange);
-		DFEVar initCommPhaseNoResult = commPhaseChangeHandler.process();
-		debug.simPrintf("Kernel Got in Cycle [%d], commPhaseNo bytes:", cycleCount);
-		for(int i = 0; i < 2; i ++)
-		{
-			debug.simPrintf("0x%02x ", initCommPhaseNoResult.slice(i * 8, 8));
-		}
-		debug.simPrintf("\n");
+//		NtfCommPhaseChangeHandler commPhaseChangeHandler = new NtfCommPhaseChangeHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfCommPhaseChange);
+//		DFEVar initCommPhaseNoResult = commPhaseChangeHandler.process();
+//		debug.simPrintf("Kernel Got in Cycle [%d], commPhaseNo bytes:", cycleCount);
+//		for(int i = 0; i < 2; i ++)
+//		{
+//			debug.simPrintf("0x%02x ", initCommPhaseNoResult.slice(i * 8, 8));
+//		}
+//		debug.simPrintf("\n");
+//
+//		//Init exchange data
+//		NtfExchangeDataSyncHandler exchangeDataSyncHandler = new NtfExchangeDataSyncHandler(this, frameIn);
+//		exchangeDataSyncHandler.process();
+//		debug.simPrintf("=========================>>GlobalStateItems.exchangeDataStatus = %d\n", GlobalStateItems.exchangeSyncStatus);
+//
+//		//Init settle group data
+//		NtfSettlementGroupDataSyncHandler settlementGroupDataSyncHandler = new NtfSettlementGroupDataSyncHandler(this, frameIn);
+//		settlementGroupDataSyncHandler.process();
+//		debug.simPrintf("=========================>>settlementGroupDataStatus = %d\n", GlobalStateItems.settlementGroupDataStatus);
 
-		//Init exchange data
-		NtfExchangeDataSyncHandler exchangeDataSyncHandler = new NtfExchangeDataSyncHandler(this, frameIn);
-		exchangeDataSyncHandler.process();
-		debug.simPrintf("=========================>>GlobalStateItems.exchangeDataStatus = %d\n", GlobalStateItems.exchangeSyncStatus);
-
-		//Init settle group data
-		NtfSettlementGroupDataSyncHandler settlementGroupDataSyncHandler = new NtfSettlementGroupDataSyncHandler(this, frameIn);
-		settlementGroupDataSyncHandler.process();
-		debug.simPrintf("=========================>>settlementGroupDataStatus = %d\n", GlobalStateItems.settlementGroupDataStatus);
-
+		ExchangeDataSyncStart eds = new ExchangeDataSyncStart(this, frameIn, currByte, cycleCount, TID.TID_ExchangeDataSyncStart);
+		eds.process();
 		//Init Market Data Here
 		//....Debuging
 

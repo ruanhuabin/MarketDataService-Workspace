@@ -15,8 +15,8 @@ def write_config(configs, filename):
   f.close()
 
 # set your config here
-#in_data_path = os.environ['HOME'] + '/data/CompLog.con'
-in_data_path = '../data/CompLog.con'
+in_data_path = os.environ['HOME'] + '/data/CompLog.con'
+#in_data_path = '/data/CompLog.con'
 
 configs = {
   'in_data_path':     in_data_path,

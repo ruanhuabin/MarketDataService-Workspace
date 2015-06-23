@@ -87,8 +87,6 @@ template<> void TID1<CMarketDataField>::process() {
       BOOST_FOREACH(const CMarketDataField &marketData, mFields1) {
         marketMap[marketData.InstrumentID] = marketData;
 
-        DEBUG() << "marketdata.instrumentID: " << marketData.InstrumentID;
-        DEBUG() << "var.mInstruments[marketData.InstrumentID]: " << var.mInstruments[marketData.InstrumentID].InstrumentID;
         MBLData mbl(marketData, var.mCurrentTime, var.mInstruments[marketData.InstrumentID]);
         var.mOrderBooks[marketData.InstrumentID] = mbl;
       }

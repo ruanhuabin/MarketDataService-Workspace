@@ -3892,8 +3892,10 @@ XTPReader	XTPReader.h	/^  XTPReader(const std::string &xtpFileName);$/;"	p	class
 XTPReader	XTPReader.h	/^class XTPReader$/;"	c
 XTPReader::XTPReader	XTPReader.cpp	/^XTPReader::XTPReader(const std::string &xtpFileName)$/;"	f	class:XTPReader	signature:(const std::string &xtpFileName)
 XTPReader::XTPReader	XTPReader.h	/^  XTPReader(const std::string &xtpFileName);$/;"	p	class:XTPReader	access:public	signature:(const std::string &xtpFileName)
+XTPReader::mBuffer	XTPReader.h	/^  char mBuffer[maxPackageSize];$/;"	m	class:XTPReader	access:private
 XTPReader::mCurrPackageSize	XTPReader.h	/^  boost::uint32_t mCurrPackageSize;$/;"	m	class:XTPReader	access:private
 XTPReader::mXtpStream	XTPReader.h	/^  std::ifstream mXtpStream;$/;"	m	class:XTPReader	access:private
+XTPReader::maxPackageSize	XTPReader.h	/^  const static uint32_t maxPackageSize = 10000;$/;"	m	class:XTPReader	access:private
 XTPReader::readAll	XTPReader.cpp	/^void XTPReader::readAll() {$/;"	f	class:XTPReader	signature:()
 XTPReader::readAll	XTPReader.h	/^  void readAll();$/;"	p	class:XTPReader	access:public	signature:()
 XTPReader::readAt	XTPReader.cpp	/^XTPPackage XTPReader::readAt(int idx) {$/;"	f	class:XTPReader	signature:(int idx)
@@ -4010,10 +4012,8 @@ do_byte_swap	EndianConverter.h	/^template<class T> struct do_byte_swap<big_endia
 do_byte_swap	EndianConverter.h	/^template<class T> struct do_byte_swap<little_endian, little_endian, T> {$/;"	s	namespace:detail
 doubleEqual	orderDeal.cpp	/^  bool doubleEqual(double a, double b) {$/;"	f	namespace:__anon1	signature:(double a, double b)
 endianness	EndianConverter.h	/^enum endianness$/;"	g
-first_marketdata	main_xtpv.cpp	/^  const int first_marketdata = 3952;$/;"	m	namespace:tid	file:
 first_order	main_send.cpp	/^  const int first_order = 4408;$/;"	m	namespace:tid	file:
 first_order	main_xtpv.cpp	/^  const int first_order = 4408;$/;"	m	namespace:tid	file:
-first_pkg	main_xtpv.cpp	/^  const int first_pkg = 0;$/;"	m	namespace:tid	file:
 first_timeout_after_order	main_send.cpp	/^  const int first_timeout_after_order = 43897;$/;"	m	namespace:tid	file:
 first_timeout_after_order	main_xtpv.cpp	/^  const int first_timeout_after_order = 43897;$/;"	m	namespace:tid	file:
 first_trade	main_send.cpp	/^  const int first_trade = 4413;$/;"	m	namespace:tid	file:
@@ -4071,6 +4071,7 @@ isEqual	topicMarket.h	/^		bool isEqual(CMarketDataUpdateTimeField*, CMarketDataU
 last_package	main_send.cpp	/^  const int last_package = 157618;$/;"	m	namespace:tid	file:
 last_package	main_xtpv.cpp	/^  const int last_package = 157618;$/;"	m	namespace:tid	file:
 little_endian	EndianConverter.h	/^  little_endian,$/;"	e	enum:endianness
+mBuffer	XTPReader.h	/^  char mBuffer[maxPackageSize];$/;"	m	class:XTPReader	access:private
 mBuyPriceVolumeMap	MBLData.h	/^  std::map<CPriceType,CVolumeType> mBuyPriceVolumeMap;$/;"	m	class:MBLData	access:public
 mCallGenMarketTwice	GlobalVar.h	/^  bool                                   mCallGenMarketTwice;$/;"	m	class:GlobalVar	access:public
 mCommPhase	GlobalVar.h	/^  CCommPhaseField                        mCommPhase;$/;"	m	class:GlobalVar	access:public
@@ -4134,6 +4135,7 @@ market_delay_5	topicMarket.cpp	/^map<string, NtfTopicMarketData> market_delay_5;
 market_delay_io_1	topicMarket.cpp	/^map<string, NtfTopicMarketData> market_delay_io_1;$/;"	v
 market_delay_io_5	topicMarket.cpp	/^map<string, NtfTopicMarketData> market_delay_io_5;$/;"	v
 market_instant_5	topicMarket.cpp	/^map<string, NtfTopicMarketData> market_instant_5;$/;"	v
+maxPackageSize	XTPReader.h	/^  const static uint32_t maxPackageSize = 10000;$/;"	m	class:XTPReader	access:private
 network_endian	EndianConverter.h	/^  network_endian = big_endian,$/;"	e	enum:endianness
 open	orderDeal.cpp	/^const char open = '0';$/;"	m	namespace:order_status	file:
 operator ()	EndianConverter.h	/^  inline T operator()(T )$/;"	f	struct:detail::swap_bytes	access:public	signature:(T )
@@ -4234,7 +4236,6 @@ registerRecord	Param.h	/^  virtual void registerRecord();$/;"	p	class:Param	acce
 same_time_package	genMarket.cpp	/^bool same_time_package = false;$/;"	v
 second_order	main_send.cpp	/^  const int second_order = 4411;$/;"	m	namespace:tid	file:
 second_order	main_xtpv.cpp	/^  const int second_order = 4411;$/;"	m	namespace:tid	file:
-second_pkg	main_xtpv.cpp	/^  const int second_pkg = 1;$/;"	m	namespace:tid	file:
 second_xtp	main_send.cpp	/^  const int second_xtp = 1;$/;"	m	namespace:tid	file:
 sell	orderDeal.cpp	/^const char sell = '1';$/;"	m	namespace:order_status	file:
 sendFrames	main_send.cpp	/^void sendFrames(int sock, const XTPPackage &xtp) {$/;"	f	signature:(int sock, const XTPPackage &xtp)
@@ -4296,10 +4297,8 @@ testing_id	main_send.cpp	/^  const int testing_id = 4432;$/;"	m	namespace:tid	fi
 testing_id	main_xtpv.cpp	/^  const int testing_id = 4432;$/;"	m	namespace:tid	file:
 tid	main_send.cpp	/^namespace tid {$/;"	n	file:
 tid	main_xtpv.cpp	/^namespace tid {$/;"	n	file:
-tid::first_marketdata	main_xtpv.cpp	/^  const int first_marketdata = 3952;$/;"	m	namespace:tid	file:
 tid::first_order	main_send.cpp	/^  const int first_order = 4408;$/;"	m	namespace:tid	file:
 tid::first_order	main_xtpv.cpp	/^  const int first_order = 4408;$/;"	m	namespace:tid	file:
-tid::first_pkg	main_xtpv.cpp	/^  const int first_pkg = 0;$/;"	m	namespace:tid	file:
 tid::first_timeout_after_order	main_send.cpp	/^  const int first_timeout_after_order = 43897;$/;"	m	namespace:tid	file:
 tid::first_timeout_after_order	main_xtpv.cpp	/^  const int first_timeout_after_order = 43897;$/;"	m	namespace:tid	file:
 tid::first_trade	main_send.cpp	/^  const int first_trade = 4413;$/;"	m	namespace:tid	file:
@@ -4309,7 +4308,6 @@ tid::last_package	main_send.cpp	/^  const int last_package = 157618;$/;"	m	names
 tid::last_package	main_xtpv.cpp	/^  const int last_package = 157618;$/;"	m	namespace:tid	file:
 tid::second_order	main_send.cpp	/^  const int second_order = 4411;$/;"	m	namespace:tid	file:
 tid::second_order	main_xtpv.cpp	/^  const int second_order = 4411;$/;"	m	namespace:tid	file:
-tid::second_pkg	main_xtpv.cpp	/^  const int second_pkg = 1;$/;"	m	namespace:tid	file:
 tid::second_xtp	main_send.cpp	/^  const int second_xtp = 1;$/;"	m	namespace:tid	file:
 tid::testing_id	main_send.cpp	/^  const int testing_id = 4432;$/;"	m	namespace:tid	file:
 tid::testing_id	main_xtpv.cpp	/^  const int testing_id = 4432;$/;"	m	namespace:tid	file:

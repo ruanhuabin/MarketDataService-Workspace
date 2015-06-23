@@ -31,13 +31,17 @@ XTPReader::XTPReader(const std::string &xtpFileName)
 }
 
 void XTPReader::readXTPHeader(XTPHeader &header, const char *&contentPtr){
-  const uint32_t maxPackageSize = 10000;
-  char buffer[maxPackageSize];
-  mXtpStream.read(buffer, mCurrPackageSize);
+  mXtpStream.read(mBuffer, mCurrPackageSize);
+
+  if (!mXtpStream) {
+    ERROR() << "error: only " << mXtpStream.gcount() << " could be read";
+    mXtpStream.close();
+    std::exit(-1);
+  }
 
   /// get xtp header part
   const int headerSize = sizeof(header);
-  const char *p = buffer;
+  const char *p = mBuffer;
   std::copy(p, p + headerSize, reinterpret_cast<char *>(&header));
   p += headerSize;
 

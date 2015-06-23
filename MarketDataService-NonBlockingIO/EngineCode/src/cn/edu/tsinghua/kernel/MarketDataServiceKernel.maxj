@@ -164,9 +164,6 @@ public class MarketDataServiceKernel extends ThroughputFramedKernel
 	   debug.simPrintf(sof, "Kernel Got in Cycle [%d]: settlementGroupDataSyncHandler = %d, settlementGroupDataStatus = %d\n", cycleCount, settlementGroupDataSyncHandler, GlobalStateItems.settlementGroupDataStatus);
 
 
-
-
-
 		FrameData<OutputFrameFormat> frameOut = genOutputFrame();
 
 

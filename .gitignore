@@ -6,3 +6,4 @@ bin/
 *.a
 batchdelete.sh
 debug/
+CommLog.con

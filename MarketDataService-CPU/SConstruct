@@ -19,8 +19,8 @@ link_flags      = ["-O1"]
 
 # set up boost direcotry
 boost_root = '/usr/local/'
-boost_inc_dir = boost_root + 'include'
-boost_lib_dir = boost_root + 'lib'
+boost_inc_dir = boost_root + '/include'
+boost_lib_dir = boost_root + '/lib'
 
 # set the sub directories (key, value), where value is the name of directory
 # please make sure the source code are in src subdirectory

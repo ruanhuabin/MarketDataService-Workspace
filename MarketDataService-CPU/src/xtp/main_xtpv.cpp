@@ -8,9 +8,6 @@
 #include "TID.h"
 
 namespace tid {
-  const int first_pkg = 0;
-  const int second_pkg = 1;
-  const int first_marketdata = 3952;
   const int first_order = 4408;
   const int second_order = 4411;
   const int first_trade = 4413;
@@ -38,7 +35,7 @@ int main(int argc, char **argv) {
 
   XTPReader xtpReader(config.getInDataPath());
 
-  std::vector<XTPPackage> xtps = xtpReader.readTo(100);
+  std::vector<XTPPackage> xtps = xtpReader.readTo(tid::first_timeout_after_order);
   DEBUG() << "xtp size: " << xtps.size();
 
   int count = 0;
@@ -48,14 +45,14 @@ int main(int argc, char **argv) {
 
     XTPHeader header = xtp.getHeader();
     boost::fusion::for_each(header, big_to_little_endian_converter());
-    header.print();
+    //header.print();
 
     TID *tid = createTid(header);
     if (tid == NULL) {
       WARNING() << format("[WARNING]: cannot find find tid: %#010x") % header.Tid;
     }
     tid->read(xtp.getContent());
-    tid->print();
+    //tid->print();
     tid->process();
     delete tid;
   }

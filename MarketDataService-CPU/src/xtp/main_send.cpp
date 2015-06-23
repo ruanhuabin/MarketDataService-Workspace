@@ -120,9 +120,8 @@ void sendIndex(int socket, boost::shared_ptr<XTPReader> xtpReader, int idx) {
   XTPPackage xtp = xtpReader->readAt(idx);
 
   sendFrames(socket, xtp);
-//  sendFrames(socket, xtp);
 
-  /// print the message locally
+  // print the message locally
   DEBUG();
 
   XTPHeader header = xtp.getHeader();
@@ -162,13 +161,13 @@ int main(int argc, char **argv) {
   INFO() << "Print the configuration:";
   config.print();
 
-  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 0);//comm phase pkt
+  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 1400);//comm phase pkt
   sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 1);//exchange data start
-  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2871);//exchange data end
+  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2);//exchange data end
   sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2872);//settlement start pkt
   sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4086);//tid = 0x00005001
   sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4085); //settlement end pkt
-  //sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()),3); // tid = 0x00005211
+  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2874); // tid = 0x00005211
 
   INFO() << "program exit normally";
   return 0;

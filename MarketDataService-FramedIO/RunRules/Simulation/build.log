@@ -1,90 +1,99 @@
-星期五 12:05: ########################################## 
-星期五 12:05: Compiling.
-星期五 12:05: ########################################## 
+星期五 20:26: ########################################## 
+星期五 20:26: Compiling.
+星期五 20:26: ########################################## 
 
-星期五 12:05: MaxCompiler version: 2014.1a.
-星期五 12:05: Build Simulation run rule for MarketDataService-FramedIO start time: 星期五 六月 19 12:05:24 CST 2015.
-星期五 12:05: Project location: /root/MarketDataService-workspace/MarketDataService-FramedIO.
-星期五 12:05: Detailed build log: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/build.log.
+星期五 20:26: MaxCompiler version: 2014.1a.
+星期五 20:26: Build Simulation run rule for MarketDataService-FramedIO start time: 星期五 六月 19 20:26:56 CST 2015.
+星期五 20:26: Project location: /root/MarketDataService-workspace/MarketDataService-FramedIO.
+星期五 20:26: Detailed build log: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/build.log.
 
-星期五 12:05: Compiling Engine Code.
-星期五 12:05: Building MarketDataService.max file. 
-星期五 12:05: Setting environment variable:
-星期五 12:05: MAXCOMPILER_BUILD_DIR : /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles
-星期五 12:05: MAX_BUILDPARAMS : DFEModel='VECTIS' target='DFE_SIM' maxFileName='MarketDataService'  
-星期五 12:05: Building output:
-星期五 12:05: MaxCompiler version: 2014.1a
-星期五 12:05: Build "MarketDataService" start time: Fri Jun 19 12:05:27 CST 2015
-星期五 12:05: Main build process running as user root on host horst
-星期五 12:05: Build location: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/MarketDataService_VECTIS_DFE_SIM
-星期五 12:05: Detailed build log available in "_build.log"
-星期五 12:05: 
-星期五 12:05: ENGINE BUILD PARAMETERS
-星期五 12:05: 	 Build name: MarketDataService_VECTIS_DFE_SIM
-星期五 12:05: 	   DFEModel: VECTIS                          
-星期五 12:05: 	maxFileName: MarketDataService               
-星期五 12:05: 	     target: DFE_SIM                         
-星期五 12:05: 	 enableMPCX: false                           
-星期五 12:05: Instantiating kernel "marketDataServiceKernel"
-星期五 12:05: 
-星期五 12:05: Compiling kernel "marketDataServiceKernel"
-星期五 12:05: WARNING: Warning (UNCONNECTED_DESIGN_ELEMENT):
-星期五 12:05: WARNING: Unconnected elements in design 'marketDataServiceKernel'
-星期五 12:05: WARNING: details in : /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/MarketDataService_VECTIS_DFE_SIM/scratch/marketDataServiceKernel_graph_warnings.txt
-星期五 12:05: Running back-end simulation build (3 phases)
-星期五 12:05: (1/3) - Prepare MaxFile Data (GenerateMaxFileDataFile)
-星期五 12:05: (2/3) - Compile Simulation Modules (SimCompilePass)
-星期五 12:07: (3/3) - Generate MaxFile (AddSimObjectToMaxFilePass)
-星期五 12:07: MaxFile: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/MarketDataService_VECTIS_DFE_SIM/results/MarketDataService.max (MD5Sum: 5e029a87a22afc68a90e522a401cb267)
-星期五 12:07: Build completed: Fri Jun 19 12:07:37 CST 2015 (took 2 mins, 9 secs)
-星期五 12:07: Executing command:
-星期五 12:07: cp /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/MarketDataService.h /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/include/MarketDataService.h 
-星期五 12:07: Command output:
-星期五 12:07: Building: MarketDataService.max file finished.
-星期五 12:07: Engine build finished.
-星期五 12:07: Compiling CPU Code.
-星期五 12:07: Run CPU project make files updating
-星期五 12:07: Executing command:
-星期五 12:07: java -jar /opt/maxcompiler/lib/MaxIDE/projectAdmin.jar -u /root/MarketDataService-workspace/MarketDataService-FramedIO Simulation 
-星期五 12:07: Command output:
+星期五 20:26: Compiling Engine Code.
+星期五 20:26: Engine building skipped (no changes on .max files).
+星期五 20:26: Compiling CPU Code.
+星期五 20:26: Run CPU project make files updating
+星期五 20:26: Executing command:
+星期五 20:26: java -jar /opt/maxcompiler/lib/MaxIDE/projectAdmin.jar -u /root/MarketDataService-workspace/MarketDataService-FramedIO Simulation 
+星期五 20:26: Command output:
 
-星期五 12:07: MaxCompiler Project Admin Tool Version 2014.1.00013
-星期五 12:07:  Copyright Maxeler Technologies 2010 - 2014. All rights reserved.
-星期五 12:07: Handler version 2
-星期五 12:07: Updating RunRule dependent Makefiles for RunRule 'Simulation'
-星期五 12:07: 	Updating: Simulation
-
-星期五 12:07: Found makefiles: 1
-星期五 12:07: 	Updated: Simulation
-星期五 12:07: Run CPU make.
-星期五 12:07: make RUNRULE=Simulation 
-星期五 12:07: Command output:
-星期五 12:07: make -f Makefile.rules build
-星期五 12:07: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
-星期五 12:07: set -e; rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d ;                                                             \
-星期五 12:07: 	  cc -M -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -Wno-error MarketDataServerCpuCode.c > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ ;                                 \
-星期五 12:07:       sed 's,\(MarketDataServerCpuCode\)\.o[ :]*,../RunRules/Simulation/objects/c/\1.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d : ,g' < ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d; \
-星期五 12:07:       rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$
-星期五 12:07: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
-星期五 12:07: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
-星期五 12:07: "/opt/maxcompiler/bin/sliccompile" ../RunRules/Simulation/maxfiles/MarketDataService.max ../RunRules/Simulation/objects/maxfiles/slic_MarketDataService.o
-星期五 12:07: Processing maxfile for VECTIS_SIM from '../RunRules/Simulation/maxfiles/MarketDataService.max'.
-星期五 12:07: gcc -std=gnu99 -Wall -Werror -fno-guess-branch-probability -frandom-seed=foo -Wno-unused-variable -Wno-unused-function -fPIC -I /opt/maxcompiler/include/slic -DMAXFILE_INC="/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode/../RunRules/Simulation/maxfiles/MarketDataService.max" -DSLIC_NO_DESTRUCTORS -c /opt/maxcompiler/src/slicinterface/MaxFileInit.c -o slic_MarketDataService.o 
-星期五 12:07: Copying .max file C object into '/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode/../RunRules/Simulation/objects/maxfiles'
-星期五 12:07: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -c MarketDataServerCpuCode.c -o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o
-星期五 12:07: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -o ../RunRules/Simulation/binaries/pxtp ../RunRules/Simulation/objects/maxfiles/slic_MarketDataService.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o -g -O3  -L '/opt/maxcompiler/lib' -lslic -L '/opt/maxeler/maxeleros/lib' -lmaxeleros -lpthread -lm -lrt 
-星期五 12:07: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
-星期五 12:07: Build completed: 星期五 六月 19 12:07:41 CST 2015
+星期五 20:26: MaxCompiler Project Admin Tool Version 2014.1.00013
+星期五 20:26:  Copyright Maxeler Technologies 2010 - 2014. All rights reserved.
+星期五 20:26: Handler version 2
+星期五 20:26: Updating RunRule dependent Makefiles for RunRule 'Simulation'
+星期五 20:26: 	Updating: Simulation
+星期五 20:26: Found makefiles: 1
+星期五 20:26: 	Updated: Simulation
+星期五 20:26: Run CPU make.
+星期五 20:26: make RUNRULE=Simulation 
+星期五 20:26: Command output:
+星期五 20:26: make -f Makefile.rules build
+星期五 20:26: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
+星期五 20:26: set -e; rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d ;                                                             \
+星期五 20:26: 	  cc -M -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -Wno-error MarketDataServerCpuCode.c > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ ;                                 \
+星期五 20:26:       sed 's,\(MarketDataServerCpuCode\)\.o[ :]*,../RunRules/Simulation/objects/c/\1.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d : ,g' < ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d; \
+星期五 20:26:       rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$
+星期五 20:26: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
+星期五 20:26: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
+星期五 20:26: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -c MarketDataServerCpuCode.c -o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o
+星期五 20:26: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -o ../RunRules/Simulation/binaries/pxtp ../RunRules/Simulation/objects/maxfiles/slic_MarketDataService.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o -g -O3  -L '/opt/maxcompiler/lib' -lslic -L '/opt/maxeler/maxeleros/lib' -lmaxeleros -lpthread -lm -lrt 
+星期五 20:26: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
+星期五 20:26: Build completed: 星期五 六月 19 20:26:58 CST 2015
 
 
-星期五 12:07: ########################################## 
-星期五 12:07: Running
-星期五 12:07: ########################################## 
-星期五 12:07: Executing command:
-星期五 12:07: '/root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/binaries/pxtp' '169.254.10.2' '169.254.10.1' '255.255.255.0' 
-星期五 12:07: Command output:
-星期五 12:07: Listening on 169.254.10.2 port 45678
-星期五 12:07: Waiting for kernel response...
-星期五 12:07: CPU, sizeof(XTPPacket_t):77
-星期五 12:07: Process terminated with exit code -1.
-星期五 12:07: 已终止
+星期五 20:27: ########################################## 
+星期五 20:27: Running
+星期五 20:27: ########################################## 
+星期五 20:27: Executing command:
+星期五 20:27: '/root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/binaries/pxtp' '169.254.10.2' '169.254.10.1' '255.255.255.0' 
+星期五 20:27: Command output:
+星期五 20:27: Listening on 169.254.10.2 port 45678
+星期五 20:27: Waiting for kernel response...
+星期五 20:27: CPU, sizeof(XTPPacket_t):77
+星期五 20:31: contentLen: 22
+星期五 20:31: ======>current cycle: 0
+星期五 20:31: bytes in current cycle: 00 05 00 12 32 30 31 32 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: fid: 0X05
+星期五 20:31: fieldLen: 18
+星期五 20:31: ======>current cycle: 1
+星期五 20:31: bytes in current cycle: 30 34 32 35 00 43 46 46 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: Trading day: 32 30 31 32 30 34 32 35 00 
+星期五 20:31: ExchangeID: 43 46 46 45 58 00 00 00 00 
+星期五 20:31: ======>current cycle: 2
+星期五 20:31: bytes in current cycle: 45 58 00 00 00 00 00 00 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: TradingDay from bram: 32 30 31 32 30 34 32 35 00 
+星期五 20:31: exchangeID from bram: 43 46 46 45 58 00 00 00 00 
+星期五 20:31: ======>current cycle: 3
+星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: ======>current cycle: 4
+星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: ======>current cycle: 5
+星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: ======>current cycle: 6
+星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: ======>current cycle: 7
+星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: ======>current cycle: 8
+星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: ======>current cycle: 9
+星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: ======>current cycle: 10
+星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: ======>current cycle: 11
+星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: ======>current cycle: 12
+星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期五 20:31: header.tid = 6001, expectedTid = 6001
+星期五 20:31: CPU: Got output frame 1 - size 68 bytes
+星期五 20:32: Process terminated with exit code -1.
+星期五 20:32: 已终止
