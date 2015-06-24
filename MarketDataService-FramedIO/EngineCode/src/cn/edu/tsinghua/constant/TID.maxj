@@ -10,6 +10,12 @@ public class TID {
 
   public final static int TID_SettlementGroupDataSyncStart = 0x00007001;
   public final static int TID_SettlementGropuDataSyncEnd = 0x00007002;
+//普通行情通知
+  public final static int TID_NtfMarketData=0x00005802;
+
+  //合约
+  public final static int TID_InitInstrument=0x00007103;
+  public static final int TID_NtfOrder = 0x00005201;
 
 
 

@@ -7,3 +7,4 @@ bin/
 batchdelete.sh
 debug/
 CommLog.con
+*.log

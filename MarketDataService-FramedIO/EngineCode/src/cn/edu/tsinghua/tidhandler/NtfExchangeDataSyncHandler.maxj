@@ -35,23 +35,23 @@ public class NtfExchangeDataSyncHandler extends TidHandlerBase {
 	    DFEVar isDataSynStartPktProcess = Reductions.streamHold(currentPktTid.eq(TID.TID_ExchangeDataSyncStart), currentPktTid.eq(TID.TID_ExchangeDataSyncStart));
 	    DFEVar isDataSynEndPktProcess = Reductions.streamHold(currentPktTid.eq(TID.TID_ExchangeDataSyncEnd), currentPktTid.eq(TID.TID_ExchangeDataSyncEnd));
 
-	    kernel.debug.simPrintf("===============================>Kernel Got in Cycle [%d]: currentPktTid = %#010x, isDataSynStartPktProcess = %d, isDataSynEndPktProcess = %d\n",
-	    		currentCycle, currentPktTid, isDataSynStartPktProcess, isDataSynEndPktProcess);
+//	    kernel.debug.simPrintf("===============================>Kernel Got in Cycle [%d]: currentPktTid = %#010x, isDataSynStartPktProcess = %d, isDataSynEndPktProcess = %d\n",
+//	    		currentCycle, currentPktTid, isDataSynStartPktProcess, isDataSynEndPktProcess);
 
 	     DFEVar globalDataSynStateFlag = isDataSynStartPktProcess # isDataSynEndPktProcess;
 
 
-	    kernel.debug.simPrintf("<=================================================================================\n");
+//	    kernel.debug.simPrintf("<=================================================================================\n");
 	    kernel.popResetBetweenFrames();
 	    DFEVar exchangeDataSyncStates[] = new DFEVar[4];
 	    exchangeDataSyncStates[0] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MDGlobalStateConstants.EXCHANGE_DATA_SYNC_STATUS_ASYNCHRONOUS);
 	    exchangeDataSyncStates[1] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MDGlobalStateConstants.EXCHANGE_DATA_SYNC_STATUS_SYNCHRONIZED);
 	    exchangeDataSyncStates[2] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MDGlobalStateConstants.EXCHANGE_DATA_SYNC_STATUS_SYNCHRONIZING);
 	    exchangeDataSyncStates[3] = kernel.constant.var(DFETypeFactory.dfeUInt(2),MDGlobalStateConstants.EXCHANGE_DATA_SYNC_STATUS_SYNCHRONIZED);
-	    GlobalStateItems.exchangeSyncStatus = kernel.control.mux(globalDataSynStateFlag, exchangeDataSyncStates);
+	    GlobalStateItems.exchangeDataSyncStatus = kernel.control.mux(globalDataSynStateFlag, exchangeDataSyncStates);
 
 
-		return GlobalStateItems.exchangeSyncStatus;
+		return GlobalStateItems.exchangeDataSyncStatus;
 	}
 
 

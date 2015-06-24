@@ -156,12 +156,12 @@ public class MarketDataServiceKernel extends ThroughputFramedKernel
 		debug.simPrintf(sof, "Kernel Got in Cycle [%d]: commPhaseNo = 0x%02x, GlobalStateItems.commPhaseNo = 0x%02x\n", cycleCount, commPhaseNo, GlobalStateItems.commPhaseNo);
 
 	   tidHandler = new NtfExchangeDataSyncHandler(this, tid, content);
-	   DFEVar exchangeDataSyncHandler = tidHandler.process();
-	   debug.simPrintf(sof, "Kernel Got in Cycle [%d]: exchangeDataSyncHandler = %d, GlobalStateItems.exchangeDataSyncStatus = %d\n", cycleCount, exchangeDataSyncHandler, GlobalStateItems.exchangeDataSyncStatus);
+	   DFEVar exchangeDataSyncStatus = tidHandler.process();
+	   debug.simPrintf(sof, "Kernel Got in Cycle [%d]: exchangeDataSyncHandler = %d, GlobalStateItems.exchangeDataSyncStatus = %d\n", cycleCount, exchangeDataSyncStatus, GlobalStateItems.exchangeDataSyncStatus);
 
 	   tidHandler = new NtfSettlementGroupDataSyncHandler(this, tid, content);
-	   DFEVar settlementGroupDataSyncHandler = tidHandler.process();
-	   debug.simPrintf(sof, "Kernel Got in Cycle [%d]: settlementGroupDataSyncHandler = %d, settlementGroupDataStatus = %d\n", cycleCount, settlementGroupDataSyncHandler, GlobalStateItems.settlementGroupDataStatus);
+	   DFEVar settlementGroupDataSyncStatus = tidHandler.process();
+	   debug.simPrintf(sof, "Kernel Got in Cycle [%d]: settlementGroupDataSyncHandler = %d, settlementGroupDataStatus = %d\n", cycleCount, settlementGroupDataSyncStatus, GlobalStateItems.settlementGroupDataStatus);
 
 
 		FrameData<OutputFrameFormat> frameOut = genOutputFrame();

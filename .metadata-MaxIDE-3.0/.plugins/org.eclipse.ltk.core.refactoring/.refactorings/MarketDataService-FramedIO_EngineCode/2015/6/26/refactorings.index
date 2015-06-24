@@ -1,0 +1,8 @@
+1435056936075	Rename field 'exchangeSyncStatus'
+1435113335724	Rename type 'InitInstrument'
+1435113347161	Rename type 'NtfMarketData'
+1435117512683	Copy compilation unit
+1435117699003	Copy compilation unit
+1435125124968	Rename field 'isCycleValid'
+1435125740283	Infer generic type arguments
+1435128399070	Delete element

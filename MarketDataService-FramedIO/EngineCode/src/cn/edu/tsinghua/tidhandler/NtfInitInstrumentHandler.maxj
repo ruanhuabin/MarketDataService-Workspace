@@ -1,0 +1,231 @@
+package cn.edu.tsinghua.tidhandler;
+
+import cn.edu.tsinghua.bram.CInitInstrumentField;
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.utils.DFEUtils;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Accumulator.Params;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+import com.maxeler.maxcompiler.v2.utils.Bits;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public class NtfInitInstrumentHandler extends TidHandlerBase{
+//  private final FrameData<DataOutFrameFormat> frameOut = null;
+//  private final FrameData<XTPFrameFormat> frameIn =null;
+//  private final FramedKernel kernel = null;
+//  private final Debug debug = null;
+//  private final Stream stream = null;
+//  private final Constant constant = null;
+
+  public NtfInitInstrumentHandler (FramedKernel k, FrameData<XTPFrameFormat> fin, DFEVar [] bytes, DFEVar count, int expectedTID)
+  {
+	  super(k, fin, bytes, count, expectedTID);
+  }
+
+
+  @Override
+public DFEVar process(){
+	  DFEVar isCycle9_VM = (cycleCount === 9 & isValidPkg);
+	  DFEVar isCycle28_VM = (cycleCount === 28 & isValidPkg);
+	  DFEVar isCycle47_VM = (cycleCount === 47 & isValidPkg);
+	  DFEVar isCycle66_VM = (cycleCount === 66 & isValidPkg);
+	  DFEVar isCycle85_VM = (cycleCount === 85 & isValidPkg);
+	  DFEVar isCycle104_VM = (cycleCount === 104 & isValidPkg);
+	  DFEVar isCycle123_VM = (cycleCount === 123 & isValidPkg);
+	  DFEVar isCycle143_VM = (cycleCount === 143 & isValidPkg);
+	  DFEVar isCycle162_VM = (cycleCount === 162 & isValidPkg);
+	  DFEVar isCycle181_VM = (cycleCount === 181 & isValidPkg);
+
+	  DFEVar isCycle10_ID = (cycleCount === 10 & isValidPkg);
+	  DFEVar isCycle29_ID = (cycleCount === 29 & isValidPkg);
+	  DFEVar isCycle48_ID = (cycleCount === 48 & isValidPkg);
+	  DFEVar isCycle68_ID = (cycleCount === 68 & isValidPkg);
+	  DFEVar isCycle87_ID = (cycleCount === 87 & isValidPkg);
+	  DFEVar isCycle106_ID = (cycleCount === 106 & isValidPkg);
+	  DFEVar isCycle125_ID = (cycleCount === 125 & isValidPkg);
+	  DFEVar isCycle144_ID = (cycleCount === 144 & isValidPkg);
+	  DFEVar isCycle163_ID = (cycleCount === 163 & isValidPkg);
+	  DFEVar isCycle182_ID = (cycleCount === 182 & isValidPkg);
+
+	  DFEVar writeVolumeMultiple = isCycle9_VM | isCycle28_VM | isCycle47_VM | isCycle66_VM | isCycle85_VM
+                                 | isCycle104_VM | isCycle123_VM | isCycle143_VM | isCycle162_VM | isCycle181_VM;
+
+	  DFEVar writeInstrumentID = isCycle10_ID  | isCycle29_ID | isCycle48_ID | isCycle68_ID | isCycle87_ID
+	                           | isCycle106_ID  | isCycle125_ID | isCycle144_ID | isCycle163_ID | isCycle182_ID;
+
+	  DFEVar increaseWriteAddress = isCycle9_VM | isCycle28_VM | isCycle47_VM | isCycle66_VM | isCycle85_VM
+                                  | isCycle104_VM | isCycle123_VM | isCycle143_VM | isCycle162_VM | isCycle181_VM;
+
+	  Params itemsAccParams =
+	      Reductions.accumulator.makeAccumulatorConfig(ItemType.uint8_t).withEnable(increaseWriteAddress);
+      kernel.pushResetBetweenFrames(false);
+	  DFEVar initInstrumentAddress =Reductions.accumulator.makeAccumulator(
+		  kernel.constant.var(1).cast(ItemType.uint8_t), itemsAccParams);
+	  kernel.popResetBetweenFrames();
+
+	    Memory<DFEVar> volumeMultipleMem = CInitInstrumentField.getVolumeMultiple(kernel);
+	    Memory<DFEVector<DFEVar>> instrumentIDMem = CInitInstrumentField.getInstrumentID(kernel);
+
+	    DFEVar VolumeMultiple1 = ItemType.CVolumeMultipleType.newInstance(kernel);
+	    DFEUtils.groupByteToDFEVar32(kernel, VolumeMultiple1, currByte, 1, 0, 4);//start from offset 73
+	    DFEVar cycleBool9_VM = (isCycle9_VM) ? constant.var(DFETypeFactory.dfeRawBits(32), Bits.allOnes(32)) : constant.var(DFETypeFactory.dfeRawBits(32), Bits.allZeros(32));
+	    cycleBool9_VM.cast(DFETypeFactory.dfeUInt(32));
+	    DFEVar VolumeMultipleFinal1 = VolumeMultiple1.cast(DFETypeFactory.dfeUInt(32))  & cycleBool9_VM.cast(DFETypeFactory.dfeUInt(32));
+
+
+	    debug.simPrintf(isCycle9_VM, "VolumeMultiple parsed: %d\n",VolumeMultiple1);
+
+	    DFEVar VolumeMultiple2 = ItemType.CVolumeMultipleType.newInstance(kernel);
+	    DFEUtils.groupByteToDFEVar32(kernel, VolumeMultiple2, currByte, 2, 0, 4);
+	    DFEVar cycleBool28_VM = (isCycle28_VM) ? constant.var(DFETypeFactory.dfeRawBits(32), Bits.allOnes(32)) : constant.var(DFETypeFactory.dfeRawBits(32), Bits.allZeros(32));
+	    cycleBool28_VM.cast(DFETypeFactory.dfeUInt(32));
+	    DFEVar VolumeMultipleFinal2 = VolumeMultiple2.cast(DFETypeFactory.dfeUInt(32))  & cycleBool28_VM.cast(DFETypeFactory.dfeUInt(32));
+
+	    debug.simPrintf(isCycle28_VM, "VolumeMultiple parsed: %d\n",VolumeMultiple2);
+
+	    DFEVar VolumeMultiple3 = ItemType.CVolumeMultipleType.newInstance(kernel);
+	    DFEUtils.groupByteToDFEVar32(kernel, VolumeMultiple3, currByte, 3, 0, 4);
+	    DFEVar cycleBool47_VM = (isCycle47_VM) ? constant.var(DFETypeFactory.dfeRawBits(32), Bits.allOnes(32)) : constant.var(DFETypeFactory.dfeRawBits(32), Bits.allZeros(32));
+	    cycleBool47_VM.cast(DFETypeFactory.dfeUInt(32));
+	    DFEVar VolumeMultipleFinal3 = VolumeMultiple3.cast(DFETypeFactory.dfeUInt(32))  & cycleBool47_VM.cast(DFETypeFactory.dfeUInt(32));
+
+	    DFEVar VolumeMultiple4 = ItemType.CVolumeMultipleType.newInstance(kernel);
+	    DFEUtils.groupByteToDFEVar32(kernel, VolumeMultiple4, currByte, 4, 0, 4);
+	    DFEVar cycleBool66_VM = (isCycle66_VM) ? constant.var(DFETypeFactory.dfeRawBits(32), Bits.allOnes(32)) : constant.var(DFETypeFactory.dfeRawBits(32), Bits.allZeros(32));
+	    cycleBool66_VM.cast(DFETypeFactory.dfeUInt(32));
+	    DFEVar VolumeMultipleFinal4 = VolumeMultiple4.cast(DFETypeFactory.dfeUInt(32))  & cycleBool66_VM.cast(DFETypeFactory.dfeUInt(32));
+
+	    DFEVar VolumeMultiple5 = ItemType.CVolumeMultipleType.newInstance(kernel);
+	    DFEUtils.groupByteToDFEVar32(kernel, VolumeMultiple5, currByte, 5, 0, 4);
+	    DFEVar cycleBool85_VM = (isCycle85_VM) ? constant.var(DFETypeFactory.dfeRawBits(32), Bits.allOnes(32)) : constant.var(DFETypeFactory.dfeRawBits(32), Bits.allZeros(32));
+	    cycleBool85_VM.cast(DFETypeFactory.dfeUInt(32));
+	    DFEVar VolumeMultipleFinal5 = VolumeMultiple5.cast(DFETypeFactory.dfeUInt(32))  & cycleBool85_VM.cast(DFETypeFactory.dfeUInt(32));
+
+	    DFEVar VolumeMultiple6 = ItemType.CVolumeMultipleType.newInstance(kernel);
+	    DFEUtils.groupByteToDFEVar32(kernel, VolumeMultiple6, currByte, 6, 0, 4);
+	    DFEVar cycleBool104_VM = (isCycle104_VM) ? constant.var(DFETypeFactory.dfeRawBits(32), Bits.allOnes(32)) : constant.var(DFETypeFactory.dfeRawBits(32), Bits.allZeros(32));
+	    cycleBool104_VM.cast(DFETypeFactory.dfeUInt(32));
+	    DFEVar VolumeMultipleFinal6 = VolumeMultiple6.cast(DFETypeFactory.dfeUInt(32))  & cycleBool104_VM.cast(DFETypeFactory.dfeUInt(32));
+
+	    DFEVar VolumeMultiple7 = ItemType.CVolumeMultipleType.newInstance(kernel);
+	    DFEUtils.groupByteToDFEVar32(kernel, VolumeMultiple7, currByte, 7, 0, 4);
+	    DFEVar cycleBool123_VM = (isCycle123_VM) ? constant.var(DFETypeFactory.dfeRawBits(32), Bits.allOnes(32)) : constant.var(DFETypeFactory.dfeRawBits(32), Bits.allZeros(32));
+	    cycleBool123_VM.cast(DFETypeFactory.dfeUInt(32));
+	    DFEVar VolumeMultipleFinal7 = VolumeMultiple7.cast(DFETypeFactory.dfeUInt(32))  & cycleBool123_VM.cast(DFETypeFactory.dfeUInt(32));
+
+	    DFEVar VolumeMultiple8 = ItemType.CVolumeMultipleType.newInstance(kernel);
+	    DFEUtils.groupByteToDFEVar32(kernel, VolumeMultiple8, currByte, 0, 0, 4);
+	    DFEVar cycleBool143_VM = (isCycle143_VM) ? constant.var(DFETypeFactory.dfeRawBits(32), Bits.allOnes(32)) : constant.var(DFETypeFactory.dfeRawBits(32), Bits.allZeros(32));
+	    cycleBool143_VM.cast(DFETypeFactory.dfeUInt(32));
+	    DFEVar VolumeMultipleFinal8 = VolumeMultiple8.cast(DFETypeFactory.dfeUInt(32))  & cycleBool143_VM.cast(DFETypeFactory.dfeUInt(32));
+
+	    debug.simPrintf(isCycle143_VM, "VolumeMultiple parsed: %d\n",VolumeMultiple8);
+
+	    DFEVar VolumeMultiple9 = ItemType.CVolumeMultipleType.newInstance(kernel);
+	    DFEUtils.groupByteToDFEVar32(kernel, VolumeMultiple9, currByte, 1, 0, 4);
+	    DFEVar cycleBool162_VM = (isCycle162_VM) ? constant.var(DFETypeFactory.dfeRawBits(32), Bits.allOnes(32)) : constant.var(DFETypeFactory.dfeRawBits(32), Bits.allZeros(32));
+	    cycleBool162_VM.cast(DFETypeFactory.dfeUInt(32));
+	    DFEVar VolumeMultipleFinal9 = VolumeMultiple9.cast(DFETypeFactory.dfeUInt(32))  & cycleBool162_VM.cast(DFETypeFactory.dfeUInt(32));
+
+	    DFEVar VolumeMultiple10 = ItemType.CVolumeMultipleType.newInstance(kernel);
+	    DFEUtils.groupByteToDFEVar32(kernel, VolumeMultiple10, currByte, 2, 0, 4);
+	    DFEVar cycleBool181_VM = (isCycle181_VM) ? constant.var(DFETypeFactory.dfeRawBits(32), Bits.allOnes(32)) : constant.var(DFETypeFactory.dfeRawBits(32), Bits.allZeros(32));
+	    cycleBool181_VM.cast(DFETypeFactory.dfeUInt(32));
+	    DFEVar VolumeMultipleFinal10 = VolumeMultiple10.cast(DFETypeFactory.dfeUInt(32))  & cycleBool181_VM.cast(DFETypeFactory.dfeUInt(32));
+
+
+
+
+	    DFEVector<DFEVar> InstrumentID1 = ItemType.CInstrumentIDType.newInstance(kernel);
+	    DFEUtils.groupCharToVector(kernel, InstrumentID1, currByte, 5, 0, 31);
+	    DFEVar cycleBool10_ID = (isCycle10_ID) ? constant.var(DFETypeFactory.dfeRawBits(248), Bits.allOnes(248)) : constant.var(DFETypeFactory.dfeRawBits(248), Bits.allZeros(248));
+	    DFEVar InstrumentIDFinal1 = InstrumentID1.pack() & cycleBool10_ID;
+
+	    debug.simPrintf(isCycle10_ID, "InstrumentID: ");
+	    for(int i = 0; i < 31; i++){
+	    	debug.simPrintf(isCycle10_ID, "%d ", InstrumentID1[i]);
+	    }
+	    debug.simPrintf(isCycle10_ID, "\n");
+
+	    DFEVector<DFEVar> InstrumentID2 = ItemType.CInstrumentIDType.newInstance(kernel);
+	    DFEUtils.groupCharToVector(kernel, InstrumentID2, currByte, 6, 0, 31);
+	    DFEVar cycleBool29_ID = (isCycle29_ID) ? constant.var(DFETypeFactory.dfeRawBits(248), Bits.allOnes(248)) : constant.var(DFETypeFactory.dfeRawBits(248), Bits.allZeros(248));
+	    DFEVar InstrumentIDFinal2 = InstrumentID2.pack() & cycleBool29_ID;
+
+	    DFEVector<DFEVar> InstrumentID3 = ItemType.CInstrumentIDType.newInstance(kernel);
+	    DFEUtils.groupCharToVector(kernel, InstrumentID3, currByte, 7, 0, 31);
+	    DFEVar cycleBool48_ID = (isCycle48_ID) ? constant.var(DFETypeFactory.dfeRawBits(248), Bits.allOnes(248)) : constant.var(DFETypeFactory.dfeRawBits(248), Bits.allZeros(248));
+	    DFEVar InstrumentIDFinal3 = InstrumentID3.pack() & cycleBool48_ID;
+
+	    DFEVector<DFEVar> InstrumentID4 = ItemType.CInstrumentIDType.newInstance(kernel);
+	    DFEUtils.groupCharToVector(kernel, InstrumentID4, currByte, 0, 0, 31);
+	    DFEVar cycleBool68_ID = (isCycle68_ID) ? constant.var(DFETypeFactory.dfeRawBits(248), Bits.allOnes(248)) : constant.var(DFETypeFactory.dfeRawBits(248), Bits.allZeros(248));
+	    DFEVar InstrumentIDFinal4 = InstrumentID4.pack() & cycleBool68_ID;
+
+	    DFEVector<DFEVar> InstrumentID5 = ItemType.CInstrumentIDType.newInstance(kernel);
+	    DFEUtils.groupCharToVector(kernel, InstrumentID5, currByte, 1, 0, 31);
+	    DFEVar cycleBool87_ID = (isCycle87_ID) ? constant.var(DFETypeFactory.dfeRawBits(248), Bits.allOnes(248)) : constant.var(DFETypeFactory.dfeRawBits(248), Bits.allZeros(248));
+	    DFEVar InstrumentIDFinal5 = InstrumentID5.pack() & cycleBool87_ID;
+
+	    DFEVector<DFEVar> InstrumentID6 = ItemType.CInstrumentIDType.newInstance(kernel);
+	    DFEUtils.groupCharToVector(kernel, InstrumentID6, currByte, 2, 0, 31);
+	    DFEVar cycleBool106_ID = (isCycle106_ID) ? constant.var(DFETypeFactory.dfeRawBits(248), Bits.allOnes(248)) : constant.var(DFETypeFactory.dfeRawBits(248), Bits.allZeros(248));
+	    DFEVar InstrumentIDFinal6 = InstrumentID6.pack() & cycleBool106_ID;
+
+	    DFEVector<DFEVar> InstrumentID7 = ItemType.CInstrumentIDType.newInstance(kernel);
+	    DFEUtils.groupCharToVector(kernel, InstrumentID7, currByte, 3, 0, 31);
+	    DFEVar cycleBool125_ID = (isCycle125_ID) ? constant.var(DFETypeFactory.dfeRawBits(248), Bits.allOnes(248)) : constant.var(DFETypeFactory.dfeRawBits(248), Bits.allZeros(248));
+	    DFEVar InstrumentIDFinal7 = InstrumentID7.pack() & cycleBool125_ID;
+
+	    DFEVector<DFEVar> InstrumentID8 = ItemType.CInstrumentIDType.newInstance(kernel);
+	    DFEUtils.groupCharToVector(kernel, InstrumentID8, currByte, 4, 0, 31);
+	    DFEVar cycleBool144_ID = (isCycle144_ID) ? constant.var(DFETypeFactory.dfeRawBits(248), Bits.allOnes(248)) : constant.var(DFETypeFactory.dfeRawBits(248), Bits.allZeros(248));
+	    DFEVar InstrumentIDFinal8 = InstrumentID8.pack() & cycleBool144_ID;
+
+	    debug.simPrintf(isCycle144_ID, "InstrumentID:");
+	    for(int i = 0; i < 31; i++){
+	    	debug.simPrintf(isCycle144_ID, "%d ", InstrumentID8[i]);
+	    }
+	    debug.simPrintf(isCycle144_ID, "\n");
+
+	    DFEVector<DFEVar> InstrumentID9 = ItemType.CInstrumentIDType.newInstance(kernel);
+	    DFEUtils.groupCharToVector(kernel, InstrumentID9, currByte, 5, 0, 31);
+	    DFEVar cycleBool163_ID = (isCycle163_ID) ? constant.var(DFETypeFactory.dfeRawBits(248), Bits.allOnes(248)) : constant.var(DFETypeFactory.dfeRawBits(248), Bits.allZeros(248));
+	    DFEVar InstrumentIDFinal9 = InstrumentID9.pack() & cycleBool163_ID;
+
+	    DFEVector<DFEVar> InstrumentID10 = ItemType.CInstrumentIDType.newInstance(kernel);
+	    DFEUtils.groupCharToVector(kernel, InstrumentID10, currByte, 6, 0, 31);
+	    DFEVar cycleBool182_ID = (isCycle182_ID) ? constant.var(DFETypeFactory.dfeRawBits(248), Bits.allOnes(248)) : constant.var(DFETypeFactory.dfeRawBits(248), Bits.allZeros(248));
+	    DFEVar InstrumentIDFinal10 = InstrumentID10.pack() & cycleBool182_ID;
+
+
+
+	    DFEVar volumeMultiple = VolumeMultipleFinal1 | VolumeMultipleFinal2 | VolumeMultipleFinal3 | VolumeMultipleFinal4 | VolumeMultipleFinal5
+	                          | VolumeMultipleFinal6 | VolumeMultipleFinal7 | VolumeMultipleFinal8 | VolumeMultipleFinal9 | VolumeMultipleFinal10;
+
+	    DFEVar InstrumentID = InstrumentIDFinal1 | InstrumentIDFinal2 | InstrumentIDFinal3 | InstrumentIDFinal4 | InstrumentIDFinal5
+	                        | InstrumentIDFinal6 | InstrumentIDFinal7 | InstrumentIDFinal8 | InstrumentIDFinal9 | InstrumentIDFinal10;
+
+
+	    volumeMultipleMem.write(initInstrumentAddress, volumeMultiple, writeVolumeMultiple);
+
+	    DFEVector<DFEVar> InstrumentIDVec = ItemType.CInstrumentIDType.newInstance(kernel);
+	    DFEUtils.convertDFEVarToVector(InstrumentIDVec, InstrumentID, 8);
+
+	    instrumentIDMem.write(initInstrumentAddress, InstrumentIDVec, writeInstrumentID);
+
+	    //read
+	    DFEVar volumeMultipleRead = volumeMultipleMem.read(constant.var(1).cast(ItemType.uint8_t));
+	    DFEVector<DFEVar> instrumentIDRead = instrumentIDMem.read(initInstrumentAddress);
+
+	    debug.simPrintf(isCycle143_VM,"VolumeMultiple from bram[1]: %d\n", volumeMultipleRead);
+
+
+	    return kernel.constant.var(true);
+  }
+}

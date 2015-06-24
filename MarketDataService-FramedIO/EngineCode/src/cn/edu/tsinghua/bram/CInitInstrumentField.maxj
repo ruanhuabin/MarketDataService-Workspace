@@ -1,0 +1,27 @@
+package cn.edu.tsinghua.bram;
+
+import cn.edu.tsinghua.tidhandler.ItemType;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLib;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+
+
+public class CInitInstrumentField {
+
+	 private static final int totalBitSize = 8;
+	  private static final int MAX_NUM_INSTRUMENT = (int)Math.pow(2, totalBitSize);
+
+	private static Memory<DFEVar> volumeMultiple = null;
+	private static Memory<DFEVector<DFEVar>> instrumentID = null;
+
+	public static Memory<DFEVar> getVolumeMultiple(KernelLib kernel) {
+	    volumeMultiple = kernel.mem.alloc(ItemType.CVolumeMultipleType,  MAX_NUM_INSTRUMENT);
+	    return volumeMultiple;
+	}
+	public static Memory<DFEVector<DFEVar>> getInstrumentID(KernelLib kernel) {
+	    instrumentID = kernel.mem.alloc(ItemType.CInstrumentIDType, MAX_NUM_INSTRUMENT);
+	    return instrumentID;
+	}
+}

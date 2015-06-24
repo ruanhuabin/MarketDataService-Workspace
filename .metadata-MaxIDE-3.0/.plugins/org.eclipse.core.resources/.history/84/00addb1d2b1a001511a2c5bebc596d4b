@@ -1,0 +1,150 @@
+package cn.edu.tsinghua.kernel;
+
+
+import cn.edu.tsinghua.constant.TID;
+import cn.edu.tsinghua.format.OutputFrameFormat;
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.state.GlobalStateItems;
+import cn.edu.tsinghua.tidhandler.NtfCommPhaseChangeHandler;
+import cn.edu.tsinghua.tidhandler.NtfExchangeDataSyncHandler;
+import cn.edu.tsinghua.tidhandler.NtfInitInstrumentHandler;
+import cn.edu.tsinghua.tidhandler.NtfMarketDataHandler;
+import cn.edu.tsinghua.tidhandler.NtfOrderHandler;
+import cn.edu.tsinghua.tidhandler.NtfSettlementGroupDataSyncHandler;
+import cn.edu.tsinghua.tidhandler.TidHandlerBase;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+import com.maxeler.networking.v1.kernel_types.UDPOneToOneRXType;
+import com.maxeler.networking.v1.kernel_types.UDPOneToOneTXType;
+
+public class MarketDataServiceKernel extends FramedKernel {
+
+	/**
+	 * @param parameters
+	 */
+	/**
+	 * @param parameters
+	 */
+	/**
+	 * @param parameters
+	 */
+	/**
+	 * @param parameters
+	 */
+	/**
+	 * @param parameters
+	 */
+	public MarketDataServiceKernel(KernelParameters parameters) {
+		super(parameters);
+
+		FrameData<XTPFrameFormat> frameIn = io.frameInput(Name.frameInput, new XTPFrameFormat(), new UDPOneToOneRXType());
+		DFEVar contentLen = frameIn[Name.XTPHeader.contentLength].cast(dfeUInt(16));
+
+		frameIn.setSizeForVariableField(Name.XTPHeader.packageContent, contentLen);
+
+		DFEVar [] currByte = new DFEVar[XTPFrameFormat.NUM_BYTES_PER_CYCLE];
+		for (int i = 0; i < XTPFrameFormat.NUM_BYTES_PER_CYCLE; i++) {
+			currByte[i] = frameIn.getAsVector(Name.XTPHeader.packageContent)[i].cast(dfeUInt(8));
+		}
+
+		DFEVar cycleCount = control.count.simpleCounter(16);
+		DFEVar beyondLastItem = cycleCount > (contentLen - 1) >> 3;
+
+		debug.simPrintf(cycleCount === 0, "contentLen: %d\n", contentLen);
+		debug.simPrintf("======>current cycle: %d\n", cycleCount);
+		debug.simPrintf("bytes in current cycle: ");
+		for (int i = 0; i < XTPFrameFormat.NUM_BYTES_PER_CYCLE; i++)
+		{
+			debug.simPrintf("%02x ", currByte[i]);
+		}
+		debug.simPrintf("\n");
+
+
+
+		//Init comm phase
+		TidHandlerBase tidHandler = new NtfCommPhaseChangeHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfCommPhaseChange);
+		DFEVar commPhaseNo = tidHandler.process();
+		debug.simPrintf("Kernel Got in Cycle [%d]: commPhaseNo = 0x%02x, GlobalStateItems.commPhaseNo = 0x%02x\n", cycleCount, commPhaseNo, GlobalStateItems.commPhaseNo);
+
+		tidHandler = new NtfExchangeDataSyncHandler(this, frameIn);
+		DFEVar exchangeDataSyncStatus = tidHandler.process();
+		debug.simPrintf("Kernel Got in Cycle [%d]: exchangeDataSyncHandler = %d, GlobalStateItems.exchangeDataSyncStatus = %d\n", cycleCount, exchangeDataSyncStatus, GlobalStateItems.exchangeDataSyncStatus);
+
+		tidHandler = new NtfSettlementGroupDataSyncHandler(this, frameIn);
+		DFEVar settlementGroupDataSyncStatus = tidHandler.process();
+		debug.simPrintf("Kernel Got in Cycle [%d]: settlementGroupDataSyncHandler = %d, settlementGroupDataStatus = %d\n", cycleCount, settlementGroupDataSyncStatus, GlobalStateItems.settlementGroupDataStatus);
+
+
+		tidHandler = new NtfMarketDataHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfMarketData);
+		tidHandler.process();
+	   tidHandler = new NtfInitInstrumentHandler(this, frameIn, currByte, cycleCount, TID.TID_InitInstrument);
+	   tidHandler.process();
+
+	   tidHandler = new NtfOrderHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfOrder);
+
+
+//		NtfCommPhaseChangeHandler commPhaseChangeHandler = new NtfCommPhaseChangeHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfCommPhaseChange);
+//		DFEVar initCommPhaseNoResult = commPhaseChangeHandler.process();
+//		debug.simPrintf("Kernel Got in Cycle [%d], commPhaseNo bytes:", cycleCount);
+//		for(int i = 0; i < 2; i ++)
+//		{
+//			debug.simPrintf("0x%02x ", initCommPhaseNoResult.slice(i * 8, 8));
+//		}
+//		debug.simPrintf("\n");
+//
+//		//Init exchange data
+//		NtfExchangeDataSyncHandler exchangeDataSyncHandler = new NtfExchangeDataSyncHandler(this, frameIn);
+//		exchangeDataSyncHandler.process();
+//		debug.simPrintf("=========================>>GlobalStateItems.exchangeDataStatus = %d\n", GlobalStateItems.exchangeSyncStatus);
+//
+//		//Init settle group data
+//		NtfSettlementGroupDataSyncHandler settlementGroupDataSyncHandler = new NtfSettlementGroupDataSyncHandler(this, frameIn);
+//		settlementGroupDataSyncHandler.process();
+//		debug.simPrintf("=========================>>settlementGroupDataStatus = %d\n", GlobalStateItems.settlementGroupDataStatus);
+
+//		ExchangeDataSyncStart eds = new ExchangeDataSyncStart(this, frameIn, currByte, cycleCount, TID.TID_ExchangeDataSyncStart);
+//		eds.process();
+		//Init Market Data Here
+		//....Debuging
+
+		//Init Instrument Data Here
+		//....Debuging
+
+
+		FrameData<OutputFrameFormat> frameOut = new FrameData<OutputFrameFormat>(this, new OutputFrameFormat(), new UDPOneToOneTXType());
+		frameInToFrameOut(frameOut, frameIn);
+		frameOut.linkfield[UDPOneToOneTXType.SOCKET] <== frameIn.linkfield[UDPOneToOneRXType.SOCKET];
+		io.frameOutput("frameOut", frameOut, constant.var(true), beyondLastItem);
+	}
+
+	private void frameInToFrameOut(FrameData<OutputFrameFormat> frameOut, FrameData<XTPFrameFormat> frameIn) {
+		frameOut[Name.XTPHeader.type] <== frameIn[Name.XTPHeader.type];
+		frameOut[Name.XTPHeader.chain] <== frameIn[Name.XTPHeader.chain];
+		frameOut[Name.XTPHeader.fttype] <== frameIn[Name.XTPHeader.fttype];
+		frameOut[Name.XTPHeader.pading1] <== frameIn[Name.XTPHeader.pading1];
+		frameOut[Name.XTPHeader.contentLength] <== frameIn[Name.XTPHeader.contentLength];
+		frameOut[Name.XTPHeader.pading2] <== frameIn[Name.XTPHeader.pading2];
+		frameOut[Name.XTPHeader.subjectID] <== frameIn[Name.XTPHeader.subjectID];
+		frameOut[Name.XTPHeader.tid] <== frameIn[Name.XTPHeader.tid];
+		frameOut[Name.XTPHeader.commPhaseNo] <== frameIn[Name.XTPHeader.commPhaseNo];
+		frameOut[Name.XTPHeader.sequenceNo] <== frameIn[Name.XTPHeader.sequenceNo];
+		frameOut[Name.XTPHeader.frontSeqNo] <== frameIn[Name.XTPHeader.frontSeqNo];
+		frameOut[Name.XTPHeader.requestID] <== frameIn[Name.XTPHeader.requestID];
+		frameOut[Name.XTPHeader.sessionID] <== frameIn[Name.XTPHeader.sessionID];
+		frameOut[Name.XTPHeader.frontID] <== frameIn[Name.XTPHeader.frontID];
+		frameOut[Name.XTPHeader.pading3] <== frameIn[Name.XTPHeader.pading3];
+		frameOut[Name.XTPHeader.groupID] <== frameIn[Name.XTPHeader.groupID];
+		frameOut[Name.XTPHeader.oldSubjectID] <== frameIn[Name.XTPHeader.oldSubjectID];
+		frameOut[Name.XTPHeader.convergenceID] <== frameIn[Name.XTPHeader.convergenceID];
+		frameOut[Name.XTPHeader.oldSequenceNo] <== frameIn[Name.XTPHeader.oldSequenceNo];
+		frameOut[Name.XTPHeader.pubNodeID] <== frameIn[Name.XTPHeader.pubNodeID];
+		frameOut[Name.XTPHeader.riskID] <== frameIn[Name.XTPHeader.riskID];
+		frameOut[Name.XTPHeader.matchID] <== frameIn[Name.XTPHeader.matchID];
+		frameOut[Name.XTPHeader.pading4] <== frameIn[Name.XTPHeader.pading4];
+		frameOut[Name.XTPHeader.errorID] <== frameIn[Name.XTPHeader.errorID];
+	}
+
+}

@@ -1,0 +1,83 @@
+package cn.edu.tsinghua.utils;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLib;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+
+public class DFEUtils {
+
+  /**
+   * the resulting string will be: v9v8v7v6v5v4v3v2v1
+   * where the most significant byte will be v9 and the least significant byte
+   * will be v1
+   *
+   * In CPU char array, the least significant byte locates before the most significant byte
+   *
+   */
+  public static DFEVar concatenateChar(DFEVar v1, DFEVar v2, DFEVar v3, DFEVar v4, DFEVar v5, DFEVar v6,
+                                 DFEVar v7, DFEVar v8, DFEVar v9)
+  {
+    return v9.cat(v8).cat(v7).cat(v6).cat(v5).cat(v4).cat(v3).cat(v2).cat(v1);
+  }
+
+  public static void groupCharToVector(DFEVector<DFEVar> retVec, DFEVar ... chars) {
+    for (int i = 0; i < retVec.getSize(); i++) {
+      retVec[i] <== chars[i];
+    }
+  }
+
+  public static void convertDFEVarToVector(DFEVector<DFEVar> vec, DFEVar var, int charLen)
+  {
+	  for(int i = 0; i < vec.getSize(); i++){
+		  DFEVar ch = var.slice(i * charLen, charLen).cast(DFETypeFactory.dfeUInt(charLen));
+		  vec[i] <== ch;
+	  }
+
+  }
+
+  public static void groupCharToVector(KernelLib kernel, DFEVector<DFEVar> retVec,
+      DFEVar [] currByte, int startIdx, int startStreamOffset, int len)
+  {
+    for (int i = 0; i < retVec.getSize(); i++) {
+      int currentIndex = (startIdx + i) % currByte.length;
+      int currentOffset = startStreamOffset + (startIdx + i) / currByte.length;
+      retVec[i] <== kernel.stream.offset(currByte[currentIndex], currentOffset);
+    }
+  }
+
+  public static void groupByteToDFEVar32(KernelLib kernel, DFEVar retVar,
+	      DFEVar [] currByte, int startIdx, int startStreamOffset, int len)
+	  {
+	      DFEVar retVarTmp = kernel.stream.offset(currByte[startIdx], startStreamOffset);
+	    for (int i = 1; i < len; i++) {
+	      int currentIndex = (startIdx + i) % currByte.length;
+	      int currentOffset = startStreamOffset + (startIdx + i) / currByte.length;
+	      retVarTmp = retVarTmp # kernel.stream.offset(currByte[currentIndex], currentOffset);
+	    }
+	    retVar.connect(retVarTmp.cast(DFETypeFactory.dfeUInt(32)));
+	  }
+
+  public static void groupByteToDFEVar64(KernelLib kernel, DFEVar retVar,
+	      DFEVar [] currByte, int startIdx, int startStreamOffset, int len)
+	  {
+	      DFEVar retVarTmp = kernel.stream.offset(currByte[startIdx], startStreamOffset);
+	    for (int i = 1; i < len; i++) {
+	      int currentIndex = (startIdx + i) % currByte.length;
+	      int currentOffset = startStreamOffset + (startIdx + i) / currByte.length;
+	      retVarTmp = retVarTmp # kernel.stream.offset(currByte[currentIndex], currentOffset);
+	    }
+	    retVar.connect(retVarTmp.cast(DFETypeFactory.dfeFloat(11, 53)));
+	  }
+
+
+
+  public static void printCharVector(KernelLib kernel, String title, DFEVector<DFEVar> string, DFEVar enable) {
+    kernel.debug.simPrintf(enable, title);
+    for (int i = 0; i < string.getSize(); i++) {
+      DFEVar c = string[i];
+      kernel.debug.simPrintf(enable, "%02x ", c);
+    }
+    //kernel.debug.simPrintf(enable, "\n");
+  }
+}

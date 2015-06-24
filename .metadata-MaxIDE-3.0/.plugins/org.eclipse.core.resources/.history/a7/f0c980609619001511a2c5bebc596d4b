@@ -1,0 +1,10 @@
+package cn.edu.tsinghua.state;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+public class GlobalStateItems {
+
+	public static DFEVar commPhaseNo = null;
+	public static DFEVar exchangeSyncStatus = null;
+	public static DFEVar settlementGroupDataStatus = null;
+
+}

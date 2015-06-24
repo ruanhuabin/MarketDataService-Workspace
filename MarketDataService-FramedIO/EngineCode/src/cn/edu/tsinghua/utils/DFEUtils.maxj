@@ -1,6 +1,7 @@
 package cn.edu.tsinghua.utils;
 
 import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLib;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
 
@@ -26,6 +27,15 @@ public class DFEUtils {
     }
   }
 
+  public static void convertDFEVarToVector(DFEVector<DFEVar> vec, DFEVar var, int charLen)
+  {
+	  for(int i = 0; i < vec.getSize(); i++){
+		  DFEVar ch = var.slice(i * charLen, charLen).cast(DFETypeFactory.dfeUInt(charLen));
+		  vec[i] <== ch;
+	  }
+
+  }
+
   public static void groupCharToVector(KernelLib kernel, DFEVector<DFEVar> retVec,
       DFEVar [] currByte, int startIdx, int startStreamOffset, int len)
   {
@@ -35,6 +45,32 @@ public class DFEUtils {
       retVec[i] <== kernel.stream.offset(currByte[currentIndex], currentOffset);
     }
   }
+
+  public static void groupByteToDFEVar32(KernelLib kernel, DFEVar retVar,
+	      DFEVar [] currByte, int startIdx, int startStreamOffset, int len)
+	  {
+	      DFEVar retVarTmp = kernel.stream.offset(currByte[startIdx], startStreamOffset);
+	    for (int i = 1; i < len; i++) {
+	      int currentIndex = (startIdx + i) % currByte.length;
+	      int currentOffset = startStreamOffset + (startIdx + i) / currByte.length;
+	      retVarTmp = retVarTmp # kernel.stream.offset(currByte[currentIndex], currentOffset);
+	    }
+	    retVar.connect(retVarTmp.cast(DFETypeFactory.dfeUInt(32)));
+	  }
+
+  public static void groupByteToDFEVar64(KernelLib kernel, DFEVar retVar,
+	      DFEVar [] currByte, int startIdx, int startStreamOffset, int len)
+	  {
+	      DFEVar retVarTmp = kernel.stream.offset(currByte[startIdx], startStreamOffset);
+	    for (int i = 1; i < len; i++) {
+	      int currentIndex = (startIdx + i) % currByte.length;
+	      int currentOffset = startStreamOffset + (startIdx + i) / currByte.length;
+	      retVarTmp = retVarTmp # kernel.stream.offset(currByte[currentIndex], currentOffset);
+	    }
+	    retVar.connect(retVarTmp.cast(DFETypeFactory.dfeFloat(11, 53)));
+	  }
+
+
 
   public static void printCharVector(KernelLib kernel, String title, DFEVector<DFEVar> string, DFEVar enable) {
     kernel.debug.simPrintf(enable, title);

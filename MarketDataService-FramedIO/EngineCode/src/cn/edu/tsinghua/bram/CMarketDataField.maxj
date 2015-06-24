@@ -70,4 +70,87 @@ public class CMarketDataField {
     LowestPrice = kernel.mem.alloc(ItemType.CPriceType, MAX_NUM_INSTRUMENT);
     return LowestPrice;
   }
+
+  private static Memory<DFEVar> Volume = null;
+  public static Memory<DFEVar> getVolume(KernelLib kernel) {
+    Volume = kernel.mem.alloc(ItemType.CVolumeType, MAX_NUM_INSTRUMENT);
+    return Volume;
+  }
+
+  private static Memory<DFEVar>  TurnOver= null;
+  public static Memory<DFEVar> getTurnOver(KernelLib kernel) {
+    TurnOver = kernel.mem.alloc(ItemType.CMoneyType, MAX_NUM_INSTRUMENT);
+    return TurnOver;
+  }
+
+
+  private static Memory<DFEVar> OpenInterest = null;
+  public static Memory<DFEVar> get(KernelLib kernel) {
+    OpenInterest = kernel.mem.alloc(ItemType.CLargeVolumeType, MAX_NUM_INSTRUMENT);
+    return OpenInterest;
+  }
+
+
+  private static Memory<DFEVar>  ClosePrice = null;
+  public static Memory<DFEVar> getClosePrice(KernelLib kernel) {
+    ClosePrice = kernel.mem.alloc(ItemType.CPriceType, MAX_NUM_INSTRUMENT);
+    return ClosePrice;
+  }
+
+
+  private static Memory<DFEVar>  SettlementPrice = null;
+  public static Memory<DFEVar> getSettlementPrice(KernelLib kernel) {
+    SettlementPrice = kernel.mem.alloc(ItemType.CPriceType, MAX_NUM_INSTRUMENT);
+    return SettlementPrice;
+  }
+
+
+  private static Memory<DFEVar> UpperLimitPrice = null;
+  public static Memory<DFEVar> getUpperLimitPrice(KernelLib kernel) {
+    UpperLimitPrice = kernel.mem.alloc(ItemType.CPriceType, MAX_NUM_INSTRUMENT);
+    return UpperLimitPrice;
+  }
+
+
+  private static Memory<DFEVar>  LowerLimitPrice = null;
+  public static Memory<DFEVar> getLowerLimitPrice(KernelLib kernel) {
+    LowerLimitPrice = kernel.mem.alloc(ItemType.CPriceType, MAX_NUM_INSTRUMENT);
+    return LowerLimitPrice;
+  }
+
+
+  private static Memory<DFEVar> PreDelta = null;
+  public static Memory<DFEVar> getPreDelta(KernelLib kernel) {
+    PreDelta= kernel.mem.alloc(ItemType.CRatioType, MAX_NUM_INSTRUMENT);
+    return PreDelta;
+  }
+
+
+  private static Memory<DFEVar> CurrDelta = null;
+  public static Memory<DFEVar> getCurrDelta(KernelLib kernel) {
+    CurrDelta = kernel.mem.alloc(ItemType.CRatioType, MAX_NUM_INSTRUMENT);
+    return CurrDelta;
+  }
+
+
+  private static Memory<DFEVector<DFEVar>> UpdateTime = null;
+  public static Memory<DFEVector<DFEVar>> getUpdateTime(KernelLib kernel) {
+    UpdateTime = kernel.mem.alloc(ItemType.CTimeType, MAX_NUM_INSTRUMENT);
+    return UpdateTime;
+  }
+
+
+  private static Memory<DFEVar>  UpdateMillisec= null;
+  public static Memory<DFEVar> getUpdateMillisec(KernelLib kernel) {
+    UpdateMillisec = kernel.mem.alloc(ItemType.CMillisecType, MAX_NUM_INSTRUMENT);
+    return UpdateMillisec;
+  }
+
+
+  private static Memory<DFEVector<DFEVar>> InstrumentID = null;
+  public static Memory<DFEVector<DFEVar>> getInstrumentID(KernelLib kernel) {
+    InstrumentID = kernel.mem.alloc(ItemType.CInstrumentIDType, MAX_NUM_INSTRUMENT);
+    return InstrumentID;
+  }
+
 }

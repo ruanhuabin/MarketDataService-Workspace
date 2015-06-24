@@ -17,7 +17,7 @@
 #      REVISION:  ---
 #===============================================================================
 
-cd ../ && scons
+cd ../ && scons -j 4
 if [ $? -ne 0 ]
 then
     echo "Compile or Link Failed"

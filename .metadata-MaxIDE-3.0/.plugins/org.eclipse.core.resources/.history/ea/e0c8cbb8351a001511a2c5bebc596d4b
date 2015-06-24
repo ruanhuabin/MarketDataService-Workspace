@@ -1,0 +1,48 @@
+package cn.edu.tsinghua.tidhandler;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEFix;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEFloat;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVectorType;
+
+public class ItemType {
+  public static final DFEFix uint8_t = DFETypeFactory.dfeUInt(8);
+  public static final DFEFix uint16_t = DFETypeFactory.dfeUInt(16);
+  public static final DFEFix uint32_t = DFETypeFactory.dfeUInt(32);
+  public static final DFEFloat double_t = DFETypeFactory.dfeFloat(11, 53);
+  private static final DFEVectorType<DFEVar> char9_t = new DFEVectorType<DFEVar>(uint8_t, 9);
+
+  private static final DFEVectorType<DFEVar> char31_t = new DFEVectorType<DFEVar>(uint8_t, 31);
+  private static final DFEVectorType<DFEVar> char13_t = new DFEVectorType<DFEVar>(uint8_t, 13);
+  private static final DFEVectorType<DFEVar> char1_t = new DFEVectorType<DFEVar>(uint8_t, 31);
+
+  public static final DFEVectorType<DFEVar> CDayType = char9_t;
+  public static final DFEFix CCommPhaseNoType = uint16_t;
+  public static final DFEVectorType<DFEVar> CExchangeIDType = char9_t;
+
+  public static final DFEVectorType<DFEVar> CSettlementGroupIDType = char9_t;
+  public static final DFEFix CSettlementIDType = uint32_t;
+  public static final DFEFloat CPriceType = double_t;
+  public static final DFEFloat CLargeVolumeType = double_t;
+
+  //initInstrument
+  public static final DFEVectorType<DFEVar> CInstrumentIDType = char31_t;
+  public static final DFEFix CVolumeMultipleType = uint32_t;
+
+
+  //OrderSysID
+  public static final DFEVectorType<DFEVar> COrderSysIDType = char13_t;
+  //OrderStatus
+  public static final DFEVectorType<DFEVar> COrderSysIDType = char1_t;
+
+
+  //MarketData
+  public static final DFEFix CVolumeType = uint32_t;
+  public static final DFEFloat CMoneyType = double_t;
+  public static final DFEFloat CRatioType = double_t;
+  public static final DFEVectorType<DFEVar> CTimeType = char9_t;
+  public static final DFEFix CMillisecType = uint32_t;
+
+
+}

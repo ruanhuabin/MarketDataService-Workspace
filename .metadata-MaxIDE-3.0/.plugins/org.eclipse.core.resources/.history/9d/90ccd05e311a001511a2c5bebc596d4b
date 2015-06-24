@@ -1,0 +1,175 @@
+package cn.edu.tsinghua.tidhandler;
+
+
+import cn.edu.tsinghua.bram.COrderField;
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.state.GlobalStateItems;
+import cn.edu.tsinghua.utils.DFEUtils;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+import com.maxeler.maxcompiler.v2.utils.Bits;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public class NtfOrderHandler extends TidHandlerBase {
+	public NtfOrderHandler(FramedKernel k, FrameData<XTPFrameFormat> fin,
+			DFEVar [] bytes, DFEVar count, int expectedTID)
+	{
+		super(k, fin, bytes, count, expectedTID);
+	}
+
+
+
+//	@Override
+//	public DFEVar process() {
+//		DFEVar isCycle0th = (cycleCount === 0 & isValidPkg);
+//
+//		/// this only works when cycleCount == 0
+//		DFEVar fid =      currByte[0].cat(currByte[1]).cast(ItemType.uint16_t);
+//		DFEVar fieldLen = currByte[2].cat(currByte[3]).cast(ItemType.uint16_t);
+//
+//		debug.simPrintf(isCycle0th, "fid: 0X%02x\n", fid);
+//		debug.simPrintf(isCycle0th, "fieldLen: %d\n", fieldLen);
+//
+//		DFEVar isCycle1st = (cycleCount === 1 & isValidPkg);
+//		DFEVector<DFEVar> TradingDay = ItemType.CDayType.newInstance(kernel);
+//		DFEUtils.groupCharToVector(kernel, TradingDay, currByte, 4, -1, 9);
+//
+//		DFEVar CommPhaseNo = currByte[5].cat(currByte[6]).cast(ItemType.CCommPhaseNoType);
+//
+//		DFEUtils.printCharVector(kernel, "Trading day: ", TradingDay, isCycle1st);
+//		debug.simPrintf(isCycle1st, "CommPhaseNo: %d\n", CommPhaseNo);
+//
+//		/// save data to BRAM
+//		Memory<DFEVector<DFEVar>> tradingDayMem = CCommPhaseField.getTradingDay(kernel);
+//		Memory<DFEVar> commphaseNoMem = CCommPhaseField.getCommPhaseNo(kernel);
+//		tradingDayMem.write(constant.var(true), TradingDay, isCycle1st);
+//		commphaseNoMem.write(constant.var(true), CommPhaseNo, isCycle1st);
+//
+//		/// test read them back
+//		DFEVector<DFEVar> tradingDataFromBram = tradingDayMem.read(constant.var(true));
+//		DFEVar commphaseNoFromBram = commphaseNoMem.read(constant.var(true));
+//
+//		DFEVar isCycle2nd = (cycleCount === 2 & isValidPkg);
+//		DFEUtils.printCharVector(kernel, "TradingDay from bram: ", tradingDataFromBram, isCycle2nd);
+//		debug.simPrintf(isCycle2nd, "commphase from bram: %d\n", commphaseNoFromBram);
+//
+//		/// return dummy data
+//		return kernel.constant.var(true);
+//	}
+
+	@Override
+	public DFEVar process() {
+		// TODO Auto-generated method stub
+		COrderField.instrumentID = kernel.constant.var(kernel.dfeRawBits(8*31), Bits.allZeros(8*31));
+		COrderField.orderSysID = kernel.constant.var(kernel.dfeRawBits(8 * 13), Bits.allZeros(8 * 13));
+		COrderField.orderStatus = kernel.constant.var(kernel.dfeUInt(8), Bits.allZeros(8));
+
+		//Equation: startIndex = (77 + 303 * i)%8, cycleth = (77 + 303 * 8)/8
+		DFEVar isCycle9th = (cycleCount.eq(9) & isValidPkg);
+		DFEVector<DFEVar> instrumentID1st = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEUtils.groupCharToVector(kernel, instrumentID1st, currByte, 5, 0, 31);
+		debug.simPrintf(isCycle9th,"Kernel Got in Cycle %d\n", cycleCount);
+		DFEUtils.printCharVector(kernel, "Bytes in InstrumentID:", instrumentID1st, isCycle9th);
+
+
+		DFEVar isCycle47th = (cycleCount.eq(47) & isValidPkg);
+		DFEVector<DFEVar> instrumentID2nd = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEUtils.groupCharToVector(kernel, instrumentID2nd, currByte, 4, 0, 31);
+		DFEUtils.printCharVector(kernel, "Bytes in InstrumentID:", instrumentID2nd, isCycle47th);
+		debug.simPrintf(isCycle47th,"Kernel Got in Cycle %d\n", cycleCount);
+		
+		DFEVar isCycle47th = (cycleCount.eq(47) & isValidPkg);
+		DFEVector<DFEVar> instrumentID2nd = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEUtils.groupCharToVector(kernel, instrumentID2nd, currByte, 4, 0, 31);
+		DFEUtils.printCharVector(kernel, "Bytes in InstrumentID:", instrumentID2nd, isCycle47th);
+		debug.simPrintf(isCycle47th,"Kernel Got in Cycle %d\n", cycleCount);
+		
+		DFEVar isCycle47th = (cycleCount.eq(47) & isValidPkg);
+		DFEVector<DFEVar> instrumentID2nd = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEUtils.groupCharToVector(kernel, instrumentID2nd, currByte, 4, 0, 31);
+		DFEUtils.printCharVector(kernel, "Bytes in InstrumentID:", instrumentID2nd, isCycle47th);
+		debug.simPrintf(isCycle47th,"Kernel Got in Cycle %d\n", cycleCount);
+		
+		DFEVar isCycle47th = (cycleCount.eq(47) & isValidPkg);
+		DFEVector<DFEVar> instrumentID2nd = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEUtils.groupCharToVector(kernel, instrumentID2nd, currByte, 4, 0, 31);
+		DFEUtils.printCharVector(kernel, "Bytes in InstrumentID:", instrumentID2nd, isCycle47th);
+		debug.simPrintf(isCycle47th,"Kernel Got in Cycle %d\n", cycleCount);
+
+
+
+
+
+
+
+
+
+
+//		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//		GlobalStateItems.exchangeDataSyncStatus = constant.var(DFETypeFactory.dfeUInt(2), 1);
+//
+//		DFEVar isCycle0th = (cycleCount === 0 & isValidPkg);
+//
+//		/// this only works when cycleCount == 0
+//		DFEVar fid =      currByte[0].cat(currByte[1]).cast(ItemType.uint16_t);
+//		DFEVar fieldLen = currByte[2].cat(currByte[3]).cast(ItemType.uint16_t);
+//
+//		debug.simPrintf(isCycle0th, "fid: 0X%02x\n", fid);
+//		debug.simPrintf(isCycle0th, "fieldLen: %d\n", fieldLen);
+//
+//		DFEVar isCycle1st = (cycleCount === 1 & isValidPkg);
+//		DFEVector<DFEVar> TradingDay = ItemType.CDayType.newInstance(kernel);
+//		DFEUtils.groupCharToVector(kernel, TradingDay, currByte, 4, -1, 9);
+//
+//		DFEVar commPhaseNo = currByte[5].cat(currByte[6]).cast(ItemType.CCommPhaseNoType);
+//
+//
+//		kernel.pushResetBetweenFrames(false);
+//
+//		DFEVar isCommPhaseChangePktProcess = Reductions.streamHold(isValidPkg, isValidPkg);
+////		debug.simPrintf(">>>>>>>>>>>>>>Kernel Got in Cycle[%d]: isCommPhasePktProcess = %d\n", cycleCount, isCommPhaseChangePktProcess);
+//		commPhaseNo = isCommPhaseChangePktProcess ? Reductions.streamHold(commPhaseNo, isCycle1st ): constant.var(DFETypeFactory.dfeUInt(16), MDGlobalStateConstants.COMM_PHASE_INIT_VALUE);
+////		debug.simPrintf("Kernel Got In process() in Cycle [%d]:\n", cycleCount);
+////		for(int i = 0; i < 2; i ++)
+////		{
+////			debug.simPrintf("0x%02x ", commPhaseNo.slice(i * 8, 8));
+////		}
+////		debug.simPrintf("\n");
+//		setCommPhaseNo(commPhaseNo, isCycle1st, isCommPhaseChangePktProcess);
+//		kernel.popResetBetweenFrames();
+
+		return GlobalStateItems.commPhaseNo;
+	}
+
+//	public DFEVar getCommPhaseNo()
+//	{
+//		return GlobalStateItems.commPhaseNo;
+//	}
+
+	private void setCommPhaseNo(DFEVar commPhaseNo, DFEVar isCycle1st, DFEVar isCommPhaseChangePktProcess)
+	{
+
+
+		GlobalStateItems.commPhaseNo = commPhaseNo;
+//		debug.simPrintf("Kernel Got In SET before reduction in Cycle [%d], isValidPkg = %d, isCycle1st = %d:\n", cycleCount, isValidPkg, isCycle1st);
+//		for(int i = 0; i < 2; i ++)
+//		{
+//			debug.simPrintf("0x%02x ", GlobalStateItems.commPhaseNo.slice(i * 8, 8));
+//		}
+//		debug.simPrintf("\n");
+
+		GlobalStateItems.commPhaseNo = Reductions.streamHold(commPhaseNo, isCycle1st | isCommPhaseChangePktProcess.eq(false));
+
+//		debug.simPrintf("Kernel Got In SET After reduction in Cycle [%d], isValidPkg = %d, isCycle1st = %d:\n", cycleCount, isValidPkg, isCycle1st);
+//		for(int i = 0; i < 2; i ++)
+//		{
+//			debug.simPrintf("0x%02x ", GlobalStateItems.commPhaseNo.slice(i * 8, 8));
+//		}
+//		debug.simPrintf("\n");
+	}
+
+}

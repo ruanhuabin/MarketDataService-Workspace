@@ -1,0 +1,15 @@
+package cn.edu.tsinghua.bram;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+
+
+
+public class COrderField {
+	public static DFEVar instrumentID = null;
+	public static DFEVar orderSysID = null;
+	public static DFEVar orderStatus = null;
+
+
+
+
+}

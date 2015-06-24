@@ -1,0 +1,14 @@
+package cn.edu.tsinghua.bram;
+
+
+import cn.edu.tsinghua.tidhandler.ItemType;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLib;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+
+public class COrderField {
+  
+
+}

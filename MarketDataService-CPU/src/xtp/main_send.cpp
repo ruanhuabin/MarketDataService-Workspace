@@ -140,6 +140,9 @@ void sendIndex(int socket, boost::shared_ptr<XTPReader> xtpReader, int idx) {
   delete tid;
 }
 
+
+#define STRUCT_OFFSET(s,y) (&((s*)0)->y)
+
 int main(int argc, char **argv) {
   boost::timer::auto_cpu_timer t;
 
@@ -161,14 +164,24 @@ int main(int argc, char **argv) {
   INFO() << "Print the configuration:";
   config.print();
 
-  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 1400);//comm phase pkt
-  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 1);//exchange data start
-  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2);//exchange data end
-  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2872);//settlement start pkt
-  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4086);//tid = 0x00005001
-  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4085); //settlement end pkt
-  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2874); // tid = 0x00005211
+  /*sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 0);//comm phase pkt*/
+  //sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 1);//exchange data start
+  //sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2);//exchange data end
+  //sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2872);//settlement start pkt
+  //sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4086);//tid = 0x00005001
+  /*sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4085); //settlement end pkt*/
+  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4432); // tid = 0x00005201, ntforder
 
+  INFO()<<format("sizeof(COrderField) = %d") % sizeof(COrderField);
+  /*
+   *INFO()<<format("offset InstrumentID = %d") % STRUCT_OFFSET(COrderField, InstrumentID);
+   *INFO()<<format("offset OrderSysID = %d") % STRUCT_OFFSET(COrderField, OrderSysID);
+   *INFO()<<format("offset OrderStatus = %d") % STRUCT_OFFSET(COrderField, OrderStatus);
+   */
+
+  printf("Offset of InstrumentID = %d\n", STRUCT_OFFSET(COrderField, InstrumentID));
+  printf("Offset of OrderSysID = %d\n", STRUCT_OFFSET(COrderField, OrderSysID));
+  printf("Offset of OrderStatus = %d\n", STRUCT_OFFSET(COrderField, OrderStatus));
   INFO() << "program exit normally";
   return 0;
 }

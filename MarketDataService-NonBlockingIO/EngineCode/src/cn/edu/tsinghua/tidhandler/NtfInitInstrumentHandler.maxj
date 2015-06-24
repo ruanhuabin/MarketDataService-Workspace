@@ -1,0 +1,68 @@
+package cn.edu.tsinghua.tidhandler;
+
+
+import cn.edu.tsinghua.constant.TID;
+import cn.edu.tsinghua.state.GlobalStateItems;
+import cn.edu.tsinghua.utils.MarketDataUtils;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.utils.Bits;
+
+public class NtfInitInstrumentHandler extends TidHandlerBase
+{
+
+	//private final DFEVar content = null;
+	//private final DFEVar tid = null;
+	private final int tradingDaySize = 9;
+	private final int commPhaseNoSize = 2;
+	private final int fieldHeaderSize = 4;
+	private final MarketDataUtils mdu;
+
+	public NtfInitInstrumentHandler(Kernel kernel, DFEVar tid, DFEVar content) {
+		super(kernel, tid, content);
+		// TODO Auto-generated constructor stub
+		mdu = new MarketDataUtils(kernel);
+	}
+
+	//Do initial service according to tid value
+
+	public DFEVar getTradingDay()
+	{
+		DFEVar tradingDayLen = constant.var(DFETypeFactory.dfeUInt(16), tradingDaySize);
+		//Copy is must, otherwise content will be changed by calling following extractExactlyContent(...)
+		DFEVar tmpContent = mdu.copyBytes(content, 15).cast(DFETypeFactory.dfeRawBits(8 * 32));
+		tmpContent = mdu.removeBytes(tmpContent, fieldHeaderSize);
+		tmpContent = constant.var(DFETypeFactory.dfeRawBits(32), Bits.allOnes(4*8)) # tmpContent;
+		DFEVar tradingDayContent = mdu.extractExactlyContent(tradingDayLen.cast(DFETypeFactory.dfeUInt(5)), tmpContent);
+
+		return tradingDayContent.slice(0, this.tradingDaySize * 8);
+	}
+	public DFEVar getCommPhaseNo()
+	{
+		DFEVar commPhaseNoLen = constant.var(DFETypeFactory.dfeUInt(16), this.commPhaseNoSize);
+		DFEVar tmpContent = this.mdu.copyBytes(this.content, 15).cast(DFETypeFactory.dfeRawBits(8 * 32));
+		tmpContent = this.mdu.removeBytes(tmpContent, this.fieldHeaderSize + this.tradingDaySize);
+		tmpContent = constant.var(DFETypeFactory.dfeRawBits(4*8 + this.tradingDaySize * 8), Bits.allOnes(4*8 + this.tradingDaySize * 8)) # tmpContent;
+		DFEVar commPhaseNo = this.mdu.extractExactlyContent(commPhaseNoLen.cast(DFETypeFactory.dfeUInt(5)), tmpContent);
+
+		commPhaseNo = MarketDataUtils.BeToLe(commPhaseNo.slice(0, this.commPhaseNoSize * 8));
+		DFEVar finalCommPhaseNo = Reductions.streamHold(commPhaseNo, this.tid.eq(TID.TID_NtfCommPhaseChange));
+
+		return finalCommPhaseNo;
+	}
+
+	@Override
+	public DFEVar process() {
+		// TODO Auto-generated method stub
+		DFEVar commPhaseNo = this.content.slice((this.fieldHeaderSize + this.tradingDaySize) * 8, this.commPhaseNoSize * 8);
+		DFEVar finalCommPhaseNo = Reductions.streamHold(commPhaseNo, this.tid.eq(TID.TID_NtfCommPhaseChange));
+		finalCommPhaseNo = MarketDataUtils.BeToLe(finalCommPhaseNo);
+		GlobalStateItems.commPhaseNo = finalCommPhaseNo;
+		return finalCommPhaseNo;
+	}
+
+
+}

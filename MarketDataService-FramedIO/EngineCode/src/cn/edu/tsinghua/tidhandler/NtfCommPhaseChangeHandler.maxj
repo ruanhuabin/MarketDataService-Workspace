@@ -64,7 +64,7 @@ public class NtfCommPhaseChangeHandler extends TidHandlerBase {
 	public DFEVar process() {
 		// TODO Auto-generated method stub
 
-		GlobalStateItems.exchangeSyncStatus = constant.var(DFETypeFactory.dfeUInt(2), 1);
+		GlobalStateItems.exchangeDataSyncStatus = constant.var(DFETypeFactory.dfeUInt(2), 1);
 
 		DFEVar isCycle0th = (cycleCount === 0 & isValidPkg);
 

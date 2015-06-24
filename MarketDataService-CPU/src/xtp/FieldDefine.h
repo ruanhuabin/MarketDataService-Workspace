@@ -1634,22 +1634,22 @@ CProductField,
 class CInstrumentField
 {
 public:
-CSettlementGroupIDType SettlementGroupID;   ///结算组代码
-CProductIDType ProductID;   ///产品代码
-CProductGroupIDType ProductGroupID;   ///产品组代码
-CInstrumentIDType UnderlyingInstrID;   ///基础商品代码
-CProductClassType ProductClass;   ///产品类型
-CPositionTypeType PositionType;   ///持仓类型
-CPriceType StrikePrice;   ///执行价
-COptionsTypeType OptionsType;   ///期权类型
-CVolumeMultipleType VolumeMultiple;   ///合约数量乘数
-CUnderlyingMultipleType UnderlyingMultiple;   ///合约基础商品乘数
-CInstrumentIDType InstrumentID;   ///合约代码
-CInstrumentNameType InstrumentName;   ///合约名称
-CYearType DeliveryYear;   ///交割年份
-CMonthType DeliveryMonth;   ///交割月
-CAdvanceMonthType AdvanceMonth;   ///提前月份
-CBoolType IsTrading;   ///当前是否交易
+CSettlementGroupIDType SettlementGroupID;   ///char[9]
+CProductIDType ProductID;   ///char[9]
+CProductGroupIDType ProductGroupID;   ///char[9]
+CInstrumentIDType UnderlyingInstrID;   ///char[31]
+CProductClassType ProductClass;   ///char[1]
+CPositionTypeType PositionType;   ///char[1]
+CPriceType StrikePrice;   ///double
+COptionsTypeType OptionsType;   ///char[1]
+CVolumeMultipleType VolumeMultiple;   ///uint32_t
+CUnderlyingMultipleType UnderlyingMultiple;   ///double
+CInstrumentIDType InstrumentID;   ///char[31]
+CInstrumentNameType InstrumentName;   ///char[21]
+CYearType DeliveryYear;   ///int
+CMonthType DeliveryMonth;   ///int
+CAdvanceMonthType AdvanceMonth;   ///char[4]
+CBoolType IsTrading;   ///int
 };
 #pragma pack(pop)
 
@@ -3819,46 +3819,46 @@ CTradeField,
 class COrderField
 {
 public:
-CDateType TradingDay;   ///交易日
-CSettlementGroupIDType SettlementGroupID;   ///结算组代码
-CSettlementIDType SettlementID;   ///结算编号
-COrderSysIDType OrderSysID;   ///报单编号
-CParticipantIDType ParticipantID;   ///会员代码
-CClientIDType ClientID;   ///客户代码
-CUserIDType UserID;   ///交易用户代码
-CInstrumentIDType InstrumentID;   ///合约代码
-COrderPriceTypeType OrderPriceType;   ///报单价格条件
-CDirectionType Direction;   ///买卖方向
-CCombOffsetFlagType CombOffsetFlag;   ///组合开平标志
-CCombHedgeFlagType CombHedgeFlag;   ///组合投机套保标志
-CPriceType LimitPrice;   ///价格
-CVolumeType VolumeTotalOriginal;   ///数量
-CTimeConditionType TimeCondition;   ///有效期类型
-CDateType GTDDate;   ///GTD日期
-CVolumeConditionType VolumeCondition;   ///成交量类型
-CVolumeType MinVolume;   ///最小成交量
-CContingentConditionType ContingentCondition;   ///触发条件
-CPriceType StopPrice;   ///止损价
-CForceCloseReasonType ForceCloseReason;   ///强平原因
-COrderLocalIDType OrderLocalID;   ///本地报单编号
-CBoolType IsAutoSuspend;   ///自动挂起标志
-CBusinessUnitType BusinessUnit;   ///业务单元
-CMoneyType RiskPreFrozen;   ///风控预冻结
-COrderSourceType OrderSource;   ///报单来源
-COrderStatusType OrderStatus;   ///报单状态
-COrderTypeType OrderType;   ///报单类型
-CVolumeType VolumeTraded;   ///今成交数量
-CVolumeType VolumeTotal;   ///剩余数量
-CDateType InsertDate;   ///报单日期
-CTimeType InsertTime;   ///插入时间
-CTimeType ActiveTime;   ///激活时间
-CTimeType SuspendTime;   ///挂起时间
-CTimeType UpdateTime;   ///最后修改时间
-CTimeType CancelTime;   ///撤销时间
-CUserIDType ActiveUserID;   ///最后修改交易用户代码
-CPriorityType Priority;   ///优先权
-CTimeSortIDType TimeSortID;   ///按时间排队的序号
-CParticipantIDType ClearingPartID;   ///结算会员编号
+CDateType TradingDay;   ///char[9]
+CSettlementGroupIDType SettlementGroupID;   ///char[9]
+CSettlementIDType SettlementID;   ///uint32_t
+COrderSysIDType OrderSysID;   ///char[13]
+CParticipantIDType ParticipantID;   ///char[11]
+CClientIDType ClientID;   ///char[11]
+CUserIDType UserID;   //char[16]
+CInstrumentIDType InstrumentID;   ///char[32]
+COrderPriceTypeType OrderPriceType;   ///char[1]
+CDirectionType Direction;   ///char[1]
+CCombOffsetFlagType CombOffsetFlag;   ///char[5]
+CCombHedgeFlagType CombHedgeFlag;   ///char[5]
+CPriceType LimitPrice;   ///double
+CVolumeType VolumeTotalOriginal;   ///uint32_t
+CTimeConditionType TimeCondition;   ///char[1]
+CDateType GTDDate;   ///char[9]
+CVolumeConditionType VolumeCondition;   ///char[1]
+CVolumeType MinVolume;   ///uint32_t
+CContingentConditionType ContingentCondition;   ///char[1]
+CPriceType StopPrice;   ///double
+CForceCloseReasonType ForceCloseReason;   ///char[1]
+COrderLocalIDType OrderLocalID;   ///char[13]
+CBoolType IsAutoSuspend;   ///int
+CBusinessUnitType BusinessUnit;   ///char[21]
+CMoneyType RiskPreFrozen;   ///double
+COrderSourceType OrderSource;   ///char[1]
+COrderStatusType OrderStatus;   ///char[1]
+COrderTypeType OrderType;   ///char[1]
+CVolumeType VolumeTraded;   ///uint32_t
+CVolumeType VolumeTotal;   ///uint32_t
+CDateType InsertDate;   ///char[9]
+CTimeType InsertTime;   ///char[9]
+CTimeType ActiveTime;   ///char[9]
+CTimeType SuspendTime;   ///char[9]
+CTimeType UpdateTime;   ///char[9]
+CTimeType CancelTime;   ///char[9]
+CUserIDType ActiveUserID;   ///char[16]
+CPriorityType Priority;   ///uint32_t
+CTimeSortIDType TimeSortID;   ///uint32_t
+CParticipantIDType ClearingPartID;   ///char[11]
 };
 #pragma pack(pop)
 

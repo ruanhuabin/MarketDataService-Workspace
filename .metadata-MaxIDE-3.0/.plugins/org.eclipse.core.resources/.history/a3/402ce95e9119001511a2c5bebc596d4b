@@ -1,0 +1,14 @@
+package cn.edu.tsinghua.state;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEFix;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVectorType;
+
+public class InstrumentItems {
+	
+	public static DFEVectorType<DFEVar> instrumentID = new DFEVectorType<DFEVar>(DFETypeFactory.dfeRawBits(8*31), 256);
+	DFEFix volumnMultiple = DFETypeFactory.dfeUInt(32);
+
+
+}

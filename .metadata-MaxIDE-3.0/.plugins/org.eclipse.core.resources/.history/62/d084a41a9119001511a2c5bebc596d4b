@@ -1,0 +1,11 @@
+package cn.edu.tsinghua.state;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVectorType;
+
+public class InstrumentItems {
+	DFEVectorType<DFEVar> char9_t = new DFEVectorType<DFEVar>(DFETypeFactory.dfeRawBits(8*31), 256);
+	
+
+}

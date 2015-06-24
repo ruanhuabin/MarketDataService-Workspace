@@ -1,99 +1,531 @@
-星期五 20:26: ########################################## 
-星期五 20:26: Compiling.
-星期五 20:26: ########################################## 
+星期三 14:46: ########################################## 
+星期三 14:46: Compiling.
+星期三 14:46: ########################################## 
 
-星期五 20:26: MaxCompiler version: 2014.1a.
-星期五 20:26: Build Simulation run rule for MarketDataService-FramedIO start time: 星期五 六月 19 20:26:56 CST 2015.
-星期五 20:26: Project location: /root/MarketDataService-workspace/MarketDataService-FramedIO.
-星期五 20:26: Detailed build log: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/build.log.
+星期三 14:46: MaxCompiler version: 2014.1a.
+星期三 14:46: Build Simulation run rule for MarketDataService-FramedIO start time: 星期三 六月 24 14:46:46 CST 2015.
+星期三 14:46: Project location: /root/MarketDataService-workspace/MarketDataService-FramedIO.
+星期三 14:46: Detailed build log: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/build.log.
 
-星期五 20:26: Compiling Engine Code.
-星期五 20:26: Engine building skipped (no changes on .max files).
-星期五 20:26: Compiling CPU Code.
-星期五 20:26: Run CPU project make files updating
-星期五 20:26: Executing command:
-星期五 20:26: java -jar /opt/maxcompiler/lib/MaxIDE/projectAdmin.jar -u /root/MarketDataService-workspace/MarketDataService-FramedIO Simulation 
-星期五 20:26: Command output:
+星期三 14:46: Compiling Engine Code.
+星期三 14:46: Building MarketDataService.max file. 
+星期三 14:46: Setting environment variable:
+星期三 14:46: MAXCOMPILER_BUILD_DIR : /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles
+星期三 14:46: MAX_BUILDPARAMS : DFEModel='VECTIS' target='DFE_SIM' maxFileName='MarketDataService'  
+星期三 14:46: Building output:
+星期三 14:46: MaxCompiler version: 2014.1a
+星期三 14:46: Build "MarketDataService" start time: Wed Jun 24 14:46:49 CST 2015
+星期三 14:46: Main build process running as user root on host horst
+星期三 14:46: Build location: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/MarketDataService_VECTIS_DFE_SIM
+星期三 14:46: Detailed build log available in "_build.log"
+星期三 14:46: 
+星期三 14:46: ENGINE BUILD PARAMETERS
+星期三 14:46: 	 Build name: MarketDataService_VECTIS_DFE_SIM
+星期三 14:46: 	   DFEModel: VECTIS                          
+星期三 14:46: 	maxFileName: MarketDataService               
+星期三 14:46: 	     target: DFE_SIM                         
+星期三 14:46: 	 enableMPCX: false                           
+星期三 14:46: Instantiating kernel "marketDataServiceKernel"
+星期三 14:46: 
+星期三 14:46: Compiling kernel "marketDataServiceKernel"
+星期三 14:46: WARNING: Warning (UNCONNECTED_DESIGN_ELEMENT):
+星期三 14:46: WARNING: Unconnected elements in design 'marketDataServiceKernel'
+星期三 14:46: WARNING: details in : /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/MarketDataService_VECTIS_DFE_SIM/scratch/marketDataServiceKernel_graph_warnings.txt
+星期三 14:47: Running back-end simulation build (3 phases)
+星期三 14:47: (1/3) - Prepare MaxFile Data (GenerateMaxFileDataFile)
+星期三 14:47: (2/3) - Compile Simulation Modules (SimCompilePass)
+星期三 14:49: (3/3) - Generate MaxFile (AddSimObjectToMaxFilePass)
+星期三 14:49: MaxFile: /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/MarketDataService_VECTIS_DFE_SIM/results/MarketDataService.max (MD5Sum: c534d1aebdda1f7e1d49740bf5b515df)
+星期三 14:49: Build completed: Wed Jun 24 14:49:21 CST 2015 (took 2 mins, 32 secs)
+星期三 14:49: Executing command:
+星期三 14:49: cp /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/maxfiles/MarketDataService.h /root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/include/MarketDataService.h 
+星期三 14:49: Command output:
+星期三 14:49: Building: MarketDataService.max file finished.
+星期三 14:49: Engine build finished.
+星期三 14:49: Compiling CPU Code.
+星期三 14:49: Run CPU project make files updating
+星期三 14:49: Executing command:
+星期三 14:49: java -jar /opt/maxcompiler/lib/MaxIDE/projectAdmin.jar -u /root/MarketDataService-workspace/MarketDataService-FramedIO Simulation 
+星期三 14:49: Command output:
 
-星期五 20:26: MaxCompiler Project Admin Tool Version 2014.1.00013
-星期五 20:26:  Copyright Maxeler Technologies 2010 - 2014. All rights reserved.
-星期五 20:26: Handler version 2
-星期五 20:26: Updating RunRule dependent Makefiles for RunRule 'Simulation'
-星期五 20:26: 	Updating: Simulation
-星期五 20:26: Found makefiles: 1
-星期五 20:26: 	Updated: Simulation
-星期五 20:26: Run CPU make.
-星期五 20:26: make RUNRULE=Simulation 
-星期五 20:26: Command output:
-星期五 20:26: make -f Makefile.rules build
-星期五 20:26: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
-星期五 20:26: set -e; rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d ;                                                             \
-星期五 20:26: 	  cc -M -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -Wno-error MarketDataServerCpuCode.c > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ ;                                 \
-星期五 20:26:       sed 's,\(MarketDataServerCpuCode\)\.o[ :]*,../RunRules/Simulation/objects/c/\1.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d : ,g' < ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d; \
-星期五 20:26:       rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$
-星期五 20:26: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
-星期五 20:26: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
-星期五 20:26: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -c MarketDataServerCpuCode.c -o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o
-星期五 20:26: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -o ../RunRules/Simulation/binaries/pxtp ../RunRules/Simulation/objects/maxfiles/slic_MarketDataService.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o -g -O3  -L '/opt/maxcompiler/lib' -lslic -L '/opt/maxeler/maxeleros/lib' -lmaxeleros -lpthread -lm -lrt 
-星期五 20:26: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
-星期五 20:26: Build completed: 星期五 六月 19 20:26:58 CST 2015
+星期三 14:49: MaxCompiler Project Admin Tool Version 2014.1.00013
+星期三 14:49:  Copyright Maxeler Technologies 2010 - 2014. All rights reserved.
+星期三 14:49: Handler version 2
+星期三 14:49: Updating RunRule dependent Makefiles for RunRule 'Simulation'
+星期三 14:49: 	Updating: Simulation
+星期三 14:49: Found makefiles: 1
+星期三 14:49: 	Updated: Simulation
+星期三 14:49: Run CPU make.
+星期三 14:49: make RUNRULE=Simulation 
+星期三 14:49: Command output:
+星期三 14:49: make -f Makefile.rules build
+星期三 14:49: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
+星期三 14:49: set -e; rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d ;                                                             \
+星期三 14:49: 	  cc -M -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -Wno-error MarketDataServerCpuCode.c > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ ;                                 \
+星期三 14:49:       sed 's,\(MarketDataServerCpuCode\)\.o[ :]*,../RunRules/Simulation/objects/c/\1.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d : ,g' < ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$ > ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d; \
+星期三 14:49:       rm -f ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.d.$$
+星期三 14:49: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
+星期三 14:49: make[1]: Entering directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
+星期三 14:49: "/opt/maxcompiler/bin/sliccompile" ../RunRules/Simulation/maxfiles/MarketDataService.max ../RunRules/Simulation/objects/maxfiles/slic_MarketDataService.o
+星期三 14:49: Processing maxfile for VECTIS_SIM from '../RunRules/Simulation/maxfiles/MarketDataService.max'.
+星期三 14:49: gcc -std=gnu99 -Wall -Werror -fno-guess-branch-probability -frandom-seed=foo -Wno-unused-variable -Wno-unused-function -fPIC -I /opt/maxcompiler/include/slic -DMAXFILE_INC="/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode/../RunRules/Simulation/maxfiles/MarketDataService.max" -DSLIC_NO_DESTRUCTORS -c /opt/maxcompiler/src/slicinterface/MaxFileInit.c -o slic_MarketDataService.o 
+星期三 14:49: Copying .max file C object into '/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode/../RunRules/Simulation/objects/maxfiles'
+星期三 14:49: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -c MarketDataServerCpuCode.c -o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o
+星期三 14:49: cc -std=gnu99 -g -O3 -Wall -Wextra -I../RunRules/Simulation/include  -I '/opt/maxcompiler/include/slic'  -o ../RunRules/Simulation/binaries/pxtp ../RunRules/Simulation/objects/maxfiles/slic_MarketDataService.o ../RunRules/Simulation/objects/c/MarketDataServerCpuCode.o -g -O3  -L '/opt/maxcompiler/lib' -lslic -L '/opt/maxeler/maxeleros/lib' -lmaxeleros -lpthread -lm -lrt 
+星期三 14:49: make[1]: Leaving directory `/root/MarketDataService-workspace/MarketDataService-FramedIO/CPUCode'
+星期三 14:49: Build completed: 星期三 六月 24 14:49:30 CST 2015
 
 
-星期五 20:27: ########################################## 
-星期五 20:27: Running
-星期五 20:27: ########################################## 
-星期五 20:27: Executing command:
-星期五 20:27: '/root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/binaries/pxtp' '169.254.10.2' '169.254.10.1' '255.255.255.0' 
-星期五 20:27: Command output:
-星期五 20:27: Listening on 169.254.10.2 port 45678
-星期五 20:27: Waiting for kernel response...
-星期五 20:27: CPU, sizeof(XTPPacket_t):77
-星期五 20:31: contentLen: 22
-星期五 20:31: ======>current cycle: 0
-星期五 20:31: bytes in current cycle: 00 05 00 12 32 30 31 32 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: fid: 0X05
-星期五 20:31: fieldLen: 18
-星期五 20:31: ======>current cycle: 1
-星期五 20:31: bytes in current cycle: 30 34 32 35 00 43 46 46 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: Trading day: 32 30 31 32 30 34 32 35 00 
-星期五 20:31: ExchangeID: 43 46 46 45 58 00 00 00 00 
-星期五 20:31: ======>current cycle: 2
-星期五 20:31: bytes in current cycle: 45 58 00 00 00 00 00 00 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: TradingDay from bram: 32 30 31 32 30 34 32 35 00 
-星期五 20:31: exchangeID from bram: 43 46 46 45 58 00 00 00 00 
-星期五 20:31: ======>current cycle: 3
-星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: ======>current cycle: 4
-星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: ======>current cycle: 5
-星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: ======>current cycle: 6
-星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: ======>current cycle: 7
-星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: ======>current cycle: 8
-星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: ======>current cycle: 9
-星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: ======>current cycle: 10
-星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: ======>current cycle: 11
-星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: ======>current cycle: 12
-星期五 20:31: bytes in current cycle: 00 00 00 00 00 00 00 00 
-星期五 20:31: header.tid = 6001, expectedTid = 6001
-星期五 20:31: CPU: Got output frame 1 - size 68 bytes
-星期五 20:32: Process terminated with exit code -1.
-星期五 20:32: 已终止
+星期三 14:49: ########################################## 
+星期三 14:49: Running
+星期三 14:49: ########################################## 
+星期三 14:49: Executing command:
+星期三 14:49: '/root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/Simulation/binaries/pxtp' '169.254.10.2' '169.254.10.1' '255.255.255.0' 
+星期三 14:49: Command output:
+星期三 14:49: Listening on 169.254.10.2 port 45678
+星期三 14:49: Waiting for kernel response...
+星期三 14:49: CPU, sizeof(XTPPacket_t):77
+星期三 14:50: contentLen: 303
+星期三 14:50: ======>current cycle: 0
+星期三 14:50: bytes in current cycle: 25 08 01 2b 32 30 31 32 
+星期三 14:50: ==> In Cycle 0: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [0]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [0]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [0]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 0: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 0: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 0: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 1
+星期三 14:50: bytes in current cycle: 30 34 32 35 00 53 47 30 
+星期三 14:50: ==> In Cycle 1: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [1]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [1]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [1]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 1: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 1: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 1: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 2
+星期三 14:50: bytes in current cycle: 31 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 2: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [2]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [2]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [2]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 2: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 2: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 2: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 3
+星期三 14:50: bytes in current cycle: 00 01 20 20 20 20 20 20 
+星期三 14:50: ==> In Cycle 3: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [3]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [3]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [3]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 3: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 3: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 3: header.tid = 5201, expectedTid = 5201
+星期三 14:50: Kernel Got in Cycle 3 in OrderSysID for loop
+星期三 14:50: Bytes in OrderSysID:20 20 20 20 20 20 20 20 20 20 20 38 00 
+星期三 14:50: ======>current cycle: 4
+星期三 14:50: bytes in current cycle: 20 20 20 20 20 38 00 30 
+星期三 14:50: ==> In Cycle 4: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [4]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [4]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [4]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 4: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 4: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 4: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 5
+星期三 14:50: bytes in current cycle: 30 30 32 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 5: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [5]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [5]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [5]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 5: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 5: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 5: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 6
+星期三 14:50: bytes in current cycle: 00 00 30 31 30 30 36 32 
+星期三 14:50: ==> In Cycle 6: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [6]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [6]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [6]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 6: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 6: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 6: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 7
+星期三 14:50: bytes in current cycle: 37 32 00 00 00 30 30 30 
+星期三 14:50: ==> In Cycle 7: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [7]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [7]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [7]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 7: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 7: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 7: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 8
+星期三 14:50: bytes in current cycle: 32 30 37 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 8: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [8]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [8]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [8]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 8: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 8: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 8: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 9
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 49 46 31 
+星期三 14:50: ==> In Cycle 9: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [9]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [9]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [9]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 9: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 9: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 9: header.tid = 5201, expectedTid = 5201
+星期三 14:50: Kernel Got in Cycle 9 in InstrumentID For Loop
+星期三 14:50: Bytes in InstrumentID:49 46 31 32 30 35 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+星期三 14:50: ======>current cycle: 10
+星期三 14:50: bytes in current cycle: 32 30 35 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 10: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [10]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [10]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [10]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 10: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 10: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 10: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 11
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 11: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [11]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [11]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [11]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 11: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 11: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 11: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 12
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 12: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [12]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [12]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [12]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 12: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 12: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 12: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 13
+星期三 14:50: bytes in current cycle: 00 00 00 00 32 31 30 00 
+星期三 14:50: ==> In Cycle 13: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [13]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [13]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [13]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 13: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 13: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 13: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 14
+星期三 14:50: bytes in current cycle: 00 00 00 31 00 00 00 00 
+星期三 14:50: ==> In Cycle 14: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [14]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [14]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [14]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 14: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 14: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 14: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 15
+星期三 14:50: bytes in current cycle: 40 a3 9e 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 15: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [15]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [15]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [15]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 15: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 15: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 15: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 16
+星期三 14:50: bytes in current cycle: 00 00 00 01 33 00 00 00 
+星期三 14:50: ==> In Cycle 16: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [16]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [16]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [16]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 16: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 16: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 16: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 17
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 31 00 
+星期三 14:50: ==> In Cycle 17: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [17]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [17]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [17]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 17: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 17: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 17: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 18
+星期三 14:50: bytes in current cycle: 00 00 00 31 00 00 00 00 
+星期三 14:50: ==> In Cycle 18: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [18]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [18]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [18]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 18: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 18: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 18: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 19
+星期三 14:50: bytes in current cycle: 00 00 00 00 30 30 30 30 
+星期三 14:50: ==> In Cycle 19: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [19]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [19]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [19]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 19: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 19: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 19: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 20
+星期三 14:50: bytes in current cycle: 30 30 30 30 30 30 30 30 
+星期三 14:50: ==> In Cycle 20: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [20]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [20]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [20]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 20: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 20: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 20: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 21
+星期三 14:50: bytes in current cycle: 38 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 21: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [21]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [21]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [21]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 21: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 21: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 21: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 22
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 22: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [22]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [22]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [22]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 22: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 22: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 22: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 23
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 23: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [23]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [23]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [23]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 23: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 23: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 23: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 24
+星期三 14:50: bytes in current cycle: 00 00 00 40 fb 96 30 00 
+星期三 14:50: ==> In Cycle 24: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [24]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [24]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [24]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 24: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 24: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 24: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 25
+星期三 14:50: bytes in current cycle: 00 00 00 30 33 30 00 00 
+星期三 14:50: ==> In Cycle 25: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [25]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [25]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [25]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 25: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 25: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 25: header.tid = 5201, expectedTid = 5201
+星期三 14:50: Kernel Got in Cycle 25 in OrderStatus for loop
+星期三 14:50: Bytes in OrderStatus:33 
+星期三 14:50: ======>current cycle: 26
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 01 32 30 
+星期三 14:50: ==> In Cycle 26: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [26]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [26]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [26]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 26: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 26: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 26: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 27
+星期三 14:50: bytes in current cycle: 31 32 30 34 32 35 00 30 
+星期三 14:50: ==> In Cycle 27: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [27]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [27]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [27]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 27: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 27: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 27: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 28
+星期三 14:50: bytes in current cycle: 39 3a 32 30 3a 32 32 00 
+星期三 14:50: ==> In Cycle 28: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [28]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [28]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [28]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 28: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 28: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 28: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 29
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 29: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [29]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [29]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [29]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 29: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 29: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 29: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 30
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 30: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [30]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [30]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [30]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 30: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 30: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 30: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 31
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 31: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [31]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [31]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [31]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 31: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 31: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 31: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 32
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 32: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [32]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [32]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [32]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 32: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 32: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 32: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 33
+星期三 14:50: bytes in current cycle: 00 00 00 00 30 30 30 32 
+星期三 14:50: ==> In Cycle 33: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [33]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [33]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [33]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 33: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 33: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 33: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 34
+星期三 14:50: bytes in current cycle: 30 37 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 34: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [34]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [34]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [34]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 34: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 34: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 34: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 35
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 35: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [35]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [35]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [35]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 35: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 35: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 35: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 36
+星期三 14:50: bytes in current cycle: 00 00 00 08 30 30 30 32 
+星期三 14:50: ==> In Cycle 36: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [36]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [36]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [36]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 36: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 36: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 36: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 37
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 37: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [37]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [37]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [37]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 37: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 37: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 37: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 38
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 38: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [38]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [38]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [38]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 38: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 38: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 38: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 39
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 39: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [39]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [39]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [39]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 39: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 39: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 39: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 40
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 40: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [40]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [40]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [40]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 40: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 40: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 40: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 41
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 41: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [41]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [41]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [41]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 41: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 41: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 41: header.tid = 5201, expectedTid = 5201
+星期三 14:50: Kernel Got in Cycle 41 in OrderSysID for loop
+星期三 14:50: Bytes in OrderSysID:00 00 00 00 00 00 00 00 00 00 00 00 00 
+星期三 14:50: ======>current cycle: 42
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 42: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [42]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [42]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [42]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 42: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 42: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 42: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 43
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 43: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [43]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [43]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [43]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 43: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 43: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 43: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 44
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 44: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [44]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [44]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [44]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 44: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 44: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 44: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 45
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 45: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [45]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [45]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [45]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 45: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 45: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 45: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 46
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 46: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [46]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [46]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [46]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 46: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 46: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 46: header.tid = 5201, expectedTid = 5201
+星期三 14:50: ======>current cycle: 47
+星期三 14:50: bytes in current cycle: 00 00 00 00 00 00 00 00 
+星期三 14:50: ==> In Cycle 47: header.tid = 5201, expectedTid = 5002
+星期三 14:50: Kernel Got in Cycle [47]: commPhaseNo = 0x1234, GlobalStateItems.commPhaseNo = 0x1234
+星期三 14:50: Kernel Got in Cycle [47]: exchangeDataSyncHandler = 1, GlobalStateItems.exchangeDataSyncStatus = 1
+星期三 14:50: Kernel Got in Cycle [47]: settlementGroupDataSyncHandler = 1, settlementGroupDataStatus = 1
+星期三 14:50: ==> In Cycle 47: header.tid = 5201, expectedTid = 5802
+星期三 14:50: ==> In Cycle 47: header.tid = 5201, expectedTid = 7103
+星期三 14:50: ==> In Cycle 47: header.tid = 5201, expectedTid = 5201
+星期三 14:50: Kernel Got in Cycle 47 in InstrumentID For Loop
+星期三 14:50: Bytes in InstrumentID:00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+星期三 14:50: CPU: Got output frame 1 - size 68 bytes

@@ -1,0 +1,157 @@
+package cn.edu.tsinghua.tidhandler;
+
+import cn.edu.tsinghua.bram.CMarketDataField;
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.utils.DFEUtils;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Accumulator.Params;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public class NtfMarketDataHandler extends TidHandlerBase {
+
+  public NtfMarketDataHandler(FramedKernel k, FrameData<XTPFrameFormat> fin,
+      DFEVar[] bytes, DFEVar count, int expectedTID) {
+    super(k, fin, bytes, count, expectedTID);
+  }
+  @Override
+  public DFEVar process() {
+
+    DFEVar isCycle0th = cycleCount === 0 & isValidPkg;
+    DFEVar isCycle1th = cycleCount === 1 & isValidPkg;
+    DFEVar isCycle2th = cycleCount === 2 & isValidPkg;
+    DFEVar isCycle4th = cycleCount === 4 & isValidPkg;
+    DFEVar isCycle5th = cycleCount === 5 & isValidPkg;
+    DFEVar isCycle6th = cycleCount === 6 & isValidPkg;
+    DFEVar isCycle7th = cycleCount === 7 & isValidPkg;
+    DFEVar isCycle12th = cycleCount === 12 & isValidPkg;
+    DFEVar isCycle13th = cycleCount === 13 & isValidPkg;
+    DFEVar isCycle14th = cycleCount === 14 & isValidPkg;
+    DFEVar isCycle15th = cycleCount === 15 & isValidPkg;
+    DFEVar isCycle16th = cycleCount === 16 & isValidPkg;
+    DFEVar isCycle17th = cycleCount === 17 & isValidPkg;
+    DFEVar isCycle20th = cycleCount === 20 & isValidPkg;
+
+    DFEVar increaseWriteAddress = isCycle0th | isCycle1th | isCycle2th | isCycle4th | isCycle5th | isCycle6th | isCycle7th
+                                | isCycle12th | isCycle13th | isCycle14th | isCycle15th | isCycle16th | isCycle17th | isCycle20th;
+
+    Params itemsAccParams =
+      Reductions.accumulator.makeAccumulatorConfig(ItemType.uint8_t).withEnable(increaseWriteAddress);
+
+    kernel.pushResetBetweenFrames(false);
+    DFEVar tailAddress =Reductions.accumulator.makeAccumulator(
+      kernel.constant.var(1).cast(ItemType.uint8_t),
+      itemsAccParams);
+    kernel.popResetBetweenFrames();
+
+    /// start your work
+    //debug.simPrintf("tailAddress: %d\n", tailAddress);
+
+    DFEVector<DFEVar> TradingDay = ItemType.CDayType.newInstance(kernel);
+    DFEUtils.groupCharToVector(kernel, TradingDay, currByte, 4, 0, 9);
+
+    DFEVector<DFEVar> SettlementGroupID = ItemType.CSettlementGroupIDType.newInstance(kernel);
+    DFEUtils.groupCharToVector(kernel, SettlementGroupID, currByte, 5, 0, 9);
+
+    DFEVar SettlementID = ItemType.CSettlementIDType.newInstance(kernel);
+    DFEUtils.groupByteToDFEVar32(kernel, SettlementID, currByte, 6, 0, 4);
+
+    DFEVar PreSettlementPrice = ItemType.CPriceType.newInstance(kernel);
+    DFEUtils.groupByteToDFEVar64(kernel, PreSettlementPrice, currByte, 2, 0, 8);
+
+    DFEVar PreClosePrice = ItemType.CPriceType.newInstance(kernel);
+    DFEUtils.groupByteToDFEVar64(kernel, PreClosePrice, currByte, 2, 0, 8);
+
+    DFEVar PreOpenInterest = ItemType.CPriceType.newInstance(kernel);
+    DFEUtils.groupByteToDFEVar64(kernel, PreOpenInterest, currByte, 2, 0, 8);
+
+    DFEVar OpenPrice = ItemType.CPriceType.newInstance(kernel);
+    DFEUtils.groupByteToDFEVar64(kernel, OpenPrice, currByte, 2, 0, 8);
+
+    DFEVar ClosePrice = ItemType.CPriceType.newInstance(kernel);
+    DFEUtils.groupByteToDFEVar64(kernel, ClosePrice, currByte, 6, 0, 8);
+
+    DFEVar SettlementPrice = ItemType.CPriceType.newInstance(kernel);
+    DFEUtils.groupByteToDFEVar64(kernel, SettlementPrice, currByte, 6, 0, 8);
+
+    DFEVar UpperLimitPrice = ItemType.CPriceType.newInstance(kernel);
+    DFEUtils.groupByteToDFEVar64(kernel, UpperLimitPrice, currByte, 6, 0, 8);
+
+    DFEVar LowerLimitPrice = ItemType.CPriceType.newInstance(kernel);
+    DFEUtils.groupByteToDFEVar64(kernel, LowerLimitPrice, currByte, 6, 0, 8);
+
+    DFEVar PreDelta = ItemType.CRatioType.newInstance(kernel);
+    DFEUtils.groupByteToDFEVar64(kernel, PreDelta, currByte, 6, 0, 8);
+
+    DFEVar CurrDelta = ItemType.CRatioType.newInstance(kernel);
+    DFEUtils.groupByteToDFEVar64(kernel, CurrDelta, currByte, 6, 0, 8);
+
+    DFEVector<DFEVar> InstrumentID = ItemType.CInstrumentIDType.newInstance(kernel);
+    DFEUtils.groupCharToVector(kernel, InstrumentID, currByte, 3, 0, 31);
+
+    Memory<DFEVector<DFEVar>> tradingDayMem = CMarketDataField.getTradingDay(kernel);
+    Memory<DFEVector<DFEVar>> settlementGroupIDMem = CMarketDataField.getSettlementGroupID(kernel);
+    Memory<DFEVar> settlementIDMem = CMarketDataField.getSettlementID(kernel);
+    Memory<DFEVar> preSettlementPriceMem = CMarketDataField.getPreSettlementPrice(kernel);
+    Memory<DFEVar>  preClosePriceMem = CMarketDataField.getPreClosePrice(kernel);
+    Memory<DFEVar>  preOpenInterestMem = CMarketDataField.getPreOpenInterest(kernel);
+    Memory<DFEVar>  openPriceMem = CMarketDataField.getOpenPrice(kernel);
+    Memory<DFEVar>  closePriceMem = CMarketDataField.getClosePrice(kernel);
+    Memory<DFEVar>  settlementPriceMem = CMarketDataField.getSettlementPrice(kernel);
+    Memory<DFEVar>  upperLimitPriceMem = CMarketDataField.getUpperLimitPrice(kernel);
+    Memory<DFEVar>  lowerLimitPriceMem = CMarketDataField.getLowerLimitPrice(kernel);
+    Memory<DFEVar>  preDeltaMem = CMarketDataField.getPreDelta(kernel);
+    Memory<DFEVar>  currDeltaMem = CMarketDataField.getCurrDelta(kernel);
+    Memory<DFEVector<DFEVar>> instrumentIDMem = CMarketDataField.getInstrumentID(kernel);
+
+
+    tradingDayMem.write(tailAddress, TradingDay, isCycle0th);
+    settlementGroupIDMem.write(tailAddress, SettlementGroupID, isCycle1th);
+    settlementIDMem.write(tailAddress, SettlementID, isCycle2th);
+    preSettlementPriceMem.write(tailAddress, PreSettlementPrice, isCycle4th);
+    preClosePriceMem.write(tailAddress, PreClosePrice, isCycle5th);
+    preOpenInterestMem.write(tailAddress, PreOpenInterest, isCycle6th);
+    openPriceMem.write(tailAddress, OpenPrice, isCycle7th);
+    closePriceMem.write(tailAddress, ClosePrice, isCycle12th);
+    settlementPriceMem.write(tailAddress, SettlementPrice, isCycle13th);
+    upperLimitPriceMem.write(tailAddress, UpperLimitPrice, isCycle14th);
+    lowerLimitPriceMem.write(tailAddress, LowerLimitPrice, isCycle15th);
+    preDeltaMem.write(tailAddress, PreDelta, isCycle16th);
+    currDeltaMem.write(tailAddress, CurrDelta, isCycle17th);
+    instrumentIDMem.write(tailAddress, InstrumentID, isCycle20th);
+
+    debug.simPrintf(isCycle0th, "TradingDay: ");
+    for(int i=0; i<9; i++){
+    	debug.simPrintf(isCycle0th, "%d ", TradingDay[i]);
+    }
+    debug.simPrintf(isCycle0th, "\n");
+
+    debug.simPrintf(isCycle20th, "InstrumentID: ");
+    for(int i=0; i<31; i++){
+    	debug.simPrintf(isCycle20th, "%d ", InstrumentID[i]);
+    }
+    debug.simPrintf(isCycle20th, "\n");
+
+    DFEVector<DFEVar> tradingDayBRAM = tradingDayMem.read(tailAddress);
+    DFEVector<DFEVar> settlementGroupIDBRAM = settlementGroupIDMem.read(tailAddress);
+    DFEVar settlementIDBRAM = settlementIDMem.read(tailAddress);
+    DFEVar preSettlementPriceBRAM = preSettlementPriceMem.read(tailAddress);
+    DFEVar preClosePriceBRAM = preClosePriceMem.read(tailAddress);
+    DFEVar preOpenInterestBRAM = preOpenInterestMem.read(tailAddress);
+    DFEVar openPriceBRAM = openPriceMem.read(tailAddress);
+    DFEVar closePriceBRAM = closePriceMem.read(tailAddress);
+    DFEVar settlementPriceBRAM = settlementPriceMem.read(tailAddress);
+    DFEVar upperLimitPriceBRAM = upperLimitPriceMem.read(tailAddress);
+    DFEVar lowerLimitPriceBRAM = lowerLimitPriceMem.read(tailAddress);
+    DFEVar preDeltaBRAM = preDeltaMem.read(tailAddress);
+    DFEVar currDetaBRAM = currDeltaMem.read(tailAddress);
+    DFEVector<DFEVar> instrumentIDBRAM = instrumentIDMem.read(tailAddress);
+
+    return kernel.constant.var(true);
+  }
+
+}
