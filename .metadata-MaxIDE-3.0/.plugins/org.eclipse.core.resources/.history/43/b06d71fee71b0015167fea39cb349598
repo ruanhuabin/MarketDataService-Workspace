@@ -56,8 +56,8 @@ public class NtfTimeSyncHandler extends NtfTIDBaseHandler {
 
 		DFEVar timeInRawBits = currTime.get(0) # currTime.get(1) # currTime.get(3) # currTime.get(4) # currTime.get(6) # currTime.get(7) # currMillisec;
 		GlobalStateItems.latestTimeInTimeSynPkt = timeInRawBits;
-
-
+		
+		
 
 
 
