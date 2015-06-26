@@ -30,7 +30,7 @@ public abstract class NtfTIDBaseHandler {
     cycleCount = count;
     isValidPkg = frameIn[Name.XTPHeader.tid] === expectedTID;
 
-    debug.simPrintf("==> In Cycle %d: header.tid = %x, expectedTid = %x\n", cycleCount, frameIn[Name.XTPHeader.tid], expectedTID);
+//    debug.simPrintf("==> In Cycle %d: header.tid = %x, expectedTid = %x\n", cycleCount, frameIn[Name.XTPHeader.tid], expectedTID);
   }
 
   public NtfTIDBaseHandler(FramedKernel k, FrameData<XTPFrameFormat> fin)

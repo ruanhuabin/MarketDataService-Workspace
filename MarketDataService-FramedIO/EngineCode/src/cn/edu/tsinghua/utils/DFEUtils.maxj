@@ -70,8 +70,6 @@ public class DFEUtils {
 	    retVar.connect(retVarTmp.cast(DFETypeFactory.dfeFloat(11, 53)));
 	  }
 
-
-
   public static void printCharVector(KernelLib kernel, String title, DFEVector<DFEVar> string, DFEVar enable) {
     kernel.debug.simPrintf(enable, title);
     for (int i = 0; i < string.getSize(); i++) {
@@ -79,5 +77,33 @@ public class DFEUtils {
       kernel.debug.simPrintf(enable, "%02x ", c);
     }
     kernel.debug.simPrintf(enable, "\n");
+  }
+
+  /**
+   * compare the char in the vector element by element.
+   * please make sure that, the two vector have same size.
+   *
+   * @param left the first vector
+   * @param right the second vector
+   * @return -1 if left <  right
+   *          0 if left == right
+   *          1 if left >  right
+   */
+  public static DFEVar DFECharVectorCmp(KernelLib kernel, DFEVector<DFEVar> left, DFEVector<DFEVar> right) {
+    /// after packing the bytes, the first byte become the least significant byte
+    /// and the last byte become the most significant byte
+    DFEVar leftUint = left.pack().cast(DFETypeFactory.dfeUInt(left.pack().getType().getTotalBits()));
+    DFEVar rightUint = right.pack().cast(DFETypeFactory.dfeUInt(right.getType().getTotalBits()));
+
+    DFEVar lt = kernel.constant.var(-1).cast(DFETypeFactory.dfeInt(32));
+    DFEVar gt = kernel.constant.var(+1).cast(DFETypeFactory.dfeInt(32));
+    DFEVar eq = kernel.constant.var(+0).cast(DFETypeFactory.dfeInt(32));
+
+    /**
+     * by comparing uint, the most significant byte will dominate the entire comparison
+     * however, by comparing the char string, the least significant byte will dominate the comparison
+     * so here we inverse the result of comparing the uint.
+     */
+    return leftUint < rightUint ? gt : (leftUint > rightUint ? lt : eq);
   }
 }

@@ -12,3 +12,5 @@ MarketDataService.xml
 MarketDataService_Build.xml
 RunRules/Simulation/build.log
 *.log
+.maxcompiler-activity.be
+*.d

@@ -81,49 +81,19 @@ public class NtfCommPhaseChangeHandler extends NtfTIDBaseHandler {
 
 		DFEVar commPhaseNo = currByte[5].cat(currByte[6]).cast(ItemType.CCommPhaseNoType);
 
-
 		kernel.pushResetBetweenFrames(false);
-
 		DFEVar isCommPhaseChangePktProcess = Reductions.streamHold(isValidPkg, isValidPkg);
-//		debug.simPrintf(">>>>>>>>>>>>>>Kernel Got in Cycle[%d]: isCommPhasePktProcess = %d\n", cycleCount, isCommPhaseChangePktProcess);
 		commPhaseNo = isCommPhaseChangePktProcess ? Reductions.streamHold(commPhaseNo, isCycle1st ): constant.var(DFETypeFactory.dfeUInt(16), MDGlobalStateConstants.COMM_PHASE_INIT_VALUE);
-//		debug.simPrintf("Kernel Got In process() in Cycle [%d]:\n", cycleCount);
-//		for(int i = 0; i < 2; i ++)
-//		{
-//			debug.simPrintf("0x%02x ", commPhaseNo.slice(i * 8, 8));
-//		}
-//		debug.simPrintf("\n");
 		setCommPhaseNo(commPhaseNo, isCycle1st, isCommPhaseChangePktProcess);
 		kernel.popResetBetweenFrames();
 
 		return GlobalStateItems.commPhaseNo;
 	}
 
-//	public DFEVar getCommPhaseNo()
-//	{
-//		return GlobalStateItems.commPhaseNo;
-//	}
-
 	private void setCommPhaseNo(DFEVar commPhaseNo, DFEVar isCycle1st, DFEVar isCommPhaseChangePktProcess)
 	{
-
-
 		GlobalStateItems.commPhaseNo = commPhaseNo;
-//		debug.simPrintf("Kernel Got In SET before reduction in Cycle [%d], isValidPkg = %d, isCycle1st = %d:\n", cycleCount, isValidPkg, isCycle1st);
-//		for(int i = 0; i < 2; i ++)
-//		{
-//			debug.simPrintf("0x%02x ", GlobalStateItems.commPhaseNo.slice(i * 8, 8));
-//		}
-//		debug.simPrintf("\n");
-
 		GlobalStateItems.commPhaseNo = Reductions.streamHold(commPhaseNo, isCycle1st | isCommPhaseChangePktProcess.eq(false));
-
-//		debug.simPrintf("Kernel Got In SET After reduction in Cycle [%d], isValidPkg = %d, isCycle1st = %d:\n", cycleCount, isValidPkg, isCycle1st);
-//		for(int i = 0; i < 2; i ++)
-//		{
-//			debug.simPrintf("0x%02x ", GlobalStateItems.commPhaseNo.slice(i * 8, 8));
-//		}
-//		debug.simPrintf("\n");
 	}
 
 }

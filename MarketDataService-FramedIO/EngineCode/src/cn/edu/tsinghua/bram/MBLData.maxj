@@ -1,0 +1,51 @@
+package cn.edu.tsinghua.bram;
+
+import cn.edu.tsinghua.constant.MDGlobalStateConstants;
+import cn.edu.tsinghua.tidhandler.ItemType;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLib;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+
+public class MBLData {
+  private static final int NUM_INSTRUMENT = MDGlobalStateConstants.INSTRUMENT_MAX_NUM;
+  private static final int NUM_PRICE_TICK = MDGlobalStateConstants.POSITION_NUM;
+
+  private static Memory<DFEVar> priceVolume = null;
+  public static Memory<DFEVar> getPriceVolume(KernelLib kernel) {
+    priceVolume = kernel.mem.alloc(ItemType.uint32_t,
+        NUM_INSTRUMENT * NUM_PRICE_TICK);
+    return priceVolume;
+  }
+
+  private static Memory<DFEVar> lastPrice = null;
+  public static Memory<DFEVar> getLastPrice(KernelLib kernel) {
+    lastPrice = kernel.mem.alloc(ItemType.CPriceType, NUM_INSTRUMENT);
+    return lastPrice;
+  }
+
+  private static Memory<DFEVar> lastVolume = null;
+  public static Memory<DFEVar> getLastVolume(KernelLib kernel) {
+    lastVolume = kernel.mem.alloc(ItemType.CVolumeType, NUM_INSTRUMENT);
+    return lastVolume;
+  }
+
+  private static Memory<DFEVar> maxPrice = null;
+  public static Memory<DFEVar> getMaxPrice(KernelLib kernel) {
+    maxPrice = kernel.mem.alloc(ItemType.CPriceType, NUM_INSTRUMENT);
+    return maxPrice;
+  }
+
+  private static Memory<DFEVar> minPrice = null;
+  public static Memory<DFEVar> getMinPrice(KernelLib kernel) {
+    minPrice = kernel.mem.alloc(ItemType.CPriceType, NUM_INSTRUMENT);
+    return minPrice;
+  }
+
+  private static Memory<DFEVar> turnOver = null;
+  public static Memory<DFEVar> getTurnOver(KernelLib kernel) {
+    turnOver = kernel.mem.alloc(ItemType.CPriceType, NUM_INSTRUMENT);
+    return turnOver;
+  }
+
+}

@@ -1,10 +1,8 @@
 package cn.edu.tsinghua.tidhandler;
 
 import cn.edu.tsinghua.format.XTPFrameFormat;
-import cn.edu.tsinghua.state.GlobalStateItems;
 import cn.edu.tsinghua.utils.DFEUtils;
 
-import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
 import com.maxeler.networking.v1.framed_kernels.FrameData;
@@ -51,11 +49,7 @@ public class NtfTimeSyncHandler extends NtfTIDBaseHandler {
 		DFEUtils.printCharVector(kernel, "Bytes in currTime:\n", currTime, cycleCount.eq(currTimeStartCycle)&isValidPkg);
 		debug.simPrintf(cycleCount.eq(currMillisecStartCycle) & isValidPkg, "In Cycle %d: currMillisec = %d\n", cycleCount, currMillisec);
 
-		currTime = Reductions.streamHold(currDate,cycleCount.eq(currTimeStartCycle)&isValidPkg);
-		currMillisec = Reductions.streamHold(currMillisec, cycleCount.eq(currMillisecStartCycle) & isValidPkg);
-
 		DFEVar timeInRawBits = currTime.get(0) # currTime.get(1) # currTime.get(3) # currTime.get(4) # currTime.get(6) # currTime.get(7) # currMillisec;
-		GlobalStateItems.latestTimeInTimeSynPkt =
 
 
 

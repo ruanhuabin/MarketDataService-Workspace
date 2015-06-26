@@ -46,25 +46,26 @@
  /usr/include/bits/environments.h /usr/include/bits/confname.h \
  /usr/include/getopt.h ../RunRules/Simulation/include/Maxfiles.h \
  ../RunRules/Simulation/include/MarketDataService.h \
- /opt/maxcompiler/include/slic/MaxSLiCInterface.h \
- /opt/maxcompiler/include/slic/slic_engine.h \
- /opt/maxcompiler/include/slic/slic_typedefs.h \
- /opt/maxcompiler/include/slic/slic_engarray.h \
- /opt/maxcompiler/include/slic/slic_group.h \
- /opt/maxcompiler/include/slic/slic_run.h \
- /opt/maxcompiler/include/slic/slic_maxfile.h \
- /opt/maxcompiler/include/slic/slic_actions.h \
- /opt/maxcompiler/include/slic/slic_actarray.h \
- /opt/maxcompiler/include/slic/slic_configuration.h \
- /opt/maxcompiler/include/slic/slic_scalar.h \
- /opt/maxcompiler/include/slic/slic_mem.h \
- /opt/maxcompiler/include/slic/slic_stream.h \
- /opt/maxcompiler/include/slic/slic_error.h \
- /opt/maxcompiler/include/slic/slic_compiler.h \
- /opt/maxcompiler/include/slic/slic_event_monitoring.h \
- /opt/maxcompiler/include/slic/slic_topology.h \
- /opt/maxcompiler/include/slic/slic_framed_streams.h \
- /opt/maxcompiler/include/slic/slic_llstream.h \
- /opt/maxcompiler/include/slic/slic_network.h \
- /opt/maxcompiler/include/slic/slic_tcp.h /usr/include/sys/time.h \
- /opt/maxcompiler/include/slic/slic_udp.h
+ /opt/maxcompiler-2014.2/include/slic/MaxSLiCInterface.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_engine.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_typedefs.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_engarray.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_group.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_run.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_maxfile.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_actions.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_actarray.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_configuration.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_scalar.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_mem.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_stream.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_error.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_error_list.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_compiler.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_event_monitoring.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_topology.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_framed_streams.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_llstream.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_network.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_tcp.h /usr/include/sys/time.h \
+ /opt/maxcompiler-2014.2/include/slic/slic_udp.h

@@ -5,7 +5,8 @@ import cn.edu.tsinghua.format.XTPFrameFormat;
 import cn.edu.tsinghua.state.GlobalStateItems;
 import cn.edu.tsinghua.utils.DFEUtils;
 
-import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLib;
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
 import com.maxeler.networking.v1.framed_kernels.FrameData;
@@ -16,7 +17,7 @@ public class NtfOrderHandler extends NtfTIDBaseHandler {
 	private final int MAX_ORDER_FIELD_SIZE = 1;
 	private final DFEVar isInstrumentIDCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
 	@SuppressWarnings("unchecked")
-	DFEVector<DFEVar> instrumentIDs[] = new DFEVector[MAX_ORDER_FIELD_SIZE];
+  DFEVector<DFEVar> instrumentIDs[] = new DFEVector[MAX_ORDER_FIELD_SIZE];
 
 	private final DFEVar isOrderSysIDCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
 	@SuppressWarnings("unchecked")
@@ -27,16 +28,22 @@ public class NtfOrderHandler extends NtfTIDBaseHandler {
 	DFEVector<DFEVar> orderStatuses[] = new DFEVector[MAX_ORDER_FIELD_SIZE];
 
 	private final DFEVar isVolumeTotalCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
-	@SuppressWarnings("unchecked")
 	DFEVar volumeTotals[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
 
 	private final DFEVar isDirectionCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
 	@SuppressWarnings("unchecked")
-	DFEVector<DFEVar> directions[] = new DFEVector[MAX_ORDER_FIELD_SIZE];
-//
+  DFEVector<DFEVar> directions[] = new DFEVector[MAX_ORDER_FIELD_SIZE];
+
 	private final DFEVar isLimitPriceCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
-	@SuppressWarnings("unchecked")
 	DFEVar limitPrices[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+
+	/// setup a data member to record the max orderSysID
+	private static Memory<DFEVector<DFEVar>> maxOrderSysID = null;
+	private static Memory<DFEVector<DFEVar>> getMaxOrderSysID(KernelLib kernel) {
+	  maxOrderSysID = kernel.mem.alloc(ItemType.COrderSysIDType, 2);
+	  return maxOrderSysID;
+	}
+
 	public NtfOrderHandler(FramedKernel k, FrameData<XTPFrameFormat> fin,
 			DFEVar [] bytes, DFEVar count, int expectedTID)
 	{
@@ -45,12 +52,12 @@ public class NtfOrderHandler extends NtfTIDBaseHandler {
 
 	@Override
 	public DFEVar process() {
-		// TODO Auto-generated method stub
+
 		//Extract InstrumentID from Order Pkt
 		for(int i = 0; i < MAX_ORDER_FIELD_SIZE; i ++)
 		{
-			//77:offset of InstrumentID in COrderField
-			//303: sizeof(COrderField) + 4(Length of FieldHeader)
+			/// 77:  offset of InstrumentID in COrderField
+			/// 303: sizeof(COrderField) + 4(Length of FieldHeader)
 			int currCycle = (77 + 303 * i) / 8;
 			int currStartIndex = (77 + 303 * i) % 8;
 			isInstrumentIDCycleValid[i] = cycleCount.eq(currCycle) & isValidPkg;
@@ -131,79 +138,7 @@ public class NtfOrderHandler extends NtfTIDBaseHandler {
 
 		}
 
-
-
-
-
-
-
-
-
-
-
-
-//		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-//		GlobalStateItems.exchangeDataSyncStatus = constant.var(DFETypeFactory.dfeUInt(2), 1);
-//
-//		DFEVar isCycle0th = (cycleCount === 0 & isValidPkg);
-//
-//		/// this only works when cycleCount == 0
-//		DFEVar fid =      currByte[0].cat(currByte[1]).cast(ItemType.uint16_t);
-//		DFEVar fieldLen = currByte[2].cat(currByte[3]).cast(ItemType.uint16_t);
-//
-//		debug.simPrintf(isCycle0th, "fid: 0X%02x\n", fid);
-//		debug.simPrintf(isCycle0th, "fieldLen: %d\n", fieldLen);
-//
-//		DFEVar isCycle1st = (cycleCount === 1 & isValidPkg);
-//		DFEVector<DFEVar> TradingDay = ItemType.CDayType.newInstance(kernel);
-//		DFEUtils.groupCharToVector(kernel, TradingDay, currByte, 4, -1, 9);
-//
-//		DFEVar commPhaseNo = currByte[5].cat(currByte[6]).cast(ItemType.CCommPhaseNoType);
-//
-//
-//		kernel.pushResetBetweenFrames(false);
-//
-//		DFEVar isCommPhaseChangePktProcess = Reductions.streamHold(isValidPkg, isValidPkg);
-////		debug.simPrintf(">>>>>>>>>>>>>>Kernel Got in Cycle[%d]: isCommPhasePktProcess = %d\n", cycleCount, isCommPhaseChangePktProcess);
-//		commPhaseNo = isCommPhaseChangePktProcess ? Reductions.streamHold(commPhaseNo, isCycle1st ): constant.var(DFETypeFactory.dfeUInt(16), MDGlobalStateConstants.COMM_PHASE_INIT_VALUE);
-////		debug.simPrintf("Kernel Got In process() in Cycle [%d]:\n", cycleCount);
-////		for(int i = 0; i < 2; i ++)
-////		{
-////			debug.simPrintf("0x%02x ", commPhaseNo.slice(i * 8, 8));
-////		}
-////		debug.simPrintf("\n");
-//		setCommPhaseNo(commPhaseNo, isCycle1st, isCommPhaseChangePktProcess);
-//		kernel.popResetBetweenFrames();
-
 		return GlobalStateItems.commPhaseNo;
-	}
-
-//	public DFEVar getCommPhaseNo()
-//	{
-//		return GlobalStateItems.commPhaseNo;
-//	}
-
-	private void setCommPhaseNo(DFEVar commPhaseNo, DFEVar isCycle1st, DFEVar isCommPhaseChangePktProcess)
-	{
-
-
-		GlobalStateItems.commPhaseNo = commPhaseNo;
-//		debug.simPrintf("Kernel Got In SET before reduction in Cycle [%d], isValidPkg = %d, isCycle1st = %d:\n", cycleCount, isValidPkg, isCycle1st);
-//		for(int i = 0; i < 2; i ++)
-//		{
-//			debug.simPrintf("0x%02x ", GlobalStateItems.commPhaseNo.slice(i * 8, 8));
-//		}
-//		debug.simPrintf("\n");
-
-		GlobalStateItems.commPhaseNo = Reductions.streamHold(commPhaseNo, isCycle1st | isCommPhaseChangePktProcess.eq(false));
-
-//		debug.simPrintf("Kernel Got In SET After reduction in Cycle [%d], isValidPkg = %d, isCycle1st = %d:\n", cycleCount, isValidPkg, isCycle1st);
-//		for(int i = 0; i < 2; i ++)
-//		{
-//			debug.simPrintf("0x%02x ", GlobalStateItems.commPhaseNo.slice(i * 8, 8));
-//		}
-//		debug.simPrintf("\n");
 	}
 
 }

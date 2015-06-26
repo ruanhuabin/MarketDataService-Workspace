@@ -6,6 +6,5 @@ public class GlobalStateItems {
 	public static DFEVar commPhaseNo = null;
 	public static DFEVar exchangeDataSyncStatus = null;
 	public static DFEVar settlementGroupDataStatus = null;
-	public static DFEVar latestTimeInTimeSynPkt = null;
 
 }
