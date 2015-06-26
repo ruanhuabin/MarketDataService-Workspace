@@ -8,7 +8,7 @@
 <mapEntry key="MAX_BUILDPARAMS" value="DFEModel='VECTIS' target='DFE_SIM' maxFileName='MarketDataService'  "/>
 </mapAttribute>
 <booleanAttribute key="org.eclipse.debug.ui.private" value="true"/>
-<stringAttribute key="org.eclipse.jdt.launching.AUTO_HEAP_SIZE" value="4"/>
+<stringAttribute key="org.eclipse.jdt.launching.AUTO_HEAP_SIZE" value="64"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="cn.edu.tsinghua.kernel.MarketDataServiceManager"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAX_FILE_BUILD_NAME" value="MarketDataService"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROFILE_FOLDER" value="Simulation"/>

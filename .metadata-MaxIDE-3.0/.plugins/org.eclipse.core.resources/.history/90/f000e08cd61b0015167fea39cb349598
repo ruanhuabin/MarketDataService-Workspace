@@ -1,0 +1,26 @@
+package cn.edu.tsinghua.constant;
+
+public class TID {
+   //通讯阶段切换通知
+  public final static int TID_NtfCommPhaseChange=0x00005002;
+  //交易所数据同步开始
+  public final static int TID_ExchangeDataSyncStart=0x00006001;
+  public static final int TID_ExchangeDataSyncEnd = 0x00006002;
+
+
+  public final static int TID_SettlementGroupDataSyncStart = 0x00007001;
+  public final static int TID_SettlementGropuDataSyncEnd = 0x00007002;
+//普通行情通知
+  public final static int TID_NtfMarketData=0x00005802;
+
+  //合约
+  public final static int TID_InitInstrument=0x00007103;
+  public static final int TID_NtfOrder = 0x00005201;
+
+  //交易
+  public final static int TID_NtfTrade=0x00005202;
+
+
+
+
+}

@@ -3,4 +3,5 @@
 <launchedProfile profileFolder="DFE" project="MarketDataServer-NoBlockingIO_RunRules"/>
 <launchedProfile profileFolder="Simulation" project="MarketDataServer-NoBlockingIO_RunRules"/>
 <launchedProfile profileFolder="Simulation" project="MarketDataServer-NonBlockingIO_RunRules"/>
+<launchedProfile profileFolder="DFE" project="MarketDataService-FramedIO_RunRules"/>
 </createdProfiles>

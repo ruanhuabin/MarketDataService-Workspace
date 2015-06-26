@@ -1,0 +1,23 @@
+package cn.edu.tsinghua.tidhandler;
+
+import cn.edu.tsinghua.format.XTPFrameFormat;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public class NtfTimeSyncHandler extends TidHandlerBase {
+
+	public NtfTimeSyncHandler(FramedKernel k, FrameData<XTPFrameFormat> fin,
+			DFEVar[] bytes, DFEVar count, int expectedTID) {
+		super(k, fin, bytes, count, expectedTID);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public DFEVar process() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

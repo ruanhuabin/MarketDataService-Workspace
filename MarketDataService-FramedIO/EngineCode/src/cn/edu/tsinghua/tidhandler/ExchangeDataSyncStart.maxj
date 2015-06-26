@@ -11,7 +11,7 @@ import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
 import com.maxeler.networking.v1.framed_kernels.FrameData;
 import com.maxeler.networking.v1.framed_kernels.FramedKernel;
 
-public class ExchangeDataSyncStart extends TidHandlerBase {
+public class ExchangeDataSyncStart extends NtfTIDBaseHandler {
 
 	public ExchangeDataSyncStart(FramedKernel k, FrameData<XTPFrameFormat> fin,
 			DFEVar [] bytes, DFEVar count, int expectedTID)
@@ -26,6 +26,8 @@ public class ExchangeDataSyncStart extends TidHandlerBase {
 	@Override
 	public DFEVar process() {
 		handleCycle0th();
+
+
 
 		DFEVar isCycle1st = (cycleCount === 1 & isValidPkg);
 		DFEVector<DFEVar> TradingDay = ItemType.CDayType.newInstance(kernel);

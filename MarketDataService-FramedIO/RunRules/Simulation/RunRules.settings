@@ -9,7 +9,7 @@
 <maxFile buildName="MarketDataService" buildOrUseExisting="build">
 <runConfiguration askBeforeAutoBuild="false">
 <mainClass>cn.edu.tsinghua.kernel.MarketDataServiceManager</mainClass>
-<maxHeapSize>4</maxHeapSize>
+<maxHeapSize>64</maxHeapSize>
 </runConfiguration>
 <selectEngineTarget enabled="false">VECTIS</selectEngineTarget>
 <overrideEnableMPCX enabled="false" value="false"/>

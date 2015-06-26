@@ -1,0 +1,72 @@
+package cn.edu.tsinghua.tidhandler;
+
+
+import cn.edu.tsinghua.bram.CExchangeTradingDayField;
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.utils.DFEUtils;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public class ExchangeDataSyncStart extends TidHandlerBase {
+
+	public ExchangeDataSyncStart(FramedKernel k, FrameData<XTPFrameFormat> fin,
+			DFEVar [] bytes, DFEVar count, int expectedTID)
+	{
+		super(k, fin, bytes, count, expectedTID);
+	}
+
+
+
+
+
+	@Override
+	public DFEVar process() {
+		handleCycle0th();
+
+		DFEVar isCycle1st = (cycleCount === 1 & isValidPkg);
+		DFEVector<DFEVar> TradingDay = ItemType.CDayType.newInstance(kernel);
+		DFEUtils.groupCharToVector(kernel, TradingDay, currByte, 4, -1, 9);
+
+		DFEVector<DFEVar> ExchangeID = ItemType.CExchangeIDType.newInstance(kernel);
+		DFEUtils.groupCharToVector(kernel, ExchangeID, currByte, 5, 0, 9);
+
+		DFEUtils.printCharVector(kernel, "Trading day: ", TradingDay, isCycle1st);
+		DFEUtils.printCharVector(kernel, "ExchangeID: ", ExchangeID, isCycle1st);
+
+		/// save data to BRAM
+		Memory<DFEVector<DFEVar>> tradingDayMem = CExchangeTradingDayField.getTradingDay(kernel);
+		Memory<DFEVector<DFEVar>> exchangeIDMem = CExchangeTradingDayField.getExchangeID(kernel);
+		tradingDayMem.write(constant.var(true), TradingDay, isCycle1st);
+		exchangeIDMem.write(constant.var(true), ExchangeID, isCycle1st);
+
+		/// test read them back
+		DFEVector<DFEVar> tradingDataFromBram = tradingDayMem.read(constant.var(true));
+		DFEVector<DFEVar> exchangeIDFromBram = exchangeIDMem.read(constant.var(true));
+
+		DFEVar isCycle2nd = (cycleCount === 2 & isValidPkg);
+		DFEUtils.printCharVector(kernel, "TradingDay from bram: ", tradingDataFromBram, isCycle2nd);
+		DFEUtils.printCharVector(kernel, "exchangeID from bram: ", exchangeIDFromBram, isCycle2nd);
+
+		/// return dummy data
+		return kernel.constant.var(true);
+	}
+
+	private void handleCycle0th() {
+		DFEVar isCycle0th = (cycleCount === 0 & isValidPkg);
+
+		DFEVar fid =      currByte[0].cat(currByte[1]).cast(ItemType.uint16_t);
+		DFEVar fieldLen = currByte[2].cat(currByte[3]).cast(ItemType.uint16_t);
+
+		debug.simPrintf(isCycle0th, "fid: 0X%02x\n", fid);
+		debug.simPrintf(isCycle0th, "fieldLen: %d\n", fieldLen);
+	}
+
+
+
+
+
+}

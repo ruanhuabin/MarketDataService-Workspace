@@ -11,11 +11,12 @@ public class ItemType {
   public static final DFEFix uint16_t = DFETypeFactory.dfeUInt(16);
   public static final DFEFix uint32_t = DFETypeFactory.dfeUInt(32);
   public static final DFEFloat double_t = DFETypeFactory.dfeFloat(11, 53);
+  private static final DFEVectorType<DFEVar> char1_t = new DFEVectorType<DFEVar>(uint8_t, 1);
   private static final DFEVectorType<DFEVar> char9_t = new DFEVectorType<DFEVar>(uint8_t, 9);
-
   private static final DFEVectorType<DFEVar> char31_t = new DFEVectorType<DFEVar>(uint8_t, 31);
   private static final DFEVectorType<DFEVar> char13_t = new DFEVectorType<DFEVar>(uint8_t, 13);
-  private static final DFEVectorType<DFEVar> char1_t = new DFEVectorType<DFEVar>(uint8_t, 1);
+
+
 
   public static final DFEVectorType<DFEVar> CDayType = char9_t;
   public static final DFEFix CCommPhaseNoType = uint16_t;
@@ -35,6 +36,12 @@ public class ItemType {
   public static final DFEVectorType<DFEVar> COrderSysIDType = char13_t;
   //OrderStatus
   public static final DFEVectorType<DFEVar> COrderStatusType = char1_t;
+  //VolumeTotal
+  public static final DFEFix CVolumeTotalType = uint32_t;
+  //LimitPrice
+  public static final DFEFloat CLimitPriceType = double_t;
+
+
 
 
   //MarketData
@@ -44,5 +51,8 @@ public class ItemType {
   public static final DFEVectorType<DFEVar> CTimeType = char9_t;
   public static final DFEFix CMillisecType = uint32_t;
 
+  //NtfTrade
+  public static final DFEVectorType<DFEVar> CDirectionType = char1_t;
+  public static final DFEVectorType<DFEVar> COffsetFlagType = char1_t;
 
 }

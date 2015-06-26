@@ -13,7 +13,7 @@ import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
 import com.maxeler.networking.v1.framed_kernels.FrameData;
 import com.maxeler.networking.v1.framed_kernels.FramedKernel;
 
-public class NtfCommPhaseChangeHandler extends TidHandlerBase {
+public class NtfCommPhaseChangeHandler extends NtfTIDBaseHandler {
 	public NtfCommPhaseChangeHandler(FramedKernel k, FrameData<XTPFrameFormat> fin,
 			DFEVar [] bytes, DFEVar count, int expectedTID)
 	{

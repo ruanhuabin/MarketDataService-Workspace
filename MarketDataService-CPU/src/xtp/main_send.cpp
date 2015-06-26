@@ -164,24 +164,37 @@ int main(int argc, char **argv) {
   INFO() << "Print the configuration:";
   config.print();
 
-  /*sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 0);//comm phase pkt*/
-  //sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 1);//exchange data start
-  //sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2);//exchange data end
-  //sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2872);//settlement start pkt
-  //sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4086);//tid = 0x00005001
-  /*sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4085); //settlement end pkt*/
-  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4432); // tid = 0x00005201, ntforder
-
-  INFO()<<format("sizeof(COrderField) = %d") % sizeof(COrderField);
   /*
-   *INFO()<<format("offset InstrumentID = %d") % STRUCT_OFFSET(COrderField, InstrumentID);
-   *INFO()<<format("offset OrderSysID = %d") % STRUCT_OFFSET(COrderField, OrderSysID);
-   *INFO()<<format("offset OrderStatus = %d") % STRUCT_OFFSET(COrderField, OrderStatus);
+   *sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 0);//comm phase pkt
+   *sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 1);//exchange data start
+   */
+  /*
+   *sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2);//exchange data end
+   *sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 2872);//settlement start pkt
+   *sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4086);//tid = 0x00005001
+   *sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4085); //settlement end pkt
+   */
+  /*
+   *sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 4432); // tid = 0x00005201, ntforder
    */
 
+  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 43898);//comm phase pkt
+  sendIndex(mySocket, boost::make_shared<XTPReader>(config.getInDataPath()), 62326);//exchange data start
+  INFO()<<format("sizeof(COrderField) = %d") % sizeof(COrderField);
   printf("Offset of InstrumentID = %d\n", STRUCT_OFFSET(COrderField, InstrumentID));
   printf("Offset of OrderSysID = %d\n", STRUCT_OFFSET(COrderField, OrderSysID));
   printf("Offset of OrderStatus = %d\n", STRUCT_OFFSET(COrderField, OrderStatus));
+  printf("Offset of VolumeTotal = %d\n", STRUCT_OFFSET(COrderField, VolumeTotal));
+  printf("Offset of Direction = %d\n", STRUCT_OFFSET(COrderField, Direction));
+  printf("Offset of LimitPrice = %d\n", STRUCT_OFFSET(COrderField, LimitPrice));
+
+/*
+ *  COrderField cof;
+ *  cof.VolumeTotal;
+ *  cof.Direction;
+ *  cof.LimitPrice;
+ *
+ */
   INFO() << "program exit normally";
   return 0;
 }

@@ -17,13 +17,9 @@ map<string, bool> delay_map_start;
 
 bool has_first_trigger = false;
 bool same_time_package = false;
-void genTopicMarket(char* buffer, uint32_t *length, 
-		            map<string, MBLData> &order_book, 
-					map<string, CMarketDataField> &mMarketData,
-					CCurrentTimeField* current_time, 
-					bool first_trigger){
+void genTopicMarket(char* buffer, uint32_t *length, map<string, MBLData> &order_book, map<string, CMarketDataField> &mMarketData, CCurrentTimeField* current_time, bool first_trigger)
+{
 
-  DEBUG() << "inside the function";
   	if (first_trigger) 
 		has_first_trigger = true;
 	if (!has_first_trigger)
@@ -42,7 +38,8 @@ void genTopicMarket(char* buffer, uint32_t *length,
 	map<string, CMarketDataField>:: iterator iter = mMarketData.begin();
 	//for topicID == 100 || 110
 	bool test = false;
-	for (; iter != mMarketData.end(); iter++){
+	for (; iter != mMarketData.end(); iter++)
+    {
 		string instrument_id = iter->first;
 		const CMarketDataField& market_data = iter->second;
 		MBLData& mbl_data = order_book[instrument_id];
@@ -194,7 +191,7 @@ void genTopicMarket(char* buffer, uint32_t *length,
 
 		strncpy((char*)&(time_field.InstrumentID), (char*)(instrument_id.c_str()), instrument_id.length()+1);
 		strncpy((char*)&(time_field.UpdateTime), (char*)(current_time->CurrTime), sizeof(current_time->CurrTime));
-		//strncpy((char*)&(time_field.UpdateMillisec), (char*)(current_time->CurrMillisec), sizeof(current_time->CurrMillisec));
+
 		time_field.UpdateMillisec = current_time->CurrMillisec;
 
 		NtfTopicMarketData_100 topic_100 (&base_field, &static_field, 

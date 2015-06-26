@@ -1,0 +1,209 @@
+package cn.edu.tsinghua.tidhandler;
+
+
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.state.GlobalStateItems;
+import cn.edu.tsinghua.utils.DFEUtils;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public class NtfOrderHandler extends TidHandlerBase {
+
+	private final int MAX_ORDER_FIELD_SIZE = 1;
+	private final DFEVar isInstrumentIDCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+	@SuppressWarnings("unchecked")
+	DFEVector<DFEVar> instrumentIDs[] = new DFEVector[MAX_ORDER_FIELD_SIZE];
+
+	private final DFEVar isOrderSysIDCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+	@SuppressWarnings("unchecked")
+	DFEVector<DFEVar> orderSysIDs[] = new DFEVector[MAX_ORDER_FIELD_SIZE];
+
+	private final DFEVar isOrderStatusCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+	@SuppressWarnings("unchecked")
+	DFEVector<DFEVar> orderStatuses[] = new DFEVector[MAX_ORDER_FIELD_SIZE];
+
+	private final DFEVar isVolumeTotalCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+	@SuppressWarnings("unchecked")
+	DFEVar volumeTotals[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+
+	private final DFEVar isDirectionCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+	@SuppressWarnings("unchecked")
+	DFEVector<DFEVar> directions[] = new DFEVector[MAX_ORDER_FIELD_SIZE];
+//
+	private final DFEVar isLimitPriceCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+	@SuppressWarnings("unchecked")
+	DFEVar limitPrices[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+	public NtfOrderHandler(FramedKernel k, FrameData<XTPFrameFormat> fin,
+			DFEVar [] bytes, DFEVar count, int expectedTID)
+	{
+		super(k, fin, bytes, count, expectedTID);
+	}
+
+	@Override
+	public DFEVar process() {
+		// TODO Auto-generated method stub
+		//Extract InstrumentID from Order Pkt
+		for(int i = 0; i < MAX_ORDER_FIELD_SIZE; i ++)
+		{
+			//77:offset of InstrumentID in COrderField
+			//303: sizeof(COrderField) + 4(Length of FieldHeader)
+			int currCycle = (77 + 303 * i) / 8;
+			int currStartIndex = (77 + 303 * i) % 8;
+			isInstrumentIDCycleValid[i] = cycleCount.eq(currCycle) & isValidPkg;
+			instrumentIDs[i] = ItemType.CInstrumentIDType.newInstance(kernel);
+			DFEUtils.groupCharToVector(kernel, instrumentIDs[i], currByte, currStartIndex, 0, 31);
+			debug.simPrintf(isInstrumentIDCycleValid[i],"Kernel Got in Cycle %d in InstrumentID For Loop\n", cycleCount);
+			DFEUtils.printCharVector(kernel, "Bytes in InstrumentID:", instrumentIDs[i], isInstrumentIDCycleValid[i]);
+		}
+
+		//Extract OrderSysID from Order Pkt
+		for(int i = 0; i < MAX_ORDER_FIELD_SIZE; i ++)
+		{
+			//26:offset of OrderSysID in COrderField
+			//303: sizeof(COrderField) + 4(Length of FieldHeader)
+			int currCycle = (26 + 303 * i) / 8;
+			int currStartIndex = (26 + 303 * i) % 8;
+			isOrderSysIDCycleValid[i] = cycleCount.eq(currCycle) & isValidPkg;
+			orderSysIDs[i] = ItemType.COrderSysIDType.newInstance(kernel);
+			DFEUtils.groupCharToVector(kernel, orderSysIDs[i], currByte, currStartIndex, 0, 13);
+			debug.simPrintf(isOrderSysIDCycleValid[i],"Kernel Got in Cycle %d in OrderSysID for loop\n", cycleCount);
+			DFEUtils.printCharVector(kernel, "Bytes in OrderSysID:", orderSysIDs[i], isOrderSysIDCycleValid[i]);
+		}
+
+
+		//Extract OrderStatus from Order Pkt
+		for(int i = 0; i < MAX_ORDER_FIELD_SIZE; i ++)
+		{
+			//200:offset of OrderSysID in COrderField
+			//303: sizeof(COrderField) + 4(Length of FieldHeader)
+			int currCycle = (204 + 303 * i) / 8;
+			int currStartIndex = (204 + 303 * i) % 8;
+			isOrderStatusCycleValid[i] = cycleCount.eq(currCycle) & isValidPkg;
+			orderStatuses[i] = ItemType.COrderStatusType.newInstance(kernel);
+			DFEUtils.groupCharToVector(kernel, orderStatuses[i], currByte, currStartIndex, 0, 1);
+			debug.simPrintf(isOrderStatusCycleValid[i],"Kernel Got in Cycle %d in OrderStatus for loop\n", cycleCount);
+			DFEUtils.printCharVector(kernel, "Bytes in OrderStatus:", orderStatuses[i], isOrderStatusCycleValid[i]);
+		}
+
+		//Extract VolumeTotal from Order Pkt
+		for(int i = 0; i < MAX_ORDER_FIELD_SIZE; i ++)
+		{
+			//210:offset of VolumeTotal in COrderField
+			//303: sizeof(COrderField) + 4(Length of FieldHeader)
+			int currCycle = (210 + 303 * i) / 8;
+			int currStartIndex = (210 + 303 * i) % 8;
+			isVolumeTotalCycleValid[i] = cycleCount.eq(currCycle) & isValidPkg;
+			volumeTotals[i] = ItemType.CVolumeTotalType.newInstance(kernel);
+			DFEUtils.groupByteToDFEVar32(kernel, volumeTotals[i], currByte, currStartIndex, 0, 4);
+			debug.simPrintf(isVolumeTotalCycleValid[i],"Kernel Got in Cycle %d in isVolumeTotalCycleValid For Loop, VolumeTotal = %d\n", cycleCount, volumeTotals[i]);
+
+		}
+
+		//Extract Direction from Order Pkt
+		for(int i = 0; i < MAX_ORDER_FIELD_SIZE; i ++)
+		{
+			//109:offset of Direction in COrderField
+			//303: sizeof(COrderField) + 4(Length of FieldHeader)
+			int currCycle = (109 + 303 * i) / 8;
+			int currStartIndex = (109 + 303 * i) % 8;
+			isDirectionCycleValid[i] = cycleCount.eq(currCycle) & isValidPkg;
+			directions[i] = ItemType.CDirectionType.newInstance(kernel);
+			DFEUtils.groupCharToVector(kernel, directions[i], currByte, currStartIndex, 0, 1);
+			debug.simPrintf(isDirectionCycleValid[i],"Kernel Got in Cycle %d in OrderStatus for loop\n", cycleCount);
+			DFEUtils.printCharVector(kernel, "Bytes in OrderStatus:", directions[i], isDirectionCycleValid[i]);
+		}
+
+		//Extract LimitPrice from Order Pkt
+		for(int i = 0; i < MAX_ORDER_FIELD_SIZE; i ++)
+		{
+			//120:offset of LimitPrice in COrderField
+			//303: sizeof(COrderField) + 4(Length of FieldHeader)
+			int currCycle = (120 + 303 * i) / 8;
+			int currStartIndex = (120 + 303 * i) % 8;
+			isLimitPriceCycleValid[i] = cycleCount.eq(currCycle) & isValidPkg;
+			limitPrices[i] = ItemType.CLimitPriceType.newInstance(kernel);
+			DFEUtils.groupByteToDFEVar32(kernel, volumeTotals[i], currByte, currStartIndex, 0, 4);
+			debug.simPrintf(isVolumeTotalCycleValid[i],"Kernel Got in Cycle %d in isVolumeTotalCycleValid For Loop, VolumeTotal = %d\n", cycleCount, volumeTotals[i]);
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+//		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//		GlobalStateItems.exchangeDataSyncStatus = constant.var(DFETypeFactory.dfeUInt(2), 1);
+//
+//		DFEVar isCycle0th = (cycleCount === 0 & isValidPkg);
+//
+//		/// this only works when cycleCount == 0
+//		DFEVar fid =      currByte[0].cat(currByte[1]).cast(ItemType.uint16_t);
+//		DFEVar fieldLen = currByte[2].cat(currByte[3]).cast(ItemType.uint16_t);
+//
+//		debug.simPrintf(isCycle0th, "fid: 0X%02x\n", fid);
+//		debug.simPrintf(isCycle0th, "fieldLen: %d\n", fieldLen);
+//
+//		DFEVar isCycle1st = (cycleCount === 1 & isValidPkg);
+//		DFEVector<DFEVar> TradingDay = ItemType.CDayType.newInstance(kernel);
+//		DFEUtils.groupCharToVector(kernel, TradingDay, currByte, 4, -1, 9);
+//
+//		DFEVar commPhaseNo = currByte[5].cat(currByte[6]).cast(ItemType.CCommPhaseNoType);
+//
+//
+//		kernel.pushResetBetweenFrames(false);
+//
+//		DFEVar isCommPhaseChangePktProcess = Reductions.streamHold(isValidPkg, isValidPkg);
+////		debug.simPrintf(">>>>>>>>>>>>>>Kernel Got in Cycle[%d]: isCommPhasePktProcess = %d\n", cycleCount, isCommPhaseChangePktProcess);
+//		commPhaseNo = isCommPhaseChangePktProcess ? Reductions.streamHold(commPhaseNo, isCycle1st ): constant.var(DFETypeFactory.dfeUInt(16), MDGlobalStateConstants.COMM_PHASE_INIT_VALUE);
+////		debug.simPrintf("Kernel Got In process() in Cycle [%d]:\n", cycleCount);
+////		for(int i = 0; i < 2; i ++)
+////		{
+////			debug.simPrintf("0x%02x ", commPhaseNo.slice(i * 8, 8));
+////		}
+////		debug.simPrintf("\n");
+//		setCommPhaseNo(commPhaseNo, isCycle1st, isCommPhaseChangePktProcess);
+//		kernel.popResetBetweenFrames();
+
+		return GlobalStateItems.commPhaseNo;
+	}
+
+//	public DFEVar getCommPhaseNo()
+//	{
+//		return GlobalStateItems.commPhaseNo;
+//	}
+
+	private void setCommPhaseNo(DFEVar commPhaseNo, DFEVar isCycle1st, DFEVar isCommPhaseChangePktProcess)
+	{
+
+
+		GlobalStateItems.commPhaseNo = commPhaseNo;
+//		debug.simPrintf("Kernel Got In SET before reduction in Cycle [%d], isValidPkg = %d, isCycle1st = %d:\n", cycleCount, isValidPkg, isCycle1st);
+//		for(int i = 0; i < 2; i ++)
+//		{
+//			debug.simPrintf("0x%02x ", GlobalStateItems.commPhaseNo.slice(i * 8, 8));
+//		}
+//		debug.simPrintf("\n");
+
+		GlobalStateItems.commPhaseNo = Reductions.streamHold(commPhaseNo, isCycle1st | isCommPhaseChangePktProcess.eq(false));
+
+//		debug.simPrintf("Kernel Got In SET After reduction in Cycle [%d], isValidPkg = %d, isCycle1st = %d:\n", cycleCount, isValidPkg, isCycle1st);
+//		for(int i = 0; i < 2; i ++)
+//		{
+//			debug.simPrintf("0x%02x ", GlobalStateItems.commPhaseNo.slice(i * 8, 8));
+//		}
+//		debug.simPrintf("\n");
+	}
+
+}

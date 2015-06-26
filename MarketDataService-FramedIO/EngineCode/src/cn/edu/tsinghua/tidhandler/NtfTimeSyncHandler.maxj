@@ -1,0 +1,55 @@
+package cn.edu.tsinghua.tidhandler;
+
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.utils.DFEUtils;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public class NtfTimeSyncHandler extends NtfTIDBaseHandler {
+	private final int sizeOfCurrentTimeField = 4 + ( 9 + 9 + 4);
+	private final int offsetOfCurrDate = 4 + 0;
+	private final int offsetOfCurrTime = 4 + 9;
+	private final int offsetOfCurrMillisec = 4 + 9 + 9;
+
+
+	public NtfTimeSyncHandler(FramedKernel k, FrameData<XTPFrameFormat> fin,
+			DFEVar[] bytes, DFEVar count, int expectedTID)
+	{
+		super(k, fin, bytes, count, expectedTID);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public DFEVar process() {
+		// TODO Auto-generated method stub
+		DFEVector<DFEVar> currDate = ItemType.CDayType.newInstance(kernel);
+		DFEVector<DFEVar> currTime = ItemType.CTimeType.newInstance(kernel);
+		DFEVar currMillisec = ItemType.CMillisecType.newInstance(kernel);
+
+
+
+		int currDateStartCycle = offsetOfCurrDate / 8;
+		int currTimeStartCycle = offsetOfCurrTime / 8;
+		int currMillisecStartCycle = offsetOfCurrMillisec / 8;
+
+
+		int currDateStartIndex = offsetOfCurrDate % 8;
+		int currTimeStartIndex = offsetOfCurrTime % 8;
+		int currMillisecStartIndex = offsetOfCurrMillisec % 8;
+
+		//Extract curr date
+		DFEUtils.groupCharToVector(kernel, currDate, currByte, currDateStartIndex, 0, 9);
+		DFEUtils.groupCharToVector(kernel, currTime, currByte, currTimeStartIndex, 0, 9);
+		DFEUtils.groupByteToDFEVar32(kernel, currMillisec, currByte, currMillisecStartIndex, 0, 4);
+
+		DFEUtils.printCharVector(kernel, "Bytes in currData:\n", currDate, cycleCount.eq(currDateStartCycle)&isValidPkg);
+		DFEUtils.printCharVector(kernel, "Bytes in currTime:\n", currTime, cycleCount.eq(currTimeStartCycle)&isValidPkg);
+		debug.simPrintf(cycleCount.eq(currMillisecStartCycle) & isValidPkg, "In Cycle %d: currMillisec = %d\n", cycleCount, currMillisec);
+
+		return constant.var(true);
+	}
+
+}

@@ -1,0 +1,208 @@
+package cn.edu.tsinghua.tidhandler;
+
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.utils.DFEUtils;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public class NtfTradeHandler extends TidHandlerBase{
+	public NtfTradeHandler (FramedKernel k, FrameData<XTPFrameFormat> fin, DFEVar [] bytes, DFEVar count, int expectedTID)
+	{
+		super(k, fin, bytes, count, expectedTID);
+	}
+	@Override
+	public DFEVar process(){
+		DFEVar isCycle4_Dir = (cycleCount === 4 & isValidPkg);
+		DFEVar isCycle11_ID = (cycleCount === 11 & isValidPkg);
+		DFEVar isCycle15_Off = (cycleCount === 15 & isValidPkg);
+		DFEVar isCycle15_Pri = (cycleCount === 15 & isValidPkg);
+		DFEVar isCycle16_Vol = (cycleCount === 16 & isValidPkg);
+
+		DFEVar isCycle30_Dir = (cycleCount === 30 & isValidPkg);
+		DFEVar isCycle36_ID = (cycleCount === 36 & isValidPkg);
+		DFEVar isCycle40_Off = (cycleCount === 40 & isValidPkg);
+		DFEVar isCycle41_Pri = (cycleCount === 41 & isValidPkg);
+		DFEVar isCycle42_Vol = (cycleCount === 42 & isValidPkg);
+
+		DFEVar isCycle56_Dir = (cycleCount === 56 & isValidPkg);
+		DFEVar isCycle62_ID = (cycleCount === 62 & isValidPkg);
+		DFEVar isCycle66_Off = (cycleCount === 66 & isValidPkg);
+		DFEVar isCycle66_Pri = (cycleCount === 66 & isValidPkg);
+		DFEVar isCycle67_Vol = (cycleCount === 67 & isValidPkg);
+
+		DFEVar isCycle82_Dir = (cycleCount === 82 & isValidPkg);
+		DFEVar isCycle88_ID = (cycleCount === 88 & isValidPkg);
+		DFEVar isCycle92_Off = (cycleCount === 92 & isValidPkg);
+		DFEVar isCycle92_Pri = (cycleCount === 92 & isValidPkg);
+		DFEVar isCycle93_Vol = (cycleCount === 93 & isValidPkg);
+
+		DFEVar isCycle107_Dir = (cycleCount === 107 & isValidPkg);
+		DFEVar isCycle114_ID = (cycleCount === 114 & isValidPkg);
+		DFEVar isCycle118_Off = (cycleCount === 118 & isValidPkg);
+		DFEVar isCycle118_Pri = (cycleCount === 118 & isValidPkg);
+		DFEVar isCycle119_Vol = (cycleCount === 119 & isValidPkg);
+
+		DFEVar isCycle133_Dir = (cycleCount === 133 & isValidPkg);
+		DFEVar isCycle139_ID = (cycleCount === 139 & isValidPkg);
+		DFEVar isCycle143_Off = (cycleCount === 143 & isValidPkg);
+		DFEVar isCycle144_Pri = (cycleCount === 144 & isValidPkg);
+		DFEVar isCycle145_Vol = (cycleCount === 145 & isValidPkg);
+
+		DFEVar isCycle159_Dir = (cycleCount === 159 & isValidPkg);
+		DFEVar isCycle165_ID = (cycleCount === 165 & isValidPkg);
+		DFEVar isCycle169_Off = (cycleCount === 169 & isValidPkg);
+		DFEVar isCycle169_Pri = (cycleCount === 169 & isValidPkg);
+		DFEVar isCycle170_Vol = (cycleCount === 170 & isValidPkg);
+
+		DFEVar isCycle185_Dir = (cycleCount === 185 & isValidPkg);
+		DFEVar isCycle191_ID = (cycleCount === 191 & isValidPkg);
+		DFEVar isCycle195_Off = (cycleCount === 195 & isValidPkg);
+		DFEVar isCycle195_Pri = (cycleCount === 195 & isValidPkg);
+		DFEVar isCycle196_Vol = (cycleCount === 196 & isValidPkg);
+
+		DFEVar isCycle210_Dir = (cycleCount === 210 & isValidPkg);
+		DFEVar isCycle217_ID = (cycleCount === 217 & isValidPkg);
+		DFEVar isCycle221_Off = (cycleCount === 221 & isValidPkg);
+		DFEVar isCycle221_Pri = (cycleCount === 221 & isValidPkg);
+		DFEVar isCycle222_Vol = (cycleCount === 222 & isValidPkg);
+
+		DFEVar isCycle236_Dir = (cycleCount === 236 & isValidPkg);
+		DFEVar isCycle242_ID = (cycleCount === 242 & isValidPkg);
+		DFEVar isCycle246_Off = (cycleCount === 246 & isValidPkg);
+		DFEVar isCycle247_Pri = (cycleCount === 247 & isValidPkg);
+		DFEVar isCycle248_Vol = (cycleCount === 248 & isValidPkg);
+
+		DFEVector<DFEVar> Direction0 = ItemType.CDirectionType.newInstance(kernel);
+		DFEVector<DFEVar> InstrumentID0 = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEVector<DFEVar> OffsetFlag0 = ItemType.COffsetFlagType.newInstance(kernel);
+		DFEVar Price0 = ItemType.CPriceType.newInstance(kernel);
+		DFEVar Volume0 = ItemType.CVolumeType.newInstance(kernel);
+
+		DFEUtils.groupCharToVector(kernel, Direction0, currByte, 7, 0, 1);
+		DFEUtils.groupCharToVector(kernel, InstrumentID0, currByte, 1, 0, 31);
+		DFEUtils.groupCharToVector(kernel, OffsetFlag0, currByte, 0, 0, 1);
+		DFEUtils.groupByteToDFEVar64(kernel, Price0, currByte, 2, 0, 8);
+		DFEUtils.groupByteToDFEVar32(kernel, Volume0, currByte, 2, 0, 4);
+
+		DFEVector<DFEVar> Direction1 = ItemType.CDirectionType.newInstance(kernel);
+		DFEVector<DFEVar> InstrumentID1 = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEVector<DFEVar> OffsetFlag1 = ItemType.COffsetFlagType.newInstance(kernel);
+		DFEVar Price1 = ItemType.CPriceType.newInstance(kernel);
+		DFEVar Volume1 = ItemType.CVolumeType.newInstance(kernel);
+
+		DFEUtils.groupCharToVector(kernel, Direction1, currByte, 5, 0, 1);
+		DFEUtils.groupCharToVector(kernel, InstrumentID1, currByte, 7, 0, 31);
+		DFEUtils.groupCharToVector(kernel, OffsetFlag1, currByte, 6, 0, 1);
+		DFEUtils.groupByteToDFEVar64(kernel, Price1, currByte, 0, 0, 8);
+		DFEUtils.groupByteToDFEVar32(kernel, Volume1, currByte, 0, 0, 4);
+
+		DFEVector<DFEVar> Direction2 = ItemType.CDirectionType.newInstance(kernel);
+		DFEVector<DFEVar> InstrumentID2 = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEVector<DFEVar> OffsetFlag2 = ItemType.COffsetFlagType.newInstance(kernel);
+		DFEVar Price2 = ItemType.CPriceType.newInstance(kernel);
+		DFEVar Volume2 = ItemType.CVolumeType.newInstance(kernel);
+
+		DFEUtils.groupCharToVector(kernel, Direction2, currByte, 3, 0, 1);
+		DFEUtils.groupCharToVector(kernel, InstrumentID2, currByte, 5, 0, 31);
+		DFEUtils.groupCharToVector(kernel, OffsetFlag2, currByte, 4, 0, 1);
+		DFEUtils.groupByteToDFEVar64(kernel, Price2, currByte, 6, 0, 8);
+		DFEUtils.groupByteToDFEVar32(kernel, Volume2, currByte, 6, 0, 4);
+
+		DFEVector<DFEVar> Direction3 = ItemType.CDirectionType.newInstance(kernel);
+		DFEVector<DFEVar> InstrumentID3 = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEVector<DFEVar> OffsetFlag3 = ItemType.COffsetFlagType.newInstance(kernel);
+		DFEVar Price3 = ItemType.CPriceType.newInstance(kernel);
+		DFEVar Volume3 = ItemType.CVolumeType.newInstance(kernel);
+
+		DFEUtils.groupCharToVector(kernel, Direction3, currByte, 1, 0, 1);
+		DFEUtils.groupCharToVector(kernel, InstrumentID3, currByte, 3, 0, 31);
+		DFEUtils.groupCharToVector(kernel, OffsetFlag3, currByte, 2, 0, 1);
+		DFEUtils.groupByteToDFEVar64(kernel, Price3, currByte, 4, 0, 8);
+		DFEUtils.groupByteToDFEVar32(kernel, Volume3, currByte, 4, 0, 4);
+
+		DFEVector<DFEVar> Direction4 = ItemType.CDirectionType.newInstance(kernel);
+		DFEVector<DFEVar> InstrumentID4 = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEVector<DFEVar> OffsetFlag4 = ItemType.COffsetFlagType.newInstance(kernel);
+		DFEVar Price4 = ItemType.CPriceType.newInstance(kernel);
+		DFEVar Volume4 = ItemType.CVolumeType.newInstance(kernel);
+
+		DFEUtils.groupCharToVector(kernel, Direction4, currByte, 7, 0, 1);
+		DFEUtils.groupCharToVector(kernel, InstrumentID4, currByte, 1, 0, 31);
+		DFEUtils.groupCharToVector(kernel, OffsetFlag4, currByte, 0, 0, 1);
+		DFEUtils.groupByteToDFEVar64(kernel, Price4, currByte, 2, 0, 8);
+		DFEUtils.groupByteToDFEVar32(kernel, Volume4, currByte, 2, 0, 4);
+
+		DFEVector<DFEVar> Direction5 = ItemType.CDirectionType.newInstance(kernel);
+		DFEVector<DFEVar> InstrumentID5 = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEVector<DFEVar> OffsetFlag5 = ItemType.COffsetFlagType.newInstance(kernel);
+		DFEVar Price5 = ItemType.CPriceType.newInstance(kernel);
+		DFEVar Volume5 = ItemType.CVolumeType.newInstance(kernel);
+
+		DFEUtils.groupCharToVector(kernel, Direction5, currByte, 5, 0, 1);
+		DFEUtils.groupCharToVector(kernel, InstrumentID5, currByte, 7, 0, 31);
+		DFEUtils.groupCharToVector(kernel, OffsetFlag5, currByte, 6, 0, 1);
+		DFEUtils.groupByteToDFEVar64(kernel, Price5, currByte, 0, 0, 8);
+		DFEUtils.groupByteToDFEVar32(kernel, Volume5, currByte, 0, 0, 4);
+
+		DFEVector<DFEVar> Direction6 = ItemType.CDirectionType.newInstance(kernel);
+		DFEVector<DFEVar> InstrumentID6 = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEVector<DFEVar> OffsetFlag6 = ItemType.COffsetFlagType.newInstance(kernel);
+		DFEVar Price6 = ItemType.CPriceType.newInstance(kernel);
+		DFEVar Volume6 = ItemType.CVolumeType.newInstance(kernel);
+
+		DFEUtils.groupCharToVector(kernel, Direction6, currByte, 3, 0, 1);
+		DFEUtils.groupCharToVector(kernel, InstrumentID6, currByte, 5, 0, 31);
+		DFEUtils.groupCharToVector(kernel, OffsetFlag6, currByte, 4, 0, 1);
+		DFEUtils.groupByteToDFEVar64(kernel, Price6, currByte, 6, 0, 8);
+		DFEUtils.groupByteToDFEVar32(kernel, Volume6, currByte, 6, 0, 4);
+
+		DFEVector<DFEVar> Direction7 = ItemType.CDirectionType.newInstance(kernel);
+		DFEVector<DFEVar> InstrumentID7 = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEVector<DFEVar> OffsetFlag7 = ItemType.COffsetFlagType.newInstance(kernel);
+		DFEVar Price7 = ItemType.CPriceType.newInstance(kernel);
+		DFEVar Volume7 = ItemType.CVolumeType.newInstance(kernel);
+
+		DFEUtils.groupCharToVector(kernel, Direction7, currByte, 1, 0, 1);
+		DFEUtils.groupCharToVector(kernel, InstrumentID7, currByte, 3, 0, 31);
+		DFEUtils.groupCharToVector(kernel, OffsetFlag7, currByte, 2, 0, 1);
+		DFEUtils.groupByteToDFEVar64(kernel, Price7, currByte, 4, 0, 8);
+		DFEUtils.groupByteToDFEVar32(kernel, Volume7, currByte, 4, 0, 4);
+
+		DFEVector<DFEVar> Direction8 = ItemType.CDirectionType.newInstance(kernel);
+		DFEVector<DFEVar> InstrumentID8 = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEVector<DFEVar> OffsetFlag8 = ItemType.COffsetFlagType.newInstance(kernel);
+		DFEVar Price8 = ItemType.CPriceType.newInstance(kernel);
+		DFEVar Volume8 = ItemType.CVolumeType.newInstance(kernel);
+
+		DFEUtils.groupCharToVector(kernel, Direction8, currByte, 7, 0, 1);
+		DFEUtils.groupCharToVector(kernel, InstrumentID8, currByte, 1, 0, 31);
+		DFEUtils.groupCharToVector(kernel, OffsetFlag8, currByte, 0, 0, 1);
+		DFEUtils.groupByteToDFEVar64(kernel, Price8, currByte, 2, 0, 8);
+		DFEUtils.groupByteToDFEVar32(kernel, Volume8, currByte, 2, 0, 4);
+
+		DFEVector<DFEVar> Direction9 = ItemType.CDirectionType.newInstance(kernel);
+		DFEVector<DFEVar> InstrumentID9 = ItemType.CInstrumentIDType.newInstance(kernel);
+		DFEVector<DFEVar> OffsetFlag9 = ItemType.COffsetFlagType.newInstance(kernel);
+		DFEVar Price9 = ItemType.CPriceType.newInstance(kernel);
+		DFEVar Volume9 = ItemType.CVolumeType.newInstance(kernel);
+
+		DFEUtils.groupCharToVector(kernel, Direction9, currByte, 5, 0, 1);
+		DFEUtils.groupCharToVector(kernel, InstrumentID9, currByte, 7, 0, 31);
+		DFEUtils.groupCharToVector(kernel, OffsetFlag9, currByte, 6, 0, 1);
+		DFEUtils.groupByteToDFEVar64(kernel, Price9, currByte, 0, 0, 8);
+		DFEUtils.groupByteToDFEVar32(kernel, Volume9, currByte, 0, 0, 4);
+
+
+
+		debug.simPrintf(isCycle4_Dir,"Direction = %d \n", Direction0[0]);
+		//debug.simPrintf(isCycle111_ID,"", );
+		debug.simPrintf(isCycle15_Off,"OffsetFlag = %d \n", OffsetFlag0[0]);
+		debug.simPrintf(isCycle15_Pri,"Price = %f \n", Price0);
+		debug.simPrintf(isCycle16_Vol,"Volume = %d \n", Volume0);
+
+		return kernel.constant.var(true);
+	}
+}

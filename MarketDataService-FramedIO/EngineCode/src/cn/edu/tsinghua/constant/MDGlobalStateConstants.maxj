@@ -10,4 +10,5 @@ public class MDGlobalStateConstants{
 	public static final int SETTLEMENT_GROUP_DATA_SYNC_STATUS_ASYNCHRONOUS = 1;
 	public static final int SETTLEMENT_GROUP_DATA_SYNC_STATUS_SYNCHRONIZING = 2;
 	public static final int SETTLEMENT_GROUP_DATA_SYNC_STATUS_SYNCHRONIZED = 3;
+	public static final int INSTRUMENT_MAX_NUM = 2;
 }

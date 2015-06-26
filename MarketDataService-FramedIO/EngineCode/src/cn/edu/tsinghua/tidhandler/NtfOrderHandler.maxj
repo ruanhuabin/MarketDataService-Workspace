@@ -11,9 +11,9 @@ import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
 import com.maxeler.networking.v1.framed_kernels.FrameData;
 import com.maxeler.networking.v1.framed_kernels.FramedKernel;
 
-public class NtfOrderHandler extends TidHandlerBase {
+public class NtfOrderHandler extends NtfTIDBaseHandler {
 
-	private final int MAX_ORDER_FIELD_SIZE = 10;
+	private final int MAX_ORDER_FIELD_SIZE = 1;
 	private final DFEVar isInstrumentIDCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
 	@SuppressWarnings("unchecked")
 	DFEVector<DFEVar> instrumentIDs[] = new DFEVector[MAX_ORDER_FIELD_SIZE];
@@ -25,6 +25,18 @@ public class NtfOrderHandler extends TidHandlerBase {
 	private final DFEVar isOrderStatusCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
 	@SuppressWarnings("unchecked")
 	DFEVector<DFEVar> orderStatuses[] = new DFEVector[MAX_ORDER_FIELD_SIZE];
+
+	private final DFEVar isVolumeTotalCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+	@SuppressWarnings("unchecked")
+	DFEVar volumeTotals[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+
+	private final DFEVar isDirectionCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+	@SuppressWarnings("unchecked")
+	DFEVector<DFEVar> directions[] = new DFEVector[MAX_ORDER_FIELD_SIZE];
+//
+	private final DFEVar isLimitPriceCycleValid[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
+	@SuppressWarnings("unchecked")
+	DFEVar limitPrices[] = new DFEVar[MAX_ORDER_FIELD_SIZE];
 	public NtfOrderHandler(FramedKernel k, FrameData<XTPFrameFormat> fin,
 			DFEVar [] bytes, DFEVar count, int expectedTID)
 	{
@@ -76,6 +88,49 @@ public class NtfOrderHandler extends TidHandlerBase {
 			debug.simPrintf(isOrderStatusCycleValid[i],"Kernel Got in Cycle %d in OrderStatus for loop\n", cycleCount);
 			DFEUtils.printCharVector(kernel, "Bytes in OrderStatus:", orderStatuses[i], isOrderStatusCycleValid[i]);
 		}
+
+		//Extract VolumeTotal from Order Pkt
+		for(int i = 0; i < MAX_ORDER_FIELD_SIZE; i ++)
+		{
+			//210:offset of VolumeTotal in COrderField
+			//303: sizeof(COrderField) + 4(Length of FieldHeader)
+			int currCycle = (210 + 303 * i) / 8;
+			int currStartIndex = (210 + 303 * i) % 8;
+			isVolumeTotalCycleValid[i] = cycleCount.eq(currCycle) & isValidPkg;
+			volumeTotals[i] = ItemType.CVolumeTotalType.newInstance(kernel);
+			DFEUtils.groupByteToDFEVar32(kernel, volumeTotals[i], currByte, currStartIndex, 0, 4);
+			debug.simPrintf(isVolumeTotalCycleValid[i],"Kernel Got in Cycle %d in isVolumeTotalCycleValid For Loop, VolumeTotal = %d\n", cycleCount, volumeTotals[i]);
+
+		}
+
+		//Extract Direction from Order Pkt
+		for(int i = 0; i < MAX_ORDER_FIELD_SIZE; i ++)
+		{
+			//109:offset of Direction in COrderField
+			//303: sizeof(COrderField) + 4(Length of FieldHeader)
+			int currCycle = (109 + 303 * i) / 8;
+			int currStartIndex = (109 + 303 * i) % 8;
+			isDirectionCycleValid[i] = cycleCount.eq(currCycle) & isValidPkg;
+			directions[i] = ItemType.CDirectionType.newInstance(kernel);
+			DFEUtils.groupCharToVector(kernel, directions[i], currByte, currStartIndex, 0, 1);
+			debug.simPrintf(isDirectionCycleValid[i],"Kernel Got in Cycle %d in OrderStatus for loop\n", cycleCount);
+			DFEUtils.printCharVector(kernel, "Bytes in Direction:", directions[i], isDirectionCycleValid[i]);
+		}
+
+		//Extract LimitPrice from Order Pkt
+		for(int i = 0; i < MAX_ORDER_FIELD_SIZE; i ++)
+		{
+			//120:offset of LimitPrice in COrderField
+			//303: sizeof(COrderField) + 4(Length of FieldHeader)
+			int currCycle = (120 + 303 * i) / 8;
+			int currStartIndex = (120 + 303 * i) % 8;
+			isLimitPriceCycleValid[i] = cycleCount.eq(currCycle) & isValidPkg;
+			limitPrices[i] = ItemType.CLimitPriceType.newInstance(kernel);
+			DFEUtils.groupByteToDFEVar64(kernel, limitPrices[i], currByte, currStartIndex, 0, 8);
+			debug.simPrintf(isLimitPriceCycleValid[i],"Kernel Got in Cycle %d in isLimitPriceCycleValid For Loop, LimitPrice = %f\n", cycleCount, limitPrices[i]);
+
+		}
+
 
 
 

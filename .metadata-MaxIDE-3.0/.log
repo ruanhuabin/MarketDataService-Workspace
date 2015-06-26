@@ -1206,3 +1206,432 @@ com.maxeler.build.profile.builder.BuildCancelled: Engine build terminated by use
 
 !ENTRY org.eclipse.cdt.core 1 0 2015-06-24 14:42:08.253
 !MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.59 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-24 15:03:30.029
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.40 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-24 15:35:02.675
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-24 15:35:03.770
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.48 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+!SESSION 2015-05-24 16:30:27.542 -----------------------------------------------
+eclipse.buildId=I20100608-0911
+java.version=1.6.0_45
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=zh_CN
+Command-line arguments:  -data /root/MarketDataService-workspace -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-24 16:30:28.065
+!MESSAGE .metadata renamed to .metadata_to_be_removed
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-24 16:30:28.074
+!MESSAGE .metadata symlinked
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-24 16:30:28.075
+!MESSAGE .metadata_to_be_removed unlinked
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-05-24 16:30:28.184
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-05-24 16:31:47.655
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-05-24 16:31:48.608
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.75 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+!SESSION 2015-05-24 16:33:56.304 -----------------------------------------------
+eclipse.buildId=I20100608-0911
+java.version=1.6.0_45
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=zh_CN
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-24 16:33:56.789
+!MESSAGE .metadata renamed to .metadata_to_be_removed
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-24 16:33:56.791
+!MESSAGE .metadata symlinked
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-24 16:33:56.792
+!MESSAGE .metadata_to_be_removed unlinked
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-05-24 16:34:35.637
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-05-24 16:34:36.313
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.59 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+!SESSION 2015-05-24 16:36:21.394 -----------------------------------------------
+eclipse.buildId=I20100608-0911
+java.version=1.6.0_45
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=zh_CN
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-24 16:36:21.865
+!MESSAGE .metadata renamed to .metadata_to_be_removed
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-24 16:36:21.867
+!MESSAGE .metadata symlinked
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-24 16:36:21.868
+!MESSAGE .metadata_to_be_removed unlinked
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-05-24 16:37:48.433
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-05-24 16:37:49.089
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.56 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-05-24 16:41:57.926
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-05-24 16:41:58.320
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.35 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+!SESSION 2015-05-29 17:23:36.221 -----------------------------------------------
+eclipse.buildId=I20100608-0911
+java.version=1.6.0_45
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=zh_CN
+Command-line arguments:  -data /root/MarketDataService-workspace -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-29 17:23:36.701
+!MESSAGE .metadata renamed to .metadata_to_be_removed
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-29 17:23:36.704
+!MESSAGE .metadata symlinked
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-29 17:23:36.705
+!MESSAGE .metadata_to_be_removed unlinked
+!SESSION 2015-05-29 17:23:56.972 -----------------------------------------------
+eclipse.buildId=I20100608-0911
+java.version=1.6.0_45
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=zh_CN
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-29 17:23:57.440
+!MESSAGE .metadata renamed to .metadata_to_be_removed
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-29 17:23:57.443
+!MESSAGE .metadata symlinked
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-29 17:23:57.443
+!MESSAGE .metadata_to_be_removed unlinked
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-05-29 17:52:52.304
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.58 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+!SESSION 2015-05-30 10:40:32.014 -----------------------------------------------
+eclipse.buildId=I20100608-0911
+java.version=1.6.0_45
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=zh_CN
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-30 10:40:32.602
+!MESSAGE .metadata renamed to .metadata_to_be_removed
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-30 10:40:32.605
+!MESSAGE .metadata symlinked
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-05-30 10:40:32.605
+!MESSAGE .metadata_to_be_removed unlinked
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-05-30 10:48:06.637
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError: Make command failed with status = 143
+	at com.maxeler.internal.build.profile.builder.CPUBuilder.runMake(CPUBuilder.java:210)
+	at com.maxeler.internal.build.profile.builder.CPUBuilder.build(CPUBuilder.java:145)
+	at com.maxeler.internal.build.profile.builder.ProfileBuilder$1.run(ProfileBuilder.java:313)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-05-30 10:48:07.433
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.57 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-25 10:48:56.325
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.32 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-25 10:50:18.165
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.27 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-25 10:57:07.025
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.26 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-25 15:17:48.522
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.23 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-25 15:49:40.424
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-25 15:49:40.648
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.20 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-25 17:18:51.200
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.21 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-25 17:19:17.506
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-25 17:19:17.727
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.21 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-25 17:22:34.276
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.24 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-26 11:12:12.522
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.20 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-26 11:12:22.888
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-26 11:12:23.089
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.19 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-26 11:14:38.174
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-26 11:14:38.460
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.28 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-26 11:16:51.691
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-26 11:16:51.882
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.18 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-26 11:18:17.909
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildCancelled: Engine build terminated by user
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.stopIfCanceled(EngineBuilder.java:106)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.access$600(EngineBuilder.java:59)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:673)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-26 11:18:18.093
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.18 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-26 11:19:11.627
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildCancelled: Engine build terminated by user
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.stopIfCanceled(EngineBuilder.java:106)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder.access$600(EngineBuilder.java:59)
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:673)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-26 11:19:11.825
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.19 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-26 11:23:00.320
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.16 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-26 12:25:40.730
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.19 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY com.maxeler.build.profiles 4 10001 2015-06-26 12:36:37.213
+!MESSAGE Internal Error
+!STACK 0
+com.maxeler.build.profile.builder.BuildError
+	at com.maxeler.internal.build.profile.builder.EngineBuilder$6.launchesTerminated(EngineBuilder.java:676)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(Unknown Source)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(Unknown Source)
+	at org.eclipse.debug.core.Launch.fireTerminate(Unknown Source)
+	at org.eclipse.debug.core.Launch.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(Unknown Source)
+	at org.eclipse.core.runtime.SafeRunner.run(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(Unknown Source)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-26 12:38:10.942
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 1.84 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+!SESSION 2015-06-26 15:03:45.977 -----------------------------------------------
+eclipse.buildId=I20100608-0911
+java.version=1.6.0_45
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=zh_CN
+Command-line arguments:  -data /root/MarketDataService-workspace -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-06-26 15:03:46.593
+!MESSAGE .metadata renamed to .metadata_to_be_removed
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-06-26 15:03:46.595
+!MESSAGE .metadata symlinked
+
+!ENTRY org.eclipse.equinox.common 1 0 2015-06-26 15:03:46.596
+!MESSAGE .metadata_to_be_removed unlinked
+
+!ENTRY org.eclipse.core.resources 2 10035 2015-06-26 15:03:46.745
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-26 15:52:14.086
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.65 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-26 15:56:23.691
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.33 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-06-26 16:04:18.265
+!MESSAGE Indexed 'MarketDataService-FramedIO_CPUCode' (1 sources, 100 headers) in 0.28 sec: 2,921 declarations; 2,820 references; 5 unresolved inclusions; 0 syntax errors; 20 unresolved names (0.35%)

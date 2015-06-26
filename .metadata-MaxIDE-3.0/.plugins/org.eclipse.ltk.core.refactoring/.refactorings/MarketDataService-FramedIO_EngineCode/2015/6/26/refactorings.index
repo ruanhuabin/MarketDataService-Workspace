@@ -6,3 +6,5 @@
 1435125124968	Rename field 'isCycleValid'
 1435125740283	Infer generic type arguments
 1435128399070	Delete element
+1435288043971	Copy compilation unit
+1435302588657	Rename type 'TidHandlerBase'

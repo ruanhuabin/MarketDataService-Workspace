@@ -108,6 +108,7 @@ int main(int argc, char *argv[]) {
 	max_framed_stream_t *toCpu = max_framed_stream_setup(engine, "toCPU", buffer, bufferSize, -1);
 
 	max_ip_config(engine, MAX_NET_CONNECTION_CH2_SFP1, &dfe_ip, &netmask);
+
 	max_udp_socket_t *dfe_socket = max_udp_create_socket(engine, "udpTopPort1");
 //	max_ip_multicast_join_group(engine, MAX_NET_CONNECTION_QSFP_TOP_10G_PORT1, &mcastaddr);
 //	max_udp_bind_ip(dfe_socket, &mcastaddr, port);

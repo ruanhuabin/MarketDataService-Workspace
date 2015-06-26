@@ -1,0 +1,27 @@
+package cn.edu.tsinghua.state;
+
+import cn.edu.tsinghua.constant.MDGlobalStateConstants;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVectorType;
+
+public class MBLData {
+	public static DFEVectorType<DFEVar> mVolume[] = new DFEVectorType[MDGlobalStateConstants.INSTRUMENT_MAX_NUM];
+	public static DFEVectorType<DFEVar> mDirection[] = new DFEVectorType[MDGlobalStateConstants.INSTRUMENT_MAX_NUM];
+	public static DFEVar mVolumeMultiple[] = new DFEVar[MDGlobalStateConstants.INSTRUMENT_MAX_NUM];
+	public static DFEVar mLastPrice[] = new DFEVar[MDGlobalStateConstants.INSTRUMENT_MAX_NUM];
+	public static DFEVar mLastVolume[] = new DFEVar[MDGlobalStateConstants.INSTRUMENT_MAX_NUM];
+	public static DFEVar mMaxPrice[] = new DFEVar[MDGlobalStateConstants.INSTRUMENT_MAX_NUM];
+	public static DFEVar mMinPrice[] = new DFEVar[MDGlobalStateConstants.INSTRUMENT_MAX_NUM];
+	public static DFEVar mTurnOver[] = new DFEVar[MDGlobalStateConstants.INSTRUMENT_MAX_NUM];
+	public static DFEVar mUpdateTime[] = new DFEVar[MDGlobalStateConstants.INSTRUMENT_MAX_NUM];
+
+	MBLData(){
+		for(int i = 0; i < MDGlobalStateConstants.INSTRUMENT_MAX_NUM; i++){
+			mVolume[i] = new DFEVectorType<DFEVar>(DFETypeFactory.dfeUInt(33), MDGlobalStateConstants.POSITION_NUM);
+		}
+
+	}
+
+}

@@ -17,7 +17,8 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="com.maxeler.build.profile.editors.BuildProfileEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -26,14 +27,39 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ItemType.maxj" partName="ItemType.maxj" path="/root/MarketDataService-workspace/MarketDataService-FramedIO/EngineCode/src/cn/edu/tsinghua/tidhandler/ItemType.maxj" title="ItemType.maxj" tooltip="MarketDataService-FramedIO_EngineCode/src/cn/edu/tsinghua/tidhandler/ItemType.maxj" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MarketDataService-FramedIO_EngineCode/src/cn/edu/tsinghua/tidhandler/ItemType.maxj"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1085" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MarketDataServiceKernel.maxj" partName="MarketDataServiceKernel.maxj" path="/root/MarketDataService-workspace/MarketDataService-FramedIO/EngineCode/src/cn/edu/tsinghua/kernel/MarketDataServiceKernel.maxj" title="MarketDataServiceKernel.maxj" tooltip="MarketDataService-FramedIO_EngineCode/src/cn/edu/tsinghua/kernel/MarketDataServiceKernel.maxj" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MarketDataService-FramedIO_EngineCode/src/cn/edu/tsinghua/kernel/MarketDataServiceKernel.maxj"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1926" selectionTopPixel="934"/>
+</editor>
+<editor id="com.maxeler.build.profile.editors.BuildProfileEditor" name="RunRules.settings" partName="DFE (MarketDataService-FramedIO)" path="/root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/DFE/RunRules.settings" title="DFE (MarketDataService-FramedIO)" tooltip="MarketDataService-FramedIO_RunRules/DFE/RunRules.settings" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MarketDataService-FramedIO_RunRules/DFE/RunRules.settings"/>
+</editor>
+<editor id="com.maxeler.builddirectory.editor.JAnnoViewer" name="MarketDataServiceKernel.maxja" partName="MarketDataServiceKernel.maxj" path="/root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/DFE/maxfiles/MarketDataService-BUILD/src_annotated_preliminary/cn/edu/tsinghua/kernel/MarketDataServiceKernel.maxja" title="MarketDataServiceKernel.maxj" tooltip="MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/src_annotated_preliminary/cn/edu/tsinghua/kernel/MarketDataServiceKernel.maxja" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/src_annotated_preliminary/cn/edu/tsinghua/kernel/MarketDataServiceKernel.maxja"/>
+<editorState build_directory_editor_contents="MarketDataService-FramedIO :: RunRules :: DFE :: Manager :: Preliminary Resource Annotation.cn.edu.tsinghua.kernel.MarketDataServiceKernel.maxj" build_directory_editor_title="MarketDataServiceKernel.maxj" selectionHorizontalPixel="0" selectionLength="7" selectionOffset="5647" selectionTopPixel="455"/>
+</editor>
+<editor activePart="true" focus="true" id="com.maxeler.builddirectory.editor.JAnnoViewer" name="MarketDataServiceManager.maxja" partName="MarketDataServiceManager.maxj" path="/root/MarketDataService-workspace/MarketDataService-FramedIO/RunRules/DFE/maxfiles/MarketDataService-BUILD/src_annotated_preliminary/cn/edu/tsinghua/kernel/MarketDataServiceManager.maxja" title="MarketDataServiceManager.maxj" tooltip="MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/src_annotated_preliminary/cn/edu/tsinghua/kernel/MarketDataServiceManager.maxja" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/src_annotated_preliminary/cn/edu/tsinghua/kernel/MarketDataServiceManager.maxja"/>
+<editorState build_directory_editor_contents="MarketDataService-FramedIO :: RunRules :: DFE :: Manager :: Preliminary Resource Annotation.cn.edu.tsinghua.kernel.MarketDataServiceManager.maxj" build_directory_editor_title="MarketDataServiceManager.maxj" selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="279"/>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
-<viewState CommonNavigator.LINKING_ENABLED="0" CommonNavigator.LINKING_ENABLED.delayed="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="1"/>
+<viewState CommonNavigator.LINKING_ENABLED="0" CommonNavigator.LINKING_ENABLED.delayed="0" currentWorkingSetName="Aggregate:MarketDataService-FramedIO:MarketDataServer-NoBlockingIO:MarketDataServer-NonBlockingIO:" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="1"/>
 </view>
 <view id="com.maxeler.build.profile.simulation.views.SimulationLog" partName="Simulated System Log">
 <viewState/>
@@ -45,7 +71,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.navigator.ProjectExplorer" activePerspective="org.eclipse.jdt.ui.MaxCompilerPerspective">
+<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.eclipse.jdt.ui.MaxCompilerPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jdt.internal.ui.MaxCompilerPerspectiveFactory" id="org.eclipse.jdt.ui.MaxCompilerPerspective" label="MaxCompiler"/>
 <alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
@@ -81,8 +107,8 @@
 <new_wizard_action id="org.eclipse.jdt.ui.wizards.NewEnumCreationWizard"/>
 <perspective_action id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
 <perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
-<hide_toolbar_item_id id="org.eclipse.debug.ui.launchActionSet"/>
 <hide_toolbar_item_id id="org.eclipse.ui.file.print"/>
+<hide_toolbar_item_id id="org.eclipse.debug.ui.launchActionSet"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.ui.navigator.ProjectExplorer"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
@@ -110,7 +136,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.20796229" ratioLeft="397" ratioRight="1512" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.7488226" ratioLeft="477" ratioRight="160" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.5121951" ratioLeft="462" ratioRight="440" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="com.maxeler.build.profile.simulation.views.SimulationLog" label="Simulated System Log"/>
@@ -137,7 +163,32 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MarketDataService-FramedIO_EngineCode/src/cn/edu/tsinghua/tidhandler/ItemType.maxj"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MarketDataService-FramedIO_EngineCode/src/cn/edu/tsinghua/kernel/MarketDataServiceKernel.maxj"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.maxeler.builddirectory.editor.FileViewer" path="/MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/_build.log"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.maxeler.build.profile.editors.BuildProfileEditor" path="/MarketDataService-FramedIO_RunRules/DFE/RunRules.settings"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.maxeler.builddirectory.editor.JAnnoViewer" path="/MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/src_annotated_preliminary/cn/edu/tsinghua/kernel/MarketDataServiceKernel.maxja"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.maxeler.builddirectory.editor.JAnnoViewer" path="/MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/src_annotated_preliminary/cn/edu/tsinghua/kernel/MarketDataServiceManager.maxja"/>
+</editors>
+<item historyLabel="ItemType.maxj" index="0">
+<position info="not_deleted" x="1085" y="0"/>
+</item>
+<item historyLabel="MarketDataServiceKernel.maxj" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Build Log" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DFE (MarketDataService-FramedIO)" index="3"/>
+<item historyLabel="MarketDataServiceKernel.maxj" index="4">
+<position info="not_deleted" x="5647" y="7"/>
+</item>
+<item active="true" historyLabel="MarketDataServiceManager.maxj" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -155,6 +206,24 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.maxeler.builddirectory.editor.JAnnoViewer" name="MarketDataServiceManager.maxja" tooltip="MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/src_annotated_preliminary/cn/edu/tsinghua/kernel/MarketDataServiceManager.maxja">
+<persistable path="/MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/src_annotated_preliminary/cn/edu/tsinghua/kernel/MarketDataServiceManager.maxja"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.maxeler.builddirectory.editor.JAnnoViewer" name="MarketDataServiceKernel.maxja" tooltip="MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/src_annotated_preliminary/cn/edu/tsinghua/kernel/MarketDataServiceKernel.maxja">
+<persistable path="/MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/src_annotated_preliminary/cn/edu/tsinghua/kernel/MarketDataServiceKernel.maxja"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.maxeler.build.profile.editors.BuildProfileEditor" name="RunRules.settings" tooltip="MarketDataService-FramedIO_RunRules/DFE/RunRules.settings">
+<persistable path="/MarketDataService-FramedIO_RunRules/DFE/RunRules.settings"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.maxeler.builddirectory.editor.FileViewer" name="_build.log" tooltip="MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/_build.log">
+<persistable path="/MarketDataService-FramedIO_RunRules/DFE/maxfiles/MarketDataService-BUILD/_build.log"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MarketDataServiceKernel.maxj" tooltip="MarketDataService-FramedIO_EngineCode/src/cn/edu/tsinghua/kernel/MarketDataServiceKernel.maxj">
+<persistable path="/MarketDataService-FramedIO_EngineCode/src/cn/edu/tsinghua/kernel/MarketDataServiceKernel.maxj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ItemType.maxj" tooltip="MarketDataService-FramedIO_EngineCode/src/cn/edu/tsinghua/tidhandler/ItemType.maxj">
+<persistable path="/MarketDataService-FramedIO_EngineCode/src/cn/edu/tsinghua/tidhandler/ItemType.maxj"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MarketDataServerKernel.maxj" tooltip="MarketDataServer-NonBlockingIO_EngineCode/src/cn/edu/tsinghua/kernel/MarketDataServerKernel.maxj">
 <persistable path="/MarketDataServer-NonBlockingIO_EngineCode/src/cn/edu/tsinghua/kernel/MarketDataServerKernel.maxj"/>
 </file>

@@ -14,7 +14,7 @@ import com.maxeler.maxcompiler.v2.utils.Bits;
 import com.maxeler.networking.v1.framed_kernels.FrameData;
 import com.maxeler.networking.v1.framed_kernels.FramedKernel;
 
-public class NtfInitInstrumentHandler extends TidHandlerBase{
+public class NtfInitInstrumentHandler extends NtfTIDBaseHandler{
 //  private final FrameData<DataOutFrameFormat> frameOut = null;
 //  private final FrameData<XTPFrameFormat> frameIn =null;
 //  private final FramedKernel kernel = null;

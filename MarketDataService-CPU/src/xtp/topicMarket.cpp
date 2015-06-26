@@ -221,19 +221,6 @@ bool NtfTopicMarketData::setData(CMarketDataBaseField* base_field,
 			}                                                         	   \
 		}while(0)
 
-//#define print_check(data_field, field_item)            \
-//	do{											                \
-//		if (!isEqual(&data_field, &(ori_field->data_field)){    \
-//			tmp_str =  #data_field + "->" + #field_item + ":\t" \
-//		      	 + data_field.field_item + "\n";                \
-//		}                                                       \
-//	}while(0) 
-//
-//#define print(data_field, field_item)                  \
-//	do{											                \
-//		tmp_str =  #data_field + "->" + #field_item + ":\t"     \
-//		  	 + data_field.field_item + "\n";                    \
-//	}while(0) 
 
 void NtfTopicMarketData::pack(char* ret_buffer, uint32_t *ret_length,
 		                      map<string, NtfTopicMarketData> &market_data,

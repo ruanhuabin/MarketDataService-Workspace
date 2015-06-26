@@ -1,0 +1,30 @@
+package cn.edu.tsinghua.tidhandler;
+
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.utils.DFEUtils;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public class NtfTimeSyncHandler extends NtfTIDBaseHandler {
+
+	public NtfTimeSyncHandler(FramedKernel k, FrameData<XTPFrameFormat> fin,
+			DFEVar[] bytes, DFEVar count, int expectedTID)
+	{
+		super(k, fin, bytes, count, expectedTID);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public DFEVar process() {
+		// TODO Auto-generated method stub
+		DFEVector<DFEVar> currDate = ItemType.CDayType.newInstance(kernel);
+		DFEVector<DFEVar> currTime = ItemType.CTimeType.newInstance(kernel);
+		DFEVector<DFEVar> currMillisec = ItemType.CMillisecType.newInstance(kernel);
+		DFEUtils.groupCharToVector(kernel, TradingDay, currByte, 4, -1, 9);
+		return null;
+	}
+
+}

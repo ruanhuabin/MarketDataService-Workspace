@@ -17,6 +17,10 @@ public class TID {
   public final static int TID_InitInstrument=0x00007103;
   public static final int TID_NtfOrder = 0x00005201;
 
+  //交易
+  public final static int TID_NtfTrade=0x00005202;
+public static final int TID_NtfTimeSync = 0x00005001;
+
 
 
 

@@ -11,7 +11,9 @@ import cn.edu.tsinghua.tidhandler.NtfInitInstrumentHandler;
 import cn.edu.tsinghua.tidhandler.NtfMarketDataHandler;
 import cn.edu.tsinghua.tidhandler.NtfOrderHandler;
 import cn.edu.tsinghua.tidhandler.NtfSettlementGroupDataSyncHandler;
-import cn.edu.tsinghua.tidhandler.TidHandlerBase;
+import cn.edu.tsinghua.tidhandler.NtfTIDBaseHandler;
+import cn.edu.tsinghua.tidhandler.NtfTimeSyncHandler;
+import cn.edu.tsinghua.tidhandler.NtfTradeHandler;
 
 import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
@@ -65,55 +67,41 @@ public class MarketDataServiceKernel extends FramedKernel {
 
 
 		//Init comm phase
-		TidHandlerBase tidHandler = new NtfCommPhaseChangeHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfCommPhaseChange);
+		NtfTIDBaseHandler tidHandler = new NtfCommPhaseChangeHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfCommPhaseChange);
 		DFEVar commPhaseNo = tidHandler.process();
 		debug.simPrintf("Kernel Got in Cycle [%d]: commPhaseNo = 0x%02x, GlobalStateItems.commPhaseNo = 0x%02x\n", cycleCount, commPhaseNo, GlobalStateItems.commPhaseNo);
 
+		//Init exchange data sync
 		tidHandler = new NtfExchangeDataSyncHandler(this, frameIn);
 		DFEVar exchangeDataSyncStatus = tidHandler.process();
 		debug.simPrintf("Kernel Got in Cycle [%d]: exchangeDataSyncHandler = %d, GlobalStateItems.exchangeDataSyncStatus = %d\n", cycleCount, exchangeDataSyncStatus, GlobalStateItems.exchangeDataSyncStatus);
 
+		//Init settlement group data sync
 		tidHandler = new NtfSettlementGroupDataSyncHandler(this, frameIn);
 		DFEVar settlementGroupDataSyncStatus = tidHandler.process();
 		debug.simPrintf("Kernel Got in Cycle [%d]: settlementGroupDataSyncHandler = %d, settlementGroupDataStatus = %d\n", cycleCount, settlementGroupDataSyncStatus, GlobalStateItems.settlementGroupDataStatus);
 
+		//MBLData mblData = new MBLData(this);
 
+		//Init market data
 		tidHandler = new NtfMarketDataHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfMarketData);
 		tidHandler.process();
+
+		//Init instrument data
 	   tidHandler = new NtfInitInstrumentHandler(this, frameIn, currByte, cycleCount, TID.TID_InitInstrument);
 	   tidHandler.process();
 
+	   //Parse Order packet
 	   tidHandler = new NtfOrderHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfOrder);
 	   tidHandler.process();
 
+	   //Parse trade packet
+	   tidHandler = new NtfTradeHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfTrade);
+	   tidHandler.process();
 
-//		NtfCommPhaseChangeHandler commPhaseChangeHandler = new NtfCommPhaseChangeHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfCommPhaseChange);
-//		DFEVar initCommPhaseNoResult = commPhaseChangeHandler.process();
-//		debug.simPrintf("Kernel Got in Cycle [%d], commPhaseNo bytes:", cycleCount);
-//		for(int i = 0; i < 2; i ++)
-//		{
-//			debug.simPrintf("0x%02x ", initCommPhaseNoResult.slice(i * 8, 8));
-//		}
-//		debug.simPrintf("\n");
-//
-//		//Init exchange data
-//		NtfExchangeDataSyncHandler exchangeDataSyncHandler = new NtfExchangeDataSyncHandler(this, frameIn);
-//		exchangeDataSyncHandler.process();
-//		debug.simPrintf("=========================>>GlobalStateItems.exchangeDataStatus = %d\n", GlobalStateItems.exchangeSyncStatus);
-//
-//		//Init settle group data
-//		NtfSettlementGroupDataSyncHandler settlementGroupDataSyncHandler = new NtfSettlementGroupDataSyncHandler(this, frameIn);
-//		settlementGroupDataSyncHandler.process();
-//		debug.simPrintf("=========================>>settlementGroupDataStatus = %d\n", GlobalStateItems.settlementGroupDataStatus);
-
-//		ExchangeDataSyncStart eds = new ExchangeDataSyncStart(this, frameIn, currByte, cycleCount, TID.TID_ExchangeDataSyncStart);
-//		eds.process();
-		//Init Market Data Here
-		//....Debuging
-
-		//Init Instrument Data Here
-		//....Debuging
-
+	   //Parse timesync packet
+	   tidHandler = new NtfTimeSyncHandler(this, frameIn, currByte, cycleCount, TID.TID_NtfTimeSync);
+	   tidHandler.process();
 
 		FrameData<OutputFrameFormat> frameOut = new FrameData<OutputFrameFormat>(this, new OutputFrameFormat(), new UDPOneToOneTXType());
 		frameInToFrameOut(frameOut, frameIn);

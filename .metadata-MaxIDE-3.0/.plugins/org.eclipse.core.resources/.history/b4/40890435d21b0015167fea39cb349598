@@ -1,0 +1,13 @@
+package cn.edu.tsinghua.tidhandler;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+
+public class NtfTimeSyncHandler extends TidHandlerBase {
+
+	@Override
+	public DFEVar process() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

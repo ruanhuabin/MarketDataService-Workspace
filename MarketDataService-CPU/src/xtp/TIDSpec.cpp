@@ -57,7 +57,6 @@ template<> void TID1<CCurrentTimeField>::process() {
   assert(mFields1.size() == 1);
 
   GlobalVar &var = GlobalVar::instance();
-  bool init = false;
   switch(mXtpHeader.Tid) {
     case TID_NtfTimeSync:
       GlobalVar::instance().mCurrentTime = mFields1[0];

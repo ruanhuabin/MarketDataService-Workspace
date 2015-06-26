@@ -112,9 +112,9 @@ CSettlementSessionField,
 class CCurrentTimeField
 {
 public:
-CDateType CurrDate;   ///当前日期
-CTimeType CurrTime;   ///当前时间
-CMillisecType CurrMillisec;   ///当前时间（毫秒）
+CDateType CurrDate;   ///char[9]
+CTimeType CurrTime;   ///char[9]
+CMillisecType CurrMillisec;   ///uint32
 };
 #pragma pack(pop)
 

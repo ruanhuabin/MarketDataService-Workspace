@@ -8,3 +8,6 @@ batchdelete.sh
 debug/
 CommLog.con
 *.log
+CodeForCFFEXV1.1
+*.swp
+CodeForCFFEXV1.1.tar.gz

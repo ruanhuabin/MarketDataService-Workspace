@@ -1,0 +1,86 @@
+package cn.edu.tsinghua.tidhandler;
+
+
+import cn.edu.tsinghua.format.XTPFrameFormat;
+import cn.edu.tsinghua.state.GlobalStateItems;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.Reductions;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.networking.v1.framed_kernels.FrameData;
+import com.maxeler.networking.v1.framed_kernels.FramedKernel;
+
+public class BramTestHandler extends TidHandlerBase {
+	private int DATA_SIZE = 10000;
+	public BramTestHandler(FramedKernel k, FrameData<XTPFrameFormat> fin,
+			DFEVar [] bytes, DFEVar count, int expectedTID)
+	{
+		super(k, fin, bytes, count, expectedTID);
+	}
+
+
+
+
+	@Override
+	public DFEVar process() {
+		// TODO Auto-generated method stub
+
+		GlobalStateItems.exchangeDataSyncStatus = constant.var(DFETypeFactory.dfeUInt(2), 1);
+
+		/**********Following code is used for find max value in BRAM***************************************************************/
+		DFEVar maxValue = constant.var(-1000.0);
+		DFEVar address[] = new DFEVar[DATA_SIZE];
+		//Save all possible address
+		for(int i = 0; i < DATA_SIZE; i ++)
+		{
+			address[i] = constant.var(i).cast(dfeUInt(32));
+		}
+
+		//Predefine max value's address and its maximum value
+		DFEVar maxValueAddress = constant.var(99).cast(dfeUInt(32));
+		DFEVar newMaxValue = constant.var(-1000.0);
+		//Start to search max value in BRAM
+		for(int i = 0; i < DATA_SIZE; i ++)
+		{
+			DFEVar readAddress = inputAddress + i;
+			DFEVar valueRead = reverseRam.read(readAddress);
+			newMaxValue = (valueRead > newMaxValue) ? valueRead:newMaxValue;
+			//经过上面的赋值后，最大值和当前Ram值是相等的，通过这个来判断是否需要保存最大值所在的下标，这点需要特别注意,花了2h调试才发现的。。。。
+			//并且上面的比较赋值必须有，否则没办法找出最大值所在的Index，因为要是没有上面的赋值，newMaxValue的值始终不变，为初始值-1000.0，那还比个毛线！！！！
+			maxValueAddress = (valueRead.eq(newMaxValue)) ? address[i]:maxValueAddress;
+		}
+
+		debug.simPrintf(addressCounter.getCount() > DATA_SIZE & inputAddress.eq(0), "\nmaxValue = %f, address = %d\n", newMaxValue, maxValueAddress);
+/******************************************************************************************************************************************************************/
+
+		return GlobalStateItems.commPhaseNo;
+	}
+
+//	public DFEVar getCommPhaseNo()
+//	{
+//		return GlobalStateItems.commPhaseNo;
+//	}
+
+	private void setCommPhaseNo(DFEVar commPhaseNo, DFEVar isCycle1st, DFEVar isCommPhaseChangePktProcess)
+	{
+
+
+		GlobalStateItems.commPhaseNo = commPhaseNo;
+//		debug.simPrintf("Kernel Got In SET before reduction in Cycle [%d], isValidPkg = %d, isCycle1st = %d:\n", cycleCount, isValidPkg, isCycle1st);
+//		for(int i = 0; i < 2; i ++)
+//		{
+//			debug.simPrintf("0x%02x ", GlobalStateItems.commPhaseNo.slice(i * 8, 8));
+//		}
+//		debug.simPrintf("\n");
+
+		GlobalStateItems.commPhaseNo = Reductions.streamHold(commPhaseNo, isCycle1st | isCommPhaseChangePktProcess.eq(false));
+
+//		debug.simPrintf("Kernel Got In SET After reduction in Cycle [%d], isValidPkg = %d, isCycle1st = %d:\n", cycleCount, isValidPkg, isCycle1st);
+//		for(int i = 0; i < 2; i ++)
+//		{
+//			debug.simPrintf("0x%02x ", GlobalStateItems.commPhaseNo.slice(i * 8, 8));
+//		}
+//		debug.simPrintf("\n");
+	}
+
+}

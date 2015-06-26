@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <buildProfile>
 <common>
-<boardModel type="VECTIS"/>
+<boardModel type="ISCA"/>
 <simulation enabled="false"/>
 <enableMPCX enabled="false"/>
 </common>
 <maxFiles>
-<maxFile buildName="PXTP" buildOrUseExisting="build">
+<maxFile buildName="MarketDataService" buildOrUseExisting="build">
 <runConfiguration askBeforeAutoBuild="true">
-<mainClass>xtp.XTPParserManager</mainClass>
-<maxHeapSize>2</maxHeapSize>
+<mainClass>cn.edu.tsinghua.kernel.MarketDataServiceManager</mainClass>
+<maxHeapSize>16</maxHeapSize>
 </runConfiguration>
 <selectEngineTarget enabled="false">VECTIS</selectEngineTarget>
 <overrideEnableMPCX enabled="false" value="false"/>
